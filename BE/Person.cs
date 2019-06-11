@@ -13,7 +13,7 @@ namespace BE
 
       
 
-        private bool validID(string value)
+        public static bool validID(string value)
         {
             string m_PERID = value;
             char[] digits = m_PERID.PadLeft(9, '0').ToCharArray();
