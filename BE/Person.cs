@@ -65,7 +65,7 @@ namespace BE
             result += String.Format("Email:        {0}\n", Email);
             result += String.Format("BirthDay:     {0}\n", BirthDay);
             result += String.Format("Address:      {0}\n", Address);
-
+          
             return result;
         }
     }
