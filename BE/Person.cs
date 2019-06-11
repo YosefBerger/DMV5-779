@@ -50,17 +50,21 @@ namespace BE
         public DateTime BirthDay { get; set; }
         public Address Address { get; set; }
         public Gender Gender { get; set; }
+        public string PhoneNumber { get; set; }
+        public VehicleType VehicleType { get; set; }    // Both tester and trainee need this value, so we put it here
         public override string ToString()
         {
             String result = "";
 
-            result += String.Format("ID:          {0}\n", ID);
-            result += String.Format("FirstName:   {0}\n", FirstName);
-            result += String.Format("LastName:    {0}\n", LastName);
-            result += String.Format("Gender:      {0}\n", Gender);
-            result += String.Format("Email:       {0}\n", Email);
-            result += String.Format("BirthDay:    {0}\n", BirthDay);
-            result += String.Format("Address:     {0}\n", Address);
+            result += String.Format("ID:           {0}\n", ID);
+            result += String.Format("FirstName:    {0}\n", FirstName);
+            result += String.Format("LastName:     {0}\n", LastName);
+            result += String.Format("Gender:       {0}\n", Gender);
+            result += String.Format("Vehicle Tyep: {0}\n", VehicleType);
+            result += String.Format("Phone Number: {0}\n", PhoneNumber);
+            result += String.Format("Email:        {0}\n", Email);
+            result += String.Format("BirthDay:     {0}\n", BirthDay);
+            result += String.Format("Address:      {0}\n", Address);
 
             return result;
         }
