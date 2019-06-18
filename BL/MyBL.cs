@@ -29,5 +29,10 @@ namespace BL
             return false;
         }
         public bool
+
+        public bool addTester(Tester tester)
+        {
+            if (tester.)
+        }
     }
 }

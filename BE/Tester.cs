@@ -52,6 +52,7 @@ namespace BE
             };
         }
 
+        // implement update for tester
         public void update(Tester tester)
         {
             this.update((Person)tester);
