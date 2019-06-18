@@ -13,7 +13,7 @@ namespace BE
         public static int TRAINEE_MIN_AGE = 18; // Cannot add trainee under this age
         public static int DAYS_FROM_TEST = 7;   // Cannot take test untill DAYS_FROM_TEST days after previus test
         public static int TRAINEE_MIN_LESSONS = 20; // Cannot take test without having done at least this many lessons
-
+        
         // To-Do: add requestTestDate()
         // To-Do: add public static int TESTER_MAX_TESTS = ???; // The maximum amount of tests a tester can preform in a week
         // To-Do: 
