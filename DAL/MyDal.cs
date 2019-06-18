@@ -42,10 +42,11 @@ namespace DAL
             }
            return false;
         }
-        public bool updateTrainee(string id, Trainee tr)
+        public bool updateTrainee(Trainee tr)
         {
             return false;
         }
+
         public bool addTest(Test test)
         {
 
@@ -59,6 +60,11 @@ namespace DAL
         {
             return false;
         }
+        public List<Test> getAllTests()
+        {
+            return new List<Test>();
+        }
+
         public bool addTester(Tester tester)
         {
             return true;
@@ -70,6 +76,10 @@ namespace DAL
         public bool updateTester(Tester tester)
         {
             return false;
+        }
+        public List<Tester> getAllTesters()
+        {
+            return new List<Tester>();
         }
     }
 }
