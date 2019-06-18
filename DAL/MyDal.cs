@@ -48,6 +48,7 @@ namespace DAL
                 if (item.ID == tr.ID)
                 {
                     item.update(tr);
+                    return true;
                 }
             }
             return false;
@@ -55,21 +56,48 @@ namespace DAL
 
         public bool addTest(Test test)
         {
-            foreach()
+            foreach(var item in DataSource.Tests)
+            {
+                if(item.TestNumber == test.TestNumber)
+                {
+                    return false;
+                }
+            }
 
+            DataSource.Tests.Add(test.Clone());
             return true;
         }
         public bool removeTest(Test test)
         {
+            foreach (var item in DataSource.Tests)
+            {
+                if (item.TestNumber == test.TestNumber)
+                {
+                    return DataSource.Tests.Remove(item);
+                }
+            }
             return false;
         }
         public bool updateTest(Test test)
         {
+            foreach (var item in DataSource.Tests)
+            {
+                if (item.TestNumber == test.TestNumber)
+                {
+                    item.update(test);
+                    return true;
+                }
+            }
             return false;
         }
         public List<Test> getAllTests()
         {
-            return new List<Test>();
+            List<Test> result = new List<Test>();
+            foreach (var item in DataSource.Tests)
+            {
+                result.Add(item.Clone());
+            }
+            return result;
         }
 
         public bool addTester(Tester tester)
@@ -95,11 +123,23 @@ namespace DAL
         }
         public bool updateTester(Tester tester)
         {
+            foreach (var item in DataSource.Testers)
+            {
+                if (item.ID == tester.ID)
+                {
+                    item.update(tester);
+                }
+            }
             return false;
         }
         public List<Tester> getAllTesters()
         {
-            return new List<Tester>();
+            List<Tester> result = new List<Tester>();
+            foreach (var item in DataSource.Testers)
+            {
+                result.Add(item.Clone());
+            }
+            return result;
         }
     }
 }
