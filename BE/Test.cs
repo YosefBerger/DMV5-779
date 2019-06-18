@@ -135,8 +135,31 @@ namespace BE
 
             };
         }
-        // override to String
 
+        // update test
+        public void update(Test test)
+        {
+            this.Number = test.Number;
+            this.TestNumber = test.TestNumber;
+            this.testerId = test.testerId;
+            this.TesterId = test.TesterId;
+            this.traineeId = test.traineeId;
+            this.TraineerId = test.traineeId;
+            this.dateTime = test.dateTime;
+            this.DateTime = test.DateTime;
+            this.StartAddress = test.StartAddress;
+            this.UseMirrors = test.UseMirrors;
+            this.MaintinaDistance = test.MaintinaDistance;
+            this.ParkInReverse = test.ParkInReverse;
+            this.Signals = test.Signals;
+            this.ParralellParking = test.ParralellParking;
+            this.Awareness = test.Awareness;
+            this.StopSigns = test.StopSigns;
+            this.SpeedLimit = test.SpeedLimit;
+            this.Result = test.Result;
+            this.TesterComment = test.TesterComment;
+        }
+        // override to String
         public override string ToString()
         {
             string result = "";
