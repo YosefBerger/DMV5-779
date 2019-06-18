@@ -8,7 +8,7 @@ using DAL;
 
 namespace BL
 {
-    public class MyBL
+    public class MyBL : IBL
     {
         IDal dal = FactoryDal.getInstance();
 
@@ -18,6 +18,11 @@ namespace BL
             //anything else
             //and so on....
             return dal.getAllTrainees();
+        }
+
+        public bool addTester(Tester tester)
+        {
+            if (tester.)
         }
     }
 }

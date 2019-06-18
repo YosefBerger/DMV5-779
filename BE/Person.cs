@@ -68,6 +68,22 @@ namespace BE
           
             return result;
         }
+        public int getAge(Person pr)
+        {
+            // find today's date
+            DateTime today = DateTime.Today;
+            int year = today.Year - pr.BirthDay.Year;
+            // if person has not had their birthday yet this year
+            if(today.Month < pr.BirthDay.Month)
+            {
+                return year - 1;
+            }
+            if(today.Month == pr.BirthDay.Month && today.Day < pr.BirthDay.Day)
+            {
+                return year - 1;
+            }
+            return year;
+        }
 
         // implement update for person, which will be used by Trainee and Tester
         public void update(Person pr)
