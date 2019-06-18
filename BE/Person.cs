@@ -68,5 +68,18 @@ namespace BE
           
             return result;
         }
+
+        public void update(Person pr)
+        {
+            this.Address = pr.Address.clone();
+            this.BirthDay = pr.BirthDay;
+            this.Email = pr.Email;
+            this.FirstName = pr.FirstName;
+            this.Gender = pr.Gender;
+            this.ID = pr.ID;
+            this.LastName = pr.LastName;
+            this.PhoneNumber = pr.PhoneNumber;
+            this.VehicleType = pr.VehicleType;
+        }
     }
 }

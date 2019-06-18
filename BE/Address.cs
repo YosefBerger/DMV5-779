@@ -12,6 +12,16 @@ namespace BE
         public int Number { get; set; }
         public String City { get; set; }
 
+        public Address clone()
+        {
+            return new Address
+            {
+                Street = this.Street,
+                Number = this.Number,
+                City = this.City
+            };
+        }
+
         public override string ToString()
         {
             String result = "";

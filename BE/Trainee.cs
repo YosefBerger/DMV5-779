@@ -46,5 +46,14 @@ namespace BE
 
             };
         }
+
+        public void update(Trainee trainee)
+        {
+            this.update((Person)trainee);
+            this.InstructorName = trainee.InstructorName;
+            this.NumDrivingLessons = trainee.NumDrivingLessons;
+            this.GearBox = trainee.GearBox;
+            this.DrivingSchool = trainee.DrivingSchool;
+        }
     }
 }
