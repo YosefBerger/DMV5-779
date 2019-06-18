@@ -42,5 +42,34 @@ namespace DAL
             }
            return false;
         }
+        public bool updateTrainee(string id, Trainee tr)
+        {
+            return false;
+        }
+        public bool addTest(Test test)
+        {
+
+            return true;
+        }
+        public bool removeTest(Test test)
+        {
+            return false;
+        }
+        public bool updateTest(Test test)
+        {
+            return false;
+        }
+        public bool addTester(Tester tester)
+        {
+            return true;
+        }
+        public bool removeTester(Tester tester)
+        {
+            return false;
+        }
+        public bool updateTester(Tester tester)
+        {
+            return false;
+        }
     }
 }
