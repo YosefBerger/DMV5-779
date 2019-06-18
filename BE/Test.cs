@@ -28,6 +28,8 @@ namespace BE
                 }
             }
         }
+        // clone copy constructor
+        
 
         private string testerId;    // Hold the actualle tester ID
         public string TesterId      // Get and set the tester ID
@@ -88,6 +90,7 @@ namespace BE
                 }
             }
         }
+        
 
         public Address StartAddress { get; set; } // The address from which the test was/will be started
 
@@ -96,7 +99,7 @@ namespace BE
         public bool MaintinaDistance { get; set; }
         public bool ParkInReverse { get; set; }
         public bool Signals { get; set; }
-        public bool ParralellPraking { get; set; }
+        public bool ParralellParking { get; set; }
         public bool Awareness { get; set; }
         public bool StopSigns { get; set; }
         public bool SpeedLimit { get; set; }
@@ -104,6 +107,35 @@ namespace BE
         public bool Result { get; set; }    // Result of the test (if they passed or failed)
 
         public string TesterComment { get; set; }   // Hold any comments from the tester about the test
+
+        // copy constructor
+        public Test Clone()
+        {
+            return new Test
+            {
+                Number = this.Number,
+                TestNumber = this.TestNumber,
+                testerId = this.testerId,
+                TesterId = this.TesterId,
+                traineeId = this.traineeId,
+                TraineerId = this.TraineerId,
+                dateTime = this.dateTime,
+                DateTime = this.DateTime,
+                StartAddress = this.StartAddress,
+                UseMirrors = this.UseMirrors,
+                MaintinaDistance = this.MaintinaDistance,
+                ParkInReverse = this.ParkInReverse,
+                Signals = this.Signals,
+                ParralellParking = this.ParralellParking,
+                Awareness = this.Awareness,
+                StopSigns = this.StopSigns,
+                SpeedLimit = this.SpeedLimit,
+                Result = this.Result,
+                TesterComment = this.TesterComment,
+
+            };
+        }
+        // override to String
 
         public override string ToString()
         {
@@ -118,7 +150,7 @@ namespace BE
             result += String.Format("Use Mirrors:      {0}\n", UseMirrors ? "PASS" : "FAIL");
             result += String.Format("Parke in Reverse: {0}\n", ParkInReverse ? "PASS" : "FAIL");
             result += String.Format("Signals:          {0}\n", Signals ? "PASS" : "FAIL");
-            result += String.Format("Parralel Parking: {0}\n", ParralellPraking ? "PASS" : "FAIL");
+            result += String.Format("Parralel Parking: {0}\n", ParralellParking ? "PASS" : "FAIL");
             result += String.Format("Awareness:        {0}\n", Awareness ? "PASS" : "FAIL");
             result += String.Format("Stop Signs:       {0}\n", StopSigns ? "PASS" : "FAIL");
             result += String.Format("Speed Limit:      {0}\n", Signals ? "PASS" : "FAIL");
