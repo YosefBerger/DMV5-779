@@ -23,10 +23,26 @@ namespace BL
         public bool addTester(Tester tester)
         {
             
-            if (getAge(tester) < Configuration.TESTER_MIN_AGE)
+            if (tester.getAge() >= Configuration.TESTER_MIN_AGE)
             {
-                return false;
+                return dal.addTester(tester);
             }
+            
+            return false;
         }
+        public bool removeTester(Tester tester)
+        {
+            return dal.removeTester(tester);
+        }
+        public bool updateTester(Tester tester)
+        {
+            if(tester.getAge() >= Configuration.TESTER_MIN_AGE)
+            {
+                return dal.updateTester(tester);
+            }
+
+            return false;
+        }
+
     }
 }
