@@ -28,7 +28,18 @@ namespace BL
 
             return false;
         }
-        public bool
+        public bool removeTrainee(Trainee trainee)
+        {
+            return dal.removeTrainee(trainee);
+        }
+        public bool updateTrainee(Trainee trainee)
+        {
+            if(trainee.getAge() >= Configuration.TRAINEE_MIN_AGE)
+            {
+                return dal.updateTrainee(trainee);
+            }
+            return false;
+        }
 
         public bool addTester(Tester tester)
         {
