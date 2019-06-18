@@ -22,7 +22,11 @@ namespace BL
 
         public bool addTester(Tester tester)
         {
-            if (tester.)
+            
+            if (getAge(tester) < Configuration.TESTER_MIN_AGE)
+            {
+                return false;
+            }
         }
     }
 }
