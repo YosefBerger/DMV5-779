@@ -69,6 +69,7 @@ namespace BE
             return result;
         }
 
+        // implement update for person, which will be used by Trainee and Tester
         public void update(Person pr)
         {
             this.Address = pr.Address.clone();

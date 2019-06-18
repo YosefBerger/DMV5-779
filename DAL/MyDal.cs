@@ -11,6 +11,7 @@ namespace DAL
     {
         public bool addTrainee(Trainee tr)
         {
+
             foreach (var item in DataSource.Trainees)
             {
                 if(item.ID == tr.ID)
