@@ -51,6 +51,15 @@ namespace BE
                 WorkingHours = this.WorkingHours
             };
         }
+
+        public void update(Tester tester)
+        {
+            this.update((Person)tester);
+            this.MaxWeeklyTests = tester.MaxWeeklyTests;
+            this.YearsExperience = tester.YearsExperience;
+            this.MaxDistance = tester.MaxDistance;
+            this.WorkingHours = tester.WorkingHours;
+        }
     }
 }
 

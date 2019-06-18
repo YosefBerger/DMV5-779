@@ -37,13 +37,19 @@ namespace DAL
                 if (item.ID == tr.ID)
                 {
                     return DataSource.Trainees.Remove(item);
-                    //return true;
                 }
             }
            return false;
         }
         public bool updateTrainee(Trainee tr)
         {
+            foreach (var item in DataSource.Trainees)
+            {
+                if (item.ID == tr.ID)
+                {
+                    item.update(tr);
+                }
+            }
             return false;
         }
 
@@ -68,10 +74,23 @@ namespace DAL
 
         public bool addTester(Tester tester)
         {
+            foreach (var item in DataSource.Testers)
+            {
+                if (item.ID == tester.ID)
+                    return false;
+            }
+            DataSource.Testers.Add(tester.Clone());
             return true;
         }
         public bool removeTester(Tester tester)
         {
+            foreach (var item in DataSource.Testers)
+            {
+                if (item.ID == tester.ID)
+                {
+                    return DataSource.Testers.Remove(item);
+                }
+            }
             return false;
         }
         public bool updateTester(Tester tester)
