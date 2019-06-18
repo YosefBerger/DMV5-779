@@ -8,16 +8,26 @@ using DAL;
 
 namespace BL
 {
-    public class MyBL
+    public class MyBL : IBL
     {
         IDal dal = FactoryDal.getInstance();
 
-        public List<Trainee> allTrainees()
+        public List<Trainee> getAllTrainees()
         {
             //some verifications validations and more...
             //anything else
             //and so on....
             return dal.getAllTrainees();
         }
+        public bool addTrainee(Trainee trainee)
+        {
+            if(trainee.getAge() >= Configuration.TRAINEE_MIN_AGE)
+            {
+                return dal.addTrainee(trainee);
+            }
+
+            return false;
+        }
+        public bool
     }
 }
