@@ -68,17 +68,17 @@ namespace BE
           
             return result;
         }
-        public int getAge(Person pr)
+        public int getAge()
         {
             // find today's date
             DateTime today = DateTime.Today;
-            int year = today.Year - pr.BirthDay.Year;
+            int year = today.Year - this.BirthDay.Year;
             // if person has not had their birthday yet this year
-            if(today.Month < pr.BirthDay.Month)
+            if(today.Month < this.BirthDay.Month)
             {
                 return year - 1;
             }
-            if(today.Month == pr.BirthDay.Month && today.Day < pr.BirthDay.Day)
+            if(today.Month == this.BirthDay.Month && today.Day < this.BirthDay.Day)
             {
                 return year - 1;
             }
