@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Test
+    public class Test
     {
         private static int TestCounter = 0; // Allows us to have incramental test numbers
 
