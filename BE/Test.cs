@@ -28,7 +28,7 @@ namespace BE
                 }
             }
         }
-        // clone copy constructor
+        
         
 
         private string testerId;    // Hold the actualle tester ID

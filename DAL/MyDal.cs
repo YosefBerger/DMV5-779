@@ -141,6 +141,6 @@ namespace DAL
                 result.Add(item.Clone());
             }
             return result;
-        }
+        }partial;lop
     }
 }

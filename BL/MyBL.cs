@@ -40,7 +40,10 @@ namespace BL
             }
             return false;
         }
-
+        public List<Tester> getAllTesters()
+        {
+            return dal.getAllTesters();
+        }
         public bool addTester(Tester tester)
         {
             
@@ -63,6 +66,22 @@ namespace BL
             }
 
             return false;
+        }
+        public List<Test> getAllTests()
+        {
+            return dal.getAllTests();
+        }
+        public bool addTest(Test test)
+        {
+            return false;
+        }
+        public bool removeTest(Test test)
+        {
+            return dal.removeTest(test);
+        }
+        public bool updateTest(Test test)
+        {
+            return dal.updateTest(test);
         }
 
     }
