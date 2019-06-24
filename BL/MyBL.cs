@@ -34,7 +34,7 @@ namespace BL
         }
         public bool updateTrainee(Trainee trainee)
         {
-            if(trainee.getAge() >= Configuration.TRAINEE_MIN_AGE)
+            if(trainee.getAge() >= Configuration.TRAINEE_MIN_AGE && trainee.NumDrivingLessons >= Configuration.TRAINEE_MIN_LESSONS)
             {
                 return dal.updateTrainee(trainee);
             }
@@ -75,7 +75,14 @@ namespace BL
         {
             bool flag = true;
 
-            flag = flag && (getAllTests(new Func<Test, bool>(/* Inset Lambda */)).Count() == 0);
+            // Make sure test is not within 7 days of another test.
+            // Subtracting two DateTime.Date from each other returns a TimeSpan object representing how many days are between the two dates.
+            // We take the abs so that if it's date is after tests's date we can still get if it within 7 days, and also so that it doesn't
+            // just return false if it is more than 7 days after. We then and if we have any tests that are within 7 days with flag to continue.
+            flag = flag && (getAllTests(new Func<Test, bool>(it => Math.Abs((test.DateTime.Date - it.DateTime.Date).Days) <= Configuration.DAYS_FROM_TEST)).Count() == 0);
+
+            // Make sure there is a tester available at that time, if not sugest alternate times
+            
 
             return false;
         }

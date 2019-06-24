@@ -21,14 +21,22 @@ namespace DAL
             return true;
         }
 
-        public List<Trainee> getAllTrainees()
+        public List<Trainee> getAllTrainees(Func<Trainee, bool> condition = null)
         {
-            List<Trainee> result = new List<Trainee>();
-            foreach (var item in DataSource.Trainees)
+            IEnumerable<Trainee> result = null;
+
+            if (condition != null)
             {
-                result.Add(item.Clone());
+                result = from item in DataSource.Trainees
+                         where (condition(item))
+                         select item.Clone();
             }
-            return result;
+            else
+            {
+                result = from item in DataSource.Trainees
+                         select item.Clone();
+            }
+            return result.ToList();
         }
 
         public bool removeTrainee(Trainee tr)
@@ -141,14 +149,22 @@ namespace DAL
             }
             return false;
         }
-        public List<Tester> getAllTesters()
+        public List<Tester> getAllTesters(Func<Tester, bool> condition = null)
         {
-            List<Tester> result = new List<Tester>();
-            foreach (var item in DataSource.Testers)
+            IEnumerable<Tester> result = null;
+
+            if (condition != null)
             {
-                result.Add(item.Clone());
+                result = from item in DataSource.Testers
+                         where (condition(item))
+                         select item.Clone();
             }
-            return result;
+            else
+            {
+                result = from item in DataSource.Testers
+                         select item.Clone();
+            }
+            return result.ToList();
         }
     }
 }
