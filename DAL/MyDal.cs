@@ -91,14 +91,22 @@ namespace DAL
             }
             return false;
         }
-        public List<Test> getAllTests()
+        public List<Test> getAllTests(Func<Test, bool> condition = null)
         {
-            List<Test> result = new List<Test>();
-            foreach (var item in DataSource.Tests)
+            IEnumerable<Test> result = null;
+
+            if (condition != null)
             {
-                result.Add(item.Clone());
+                result = from item in DataSource.Tests
+                         where (condition(item))
+                         select item.Clone();
             }
-            return result;
+            else
+            {
+                result = from item in DataSource.Tests
+                         select item.Clone();
+            }
+            return result.ToList();
         }
 
         public bool addTester(Tester tester)
@@ -141,6 +149,6 @@ namespace DAL
                 result.Add(item.Clone());
             }
             return result;
-        }partial;lop
+        }
     }
 }

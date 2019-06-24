@@ -67,12 +67,16 @@ namespace BL
 
             return false;
         }
-        public List<Test> getAllTests()
+        public List<Test> getAllTests(Func<Test, bool> condition = null)
         {
-            return dal.getAllTests();
+            return dal.getAllTests(condition);
         }
         public bool addTest(Test test)
         {
+            bool flag = true;
+
+            flag = flag && (getAllTests(new Func<Test, bool>(/* Inset Lambda */)).Count() == 0);
+
             return false;
         }
         public bool removeTest(Test test)

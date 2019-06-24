@@ -17,6 +17,9 @@ namespace BE
             string result = null;
             string currentDay = null;
             for(int i = 0; i < 5; i++)
+            {
+
+            }
 
 
             return base.ToString();
