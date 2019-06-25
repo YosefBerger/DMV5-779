@@ -50,7 +50,7 @@ namespace BE
         }
 
         private string traineeId;    // Hold the actualle tester ID
-        public string TraineerId      // Get and set the tester ID
+        public string TraineeId      // Get and set the tester ID
         {
             get
             {
@@ -118,7 +118,7 @@ namespace BE
                 testerId = this.testerId,
                 TesterId = this.TesterId,
                 traineeId = this.traineeId,
-                TraineerId = this.TraineerId,
+                TraineeId = this.TraineeId,
                 dateTime = this.dateTime,
                 DateTime = this.DateTime,
                 StartAddress = this.StartAddress,
@@ -144,9 +144,10 @@ namespace BE
             this.testerId = test.testerId;
             this.TesterId = test.TesterId;
             this.traineeId = test.traineeId;
-            this.TraineerId = test.traineeId;
+            this.TraineeId = test.traineeId;
             this.dateTime = test.dateTime;
             this.DateTime = test.DateTime;
+
             this.StartAddress = test.StartAddress;
             this.UseMirrors = test.UseMirrors;
             this.MaintinaDistance = test.MaintinaDistance;
@@ -156,6 +157,7 @@ namespace BE
             this.Awareness = test.Awareness;
             this.StopSigns = test.StopSigns;
             this.SpeedLimit = test.SpeedLimit;
+
             this.Result = test.Result;
             this.TesterComment = test.TesterComment;
         }
@@ -166,7 +168,7 @@ namespace BE
 
             result += String.Format("Test Number:      {0}\n", Number);
             result += String.Format("Tester:           {0}\n", TesterId);
-            result += String.Format("Trainee:          {0}\n", TraineerId);
+            result += String.Format("Trainee:          {0}\n", TraineeId);
             result += String.Format("Date/Time:        {0}\n", DateTime);
             result += String.Format("Address:          {0}\n", StartAddress);
             result += "----------------------------------\n";
