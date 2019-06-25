@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DataSource.cs" />
     <Compile Include="FactoryDal.cs" />
+    <Compile Include="IBL.cs" />
     <Compile Include="IDal.cs" />
     <Compile Include="MyDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
