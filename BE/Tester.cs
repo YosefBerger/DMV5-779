@@ -13,7 +13,19 @@ namespace BE
 
         // This is going to hold a bool array of hours worked, 5 days x 7 hours a day
         private bool[][] WorkingHours = new bool[5][];
-
+        public bool[][] getWorkingHours()
+        {
+            return WorkingHours;
+        }
+        // check if the tester is working
+        public bool getIfWorking(DateTime dateTime)
+        {
+            if((int)dateTime.DayOfWeek < 6 && dateTime.Hour <= 15 && dateTime.Hour >= 9)
+            {
+                return WorkingHours[(int)dateTime.DayOfWeek][dateTime.Hour - 9];
+            }
+            return false;
+        }
         // To-Do getters and setters for the hours worked
 
         public double MaxDistance = 7.5;    // A radius of the max distance from the testers home that they are willing to work
@@ -48,7 +60,7 @@ namespace BE
                 YearsExperience = this.YearsExperience,
                 MaxWeeklyTests = this.MaxWeeklyTests,
                 MaxDistance = this.MaxDistance,
-                WorkingHours = this.WorkingHours
+                // need to do working hours
             };
         }
 

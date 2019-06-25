@@ -38,7 +38,7 @@ namespace BL
         /// Retuns a list of Testers who are able to proctor a test starting at a specific address.
         /// </summary>
         /// <param name="address">The address at which a test will start.</param>
-        /// <returns>A List<> of Testers for whom the Adress is whithin their working distance.</returns>
+        /// <returns>A List<> of Testers for whom the Adress is whithin their working readius.</returns>
         List<Tester> testersForAddress(Address address);
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace BL
         /// </summary>
         /// <param name="vehicleType">The type of vehicle to chek.</param>
         /// <returns>A List<> of Testers who specialize in the specified vehicle type</returns>
-        List<Tester> testersForVehicle(VehicleType vehicleType);
+        List<Tester> testersForVehical(VehicleType vehicleType);
 
         /// <summary>
         /// Returns if the passed Tester is at or has exceeded the maximum nuber of tests that they may proctor in the week of the passed date
@@ -56,27 +56,10 @@ namespace BL
         /// <returns>A bool representing if the Tester cannot schedule more tests</returns>
         bool exceededNumberOfTests(Tester tester, DateTime dateTime);
 
-        int numTestsTaken(Trainee trainee);
-        bool passedTest(String ID);
+        // int numTestsTaken(Trainee trainee);
+        // bool passedTest(int ID);
 
         // list of all scheduled tests by day and month
         List<Test> scheduledTests();
-
-
-        /// <summary>
-        /// Returns a list of Trainees who live within a specified distance to a specified Address
-        /// </summary>
-        /// <param name="center">The address to measure all the students against.</param>
-        /// <param name="km">The distance to check around</param>
-        /// <returns></returns>
-        List<Trainee> traineesInRange(Address center, double km);
-
-        /// <summary>
-        /// Gets the distance between two addresses using mapquest api.
-        /// </summary>
-        /// <param name="add1">The start address</param>
-        /// <param name="add2">The destination address</param>
-        /// <returns>Distance in km.</returns>
-        double getDistance(Address add1, Address add2);
     }
 }
