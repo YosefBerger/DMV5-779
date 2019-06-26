@@ -78,17 +78,83 @@ namespace BL
         }
         public bool addTest(Test test)
         {
-            bool flag = true;
 
             // Make sure test is not within 7 days of another test.
             // Subtracting two DateTime.Date from each other returns a TimeSpan object representing how many days are between the two dates.
             // We take the abs so that if it's date is after tests's date we can still get if it within 7 days, and also so that it doesn't
             // just return false if it is more than 7 days after. We then and if we have any tests that are within 7 days with flag to continue.
-            flag = flag && (getAllTests(new Func<Test, bool>(it => Math.Abs((test.DateTime.Date - it.DateTime.Date).Days) 
-            <= Configuration.DAYS_FROM_TEST)).Count() == 0);
+            List<Test> conflictingTests = getAllTests(new Func<Test, bool>
+                (it => Math.Abs((test.DateTime.Date - it.DateTime.Date).Days) <= Configuration.DAYS_FROM_TEST));
+            if (conflictingTests.Count() != 0)
+            {
+                String dates = "";
+                for(int i = 0; i < conflictingTests.Count(); i++)
+                {
+                    if (i > 0)
+                    {
+                        dates += " and a test on ";
+                    }
+                    dates += conflictingTests.ElementAt(i).ToString();
+                }
+                throw new Exception("The test date is within " + Configuration.DAYS_FROM_TEST
+                    + " day(s) of a schedualed test on " + dates + ".");
+            }
 
             // Make sure there is a tester available at that time, if not sugest alternate times
-            
+            List<Tester> availableTesters = testersForTime(test.DateTime);
+            if (availableTesters.Count() == 0)
+            {
+                // Make DateTime be 
+                DateTime possibleDate = test.DateTime + new TimeSpan(Configuration.DAY_START - test.DateTime.Hour, 0, 0);
+                bool foundDate = false;
+                // Get alternate time/date
+
+                // Start with today, moving on to other days
+                while (!foundDate)
+                {
+                    for (int i = Configuration.DAY_START; i <= Configuration.DAY_END; i++)
+                    {
+                        if (testersForTime(possibleDate).Count() != 0)
+                        {
+                            foundDate = true;
+                            break;
+                        }
+                        possibleDate = possibleDate + new TimeSpan(1, 0, 0);
+                    }
+
+                    if (foundDate)
+                    {
+                        break;
+                    }
+
+                    possibleDate = possibleDate + new TimeSpan(1, Configuration.DAY_START - test.DateTime.Hour, 0, 0);
+                    List<Test> conflicting = getAllTests(new Func<Test, bool>(it => Math.Abs((possibleDate - it.DateTime.Date).Days) <= Configuration.DAYS_FROM_TEST));
+                    while (conflicting.Count() != 0)
+                    {
+                        DateTime laterTest = conflicting.ElementAt(0).DateTime;
+                        for (int i = 1; i < conflicting.Count(); i++)
+                        {
+                            laterTest = laterTest.CompareTo(conflicting.ElementAt(i).DateTime) > 0 ? conflicting.ElementAt(i).DateTime : laterTest;
+                        }
+
+                        // If the latest date is somehow before the possible date try again the next possible day, we could use time span to get exactly when but I'm jsut too dosh garn lazy
+                        possibleDate = possibleDate.CompareTo(laterTest) > 0 ? laterTest : possibleDate + new TimeSpan(1, 0, 0, 0);
+
+                        // Check the new date
+                        conflicting = getAllTests(new Func<Test, bool>(it => Math.Abs((possibleDate - it.DateTime.Date).Days) <= Configuration.DAYS_FROM_TEST));
+                    }
+
+                    possibleDate = possibleDate + new TimeSpan(Configuration.DAY_START - test.DateTime.Hour, 0, 0);
+                }
+
+                throw new Exception("There are no Testers available at the specified time, try " + possibleDate);
+            }
+            else
+            {
+                // Assign a random instructor
+                Random rand = new Random();
+                test.TesterId = availableTesters.ElementAt(rand.Next(availableTesters.Count())).ID;
+            }
 
             return false;
         }
@@ -298,14 +364,14 @@ namespace BL
             return grouping;
         }
 
-        IEnumerable<IGrouping<String, Trainee>> traineesBySchool(bool sorted = false)
+        public IEnumerable<IGrouping<String, Trainee>> traineesBySchool(bool sorted = false)
         {
             IEnumerable<IGrouping<String, Trainee>> grouping = from item in getAllTrainees()
                                                                group item by item.DrivingSchool;
             return grouping;
         }
 
-        IEnumerable<IGrouping<String, Trainee>> traineesByInstructor(bool sorted = false)
+        public IEnumerable<IGrouping<String, Trainee>> traineesByInstructor(bool sorted = false)
         {
             IEnumerable<IGrouping<String, Trainee>> grouping = from item in getAllTrainees()
                                                                group item by item.InstructorName;
