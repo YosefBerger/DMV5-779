@@ -161,6 +161,8 @@ namespace BL
             return counter;
         }
 
+
+        // return number of tests the trainee has taken
         public int numTestsTaken(Trainee trainee)
         {
             return traineeTests(trainee).Count();
