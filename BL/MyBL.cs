@@ -1,4 +1,5 @@
 ﻿using BE;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -168,12 +169,9 @@ namespace BL
         private List<Test> traineeTests(Trainee trainee)
         {
             // if the trainee ID on the test is equal to the passed in trainee id, put the test in the list
-            List<Test> traineeTests = getAllTests(new Func<Test, bool>(it => it.TraineerId == trainee.ID && it.DateTime.CompareTo(DateTime.Now) >= 0));
+            List<Test> traineeTests = getAllTests(new Func<Test, bool>(it => it.TraineeId == trainee.ID && it.DateTime.CompareTo(DateTime.Now) >= 0));
             return traineeTests;
         }
-
-
-
 
 
         public List<Trainee> traineesInRange(Address center, double km)
@@ -274,5 +272,42 @@ namespace BL
         //    //    //MessageBox.Show("We have'nt got an answer, maybe the net is busy...");
         //    //}
         //}
+
+
+        public List<Test> scheduledTestsDay(DateTime day)
+        {
+            List<Test> tests = getAllTests(new Func<Test, bool>(it => (it.DateTime - day).Days == 0));
+            tests.Sort((test1, test2) => test1.DateTime.CompareTo(test2.DateTime));
+            return tests;
+        }
+
+        public List<Test> scheduledTestsMonth(DateTime month)
+        {
+            List<Test> tests = getAllTests(new Func<Test, bool>(it => (it.DateTime.Month == month.Month) && (it.DateTime.Year == month.Year)));
+            tests.Sort((test1, test2) => test1.DateTime.CompareTo(test2.DateTime));
+            return tests;
+        }
+
+
+        public IEnumerable<IGrouping<VehicleType, Tester>> testerByVehicalType(bool sorted = false)
+        {
+            IEnumerable<IGrouping<VehicleType, Tester>> grouping = from item in getAllTesters()
+                                                                   group item by item.VehicleType;
+            return grouping;
+        }
+
+        IEnumerable<IGrouping<String, Trainee>> traineesBySchool(bool sorted = false)
+        {
+            IEnumerable<IGrouping<String, Trainee>> grouping = from item in getAllTrainees()
+                                                               group item by item.DrivingSchool;
+            return grouping;
+        }
+
+        IEnumerable<IGrouping<String, Trainee>> traineesByInstructor(bool sorted = false)
+        {
+            IEnumerable<IGrouping<String, Trainee>> grouping = from item in getAllTrainees()
+                                                               group item by item.InstructorName;
+            return grouping;
+        }
     }
 }

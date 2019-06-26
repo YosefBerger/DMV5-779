@@ -59,8 +59,19 @@ namespace BL
         int numTestsTaken(Trainee trainee);
         bool passedTest(String ID);
 
-        // list of all scheduled tests by day and month
-        List<Test> scheduledTests();
+        /// <summary>
+        /// Returns an ordered list of all the tests on the passed day
+        /// </summary>
+        /// <param name="day">The day to get the tests from</param>
+        /// <returns>Tests in the passed day ordered by hour</returns>
+        List<Test> scheduledTestsDay(DateTime day);
+
+        /// <summary>
+        /// Returns an ordered list of all the tests in the month of the passed date
+        /// </summary>
+        /// <param name="month">A date in the month to check</param>
+        /// <returns>Tests in the month of the passed date</returns>
+        List<Test> scheduledTestsMonth(DateTime month);
 
 
         /// <summary>
@@ -78,5 +89,9 @@ namespace BL
         /// <param name="add2">The destination address</param>
         /// <returns>Distance in km.</returns>
         double getDistance(Address add1, Address add2);
+
+        IEnumerable<IGrouping<VehicleType, Tester>> testerByVehicalType(bool sorted = false);
+        IEnumerable<IGrouping<String, Trainee>> traineesBySchool(bool sorted = false);
+        IEnumerable<IGrouping<String, Trainee>> traineesByInstructor(bool sorted = false);
     }
 }
