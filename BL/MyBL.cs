@@ -170,7 +170,7 @@ namespace BL
         private List<Test> traineeTests(Trainee trainee)
         {
             // if the trainee ID on the test is equal to the passed in trainee id, put the test in the list
-            List<Test> traineeTests = getAllTests(new Func<Test, bool>(it => it.TraineerId == trainee.ID && it.DateTime.CompareTo(DateTime.Now) >= 0));
+            List<Test> traineeTests = getAllTests(new Func<Test, bool>(it => it.TraineeId == trainee.ID && it.DateTime.CompareTo(DateTime.Now) >= 0));
             return traineeTests;
         }
 
