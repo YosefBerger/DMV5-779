@@ -38,7 +38,7 @@ namespace BL
         /// Retuns a list of Testers who are able to proctor a test starting at a specific address.
         /// </summary>
         /// <param name="address">The address at which a test will start.</param>
-        /// <returns>A List<> of Testers for whom the Adress is whithin their working readius.</returns>
+        /// <returns>A List<> of Testers for whom the Adress is whithin their working distance.</returns>
         List<Tester> testersForAddress(Address address);
 
         /// <summary>
@@ -57,12 +57,26 @@ namespace BL
         bool exceededNumberOfTests(Tester tester, DateTime dateTime);
 
         int numTestsTaken(Trainee trainee);
-        //bool passedTest(int ID);
+        bool passedTest(String ID);
 
-        // WHAT DOES THIS MEAN?
-        List<Test> scheduledTests(DateTime dateTime);
+        // list of all scheduled tests by day and month
+        List<Test> scheduledTests();
 
 
-    
+        /// <summary>
+        /// Returns a list of Trainees who live within a specified distance to a specified Address
+        /// </summary>
+        /// <param name="center">The address to measure all the students against.</param>
+        /// <param name="km">The distance to check around</param>
+        /// <returns></returns>
+        List<Trainee> traineesInRange(Address center, double km);
+
+        /// <summary>
+        /// Gets the distance between two addresses using mapquest api.
+        /// </summary>
+        /// <param name="add1">The start address</param>
+        /// <param name="add2">The destination address</param>
+        /// <returns>Distance in km.</returns>
+        double getDistance(Address add1, Address add2);
     }
 }
