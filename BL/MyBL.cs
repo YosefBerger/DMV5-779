@@ -12,7 +12,7 @@ using System.Xml;
 
 namespace BL
 {
-    public class MyBL : IBL
+    internal class MyBL : IBL
     {
         IDal dal = FactoryDal.getInstance();
 
@@ -257,17 +257,55 @@ namespace BL
             return getAllTests(new Func<Test, bool>(it => it.TraineeId == ID && it.Result)).Count > 0;
         }
 
-        public double getDistance(Address add1, Address add2/*, RunWorkerCompletedEventHandler completed*/)
+        public double getDistance(Address add1, Address add2)
         {
-            //BackgroundWorker backgroundworker = new BackgroundWorker();
-            //backgroundworker.DoWork += Backgroundworker_DoWork;
-            //backgroundworker.RunWorkerCompleted += completed;
-            //backgroundworker.RunWorkerAsync(new List<Address> { add1, add2 });
-
+            /*
+             * Get consistant random distance based on the id numbers
             double num1 = add1.ToString().GetHashCode() % 100;
             double num2 = add2.ToString().GetHashCode() % 100;
 
             return Math.Abs(num2 - num1);
+            */
+
+            string origin = add1.Number + " " + add1.Street + " " + add1.City;
+            string destination = add2.Number + " " + add2.Street + " " + add2.City;
+            string KEY = "soKBpkSSlUtTb1dxSAXZx4exA0Z0xLRh";
+
+            string url = @"https://www.mapquestapi.com/directions/v2/route" +
+            @"?key=" + KEY +
+            @"&from=" + origin +
+            @"&to=" + destination +
+            @"&outFormat=xml" +
+            @"&ambiguities=ignore&routeType=fastest&doReverseGeocode=false" +
+            @"&enhancedNarrative=false&avoidTimedConditions=false";
+
+            //request from MapQuest service the distance between the 2 addresses
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+            WebResponse resp = req.GetResponse();
+            Stream dataStream = resp.GetResponseStream();
+            StreamReader sread = new StreamReader(dataStream);
+            string respString = sread.ReadToEnd();
+            resp.Close();
+
+            // Make the string an XML document
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.LoadXml(respString);
+            if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "0") //We recived a valid responce
+            {
+                // Get dispance
+                XmlNodeList distance = xmldoc.GetElementsByTagName("distance");
+                return Convert.ToDouble(distance[0].ChildNodes[0].InnerText);
+            }
+            else if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "402") // Error occured
+            {
+                Console.WriteLine("an error occurred, at least one address was incorrect.");
+            }
+            else //busy network or other error...
+            {
+                Console.WriteLine("No responce recived, network may be busy.");
+            }
+
+            return int.MaxValue;
         }
 
         //private void Backgroundworker_DoWork(object sender, DoWorkEventArgs e)
@@ -325,7 +363,7 @@ namespace BL
         //        // XmlNodeList formattedTime = xmldoc.GetElementsByTagName("formattedTime");
         //        // string fTime = formattedTime[0].ChildNodes[0].InnerText;
         //        //  Console.WriteLine("Driving Time: " + fTime);
-        //    }
+        //    } 
         //    //else if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "402")
         //    ////we have an answer that an error occurred, one of the addresses is not found
         //    //{

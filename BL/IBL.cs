@@ -9,7 +9,7 @@ using DAL;
 
 namespace BL
 {
-    interface IBL
+    public interface IBL
     {
         bool addTrainee(Trainee tr);
         bool removeTrainee(Trainee tr);
