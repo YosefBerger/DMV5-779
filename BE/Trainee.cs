@@ -31,15 +31,15 @@ namespace BE
         {
             return new Trainee
             {
-                Address = this.Address,
-                BirthDay = this.BirthDay,
-                Email = this.Email,
-                FirstName = this.FirstName,
-                Gender = this.Gender,
-                ID = this.ID,
-                LastName = this.LastName,
-                VehicleType = this.VehicleType,
-                GearBox = this.GearBox,
+                Address = this.Address,//
+                BirthDay = this.BirthDay, //
+                Email = this.Email,//
+                FirstName = this.FirstName,//
+                Gender = this.Gender,//
+                ID = this.ID, //
+                LastName = this.LastName, //
+                VehicleType = this.VehicleType,//
+                GearBox = this.GearBox,//
                 DrivingSchool = this.DrivingSchool,
                 InstructorName = this.InstructorName,
                 NumDrivingLessons = this.NumDrivingLessons

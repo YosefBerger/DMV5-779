@@ -1,0 +1,245 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL_WPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL_WPF.AddTraineeWindow"
+        mc:Ignorable="d"
+        Title="AddTrainneWindow" Background="LightBlue" Height="480" Width="640" Loaded="Window_Loaded" >
+    <Window.Resources>
+        <CollectionViewSource x:Key="traineeViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Trainee}, CreateList=True}"/>
+    </Window.Resources>
+
+    <Border Padding="10">
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold">
+                Add Trainee
+            </TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
+                        ID
+                    </TextBlock >
+                    <TextBox x:Name="IDTextBox" LostKeyboardFocus="ValidateID" Margin="10 0 0 0" Grid.Column="1">
+
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Column="1" Margin="0 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
+                        First Name
+                    </TextBlock >
+                    <TextBox x:Name="FirstNameTextBox" LostKeyboardFocus="ValidateString" Grid.Column="1">
+
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Column="2" Margin="0 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="0 0 0 0" Grid.Column="0">
+                        Last Name
+                    </TextBlock >
+                    <TextBox x:Name="LastNameTextBox" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1">
+
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Column="3" Margin="0 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
+                        DOB
+                    </TextBlock >
+                    <DatePicker x:Name="DOBDatePicker" SelectedDateChanged="ValidateDOB" LostKeyboardFocus="ValidateDOB" Margin="10 0 0 0" Grid.Column="1">
+
+                    </DatePicker>
+                </Grid>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="10 0 0 0" Grid.Column="0">
+                        Address:
+                </TextBlock >
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
+                        Number
+                    </TextBlock >
+                    <TextBox x:Name="AddressNumberTextBox" LostKeyboardFocus="ValidateNumber" Margin="10 0 0 0" Grid.Column="1">
+
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Column="2" Margin="0 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
+                        Street
+                    </TextBlock >
+                    <TextBox x:Name="AddressStreetTextBox" LostKeyboardFocus="ValidateString" Grid.Column="1">
+
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Column="3" Margin="0 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="0 0 0 0" Grid.Column="0">
+                        City
+                    </TextBlock >
+                    <TextBox x:Name="AddressCityTextBlock" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1">
+
+                    </TextBox>
+                </Grid>
+
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
+                        Email
+                    </TextBlock >
+                    <TextBox x:Name="EmailTextBlock" LostFocus="ValidateEmail" Margin="10 0 0 0" Grid.Column="1">
+
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Column="1" Margin="0 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
+                        Gender
+                    </TextBlock >
+                    <ComboBox x:Name="genderComboBox" Grid.Column="1">
+                    </ComboBox>
+                </Grid>
+                <Grid Grid.Column="2" Margin="0 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="0 0 0 0" Grid.Column="0">
+                        Gear Box
+                    </TextBlock >
+                    <ComboBox x:Name="gearBoxComboBox" Grid.Column="1">
+                    </ComboBox>
+                </Grid>
+                <Grid Grid.Column="3" Margin="0 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
+                        Vehicle Type
+                    </TextBlock >
+                    <ComboBox x:Name="vehicleTypeComboBox" Grid.Column="1">
+                    </ComboBox>
+                </Grid>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0">
+                        Driving School
+                    </TextBlock>
+                    <TextBox x:Name="DrivingSchoolTextBox" LostKeyboardFocus="ValidateString" Grid.Column="1">
+                        
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0">
+                        Driving Instructor
+                    </TextBlock>
+                    <TextBox x:Name="DrivingInstructorTextBox" LostKeyboardFocus="ValidateString" Grid.Column="1">
+
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0">
+                        Number of Lessons
+                    </TextBlock>
+                    <TextBox x:Name="NumberOfLessonsTetBox" LostKeyboardFocus="ValidateNumber" Grid.Column="1">
+
+                    </TextBox>
+                </Grid>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="AddTraineeButton" Click="AddTraineeButton_Click" Grid.Column="0">
+                    Add Trainee
+                </Button>
+                <Button x:Name="CancelButton" Click="CancelButton_Click" Grid.Column="1">
+                    Cancel
+                </Button>
+            </Grid>
+        </StackPanel>
+
+    </Border>
+
+
+</Window>

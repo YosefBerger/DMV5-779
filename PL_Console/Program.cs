@@ -11,14 +11,41 @@ namespace PL_Console
 {
     class Program
     {
-        private IBL bl = FactoryBL.getInstance();
+        private static IBL bl = FactoryBL.getInstance();
 
         static void Main(string[] args)
         {
-            
+            while (true)
+            {
+                Console.Write("Press a to deal with trainees, or q to quit: ");
+                String temp = Console.ReadLine();
+                if(temp.CompareTo("a") == 0)
+                {
+                    Console.Write("Press a to add a trainee, r to remove one, u to update one, or q to quit: ");
+                    temp = Console.ReadLine();
+                    if (temp.CompareTo("a") == 0)
+                    {
+                        addTraineeTest();
+                    }
+                    else if (temp.CompareTo("r") == 0)
+                    {
+                        removeTraineeTest();
+                    }
+                    else if (temp.CompareTo("u") == 0)
+                    {
+
+                    }
+                }
+                if (temp.CompareTo("q") == 0)
+                {
+                    break;
+                }
+
+                
+            }
         }
 
-        public static void addTra()
+        public static void addTraineeTest()
         {
             Console.WriteLine("Adding a trainee");
             Console.WriteLine("----------------");
@@ -51,11 +78,11 @@ namespace PL_Console
                 Console.Write("Gender: ");
                 String gend = Console.ReadLine().ToUpper();
 
-                if (gend.CompareTo('M') == 0 || gend.CompareTo("MALE") == 0)
+                if (gend.CompareTo("M") == 0 || gend.CompareTo("MALE") == 0)
                 {
                     gender = BE.Gender.MALE;
                 }
-                else if (gend.CompareTo('F') == 0 || gend.CompareTo("FEMALE") == 0)
+                else if (gend.CompareTo("F") == 0 || gend.CompareTo("FEMALE") == 0)
                 {
                     gender = BE.Gender.FEMALE;
                 }
@@ -94,6 +121,10 @@ namespace PL_Console
                     flag = true;
                 }
             } while (flag);
+            Console.Write("Address Street: ");
+            address.Street = Console.ReadLine();
+            Console.Write("Address City: ");
+            address.City = Console.ReadLine();
 
             MailAddress email = new MailAddress("example@domain.com");
             do
@@ -129,7 +160,7 @@ namespace PL_Console
             {
                 flag = false;
 
-                Console.Write("Gear Box (AUTOMAIC, MANUAL): ");
+                Console.Write("Gear Box (AUTOMATIC, MANUAL): ");
                 if (!Enum.TryParse<GearBox>(Console.ReadLine().ToUpper(), out gearBox))
                 {
                     Console.WriteLine("Invalid Gear Box, try again.");
@@ -181,8 +212,52 @@ namespace PL_Console
             };
 
             bl.addTrainee(trainee);
+
+            printTrainees();
+        }
+
+        private static void printTrainees(Func<Trainee, bool> condition = null)
+        {
+            List<Trainee> trainees = bl.getAllTrainees(condition);
+
+            foreach (Trainee t in trainees)
+            {
+                Console.WriteLine(t);
+            }
+        }
+
+        private static void printTraineesNames(Func<Trainee, bool> condition = null)
+        {
+            List<Trainee> trainees = bl.getAllTrainees(condition);
+
+            foreach (Trainee t in trainees)
+            {
+                Console.WriteLine("ID: " + t.ID + "\t" + t.FirstName + " " + t.LastName);
+            }
         }
 
 
+        public static void removeTraineeTest()
+        {
+            Console.WriteLine("Trainees available to remove:");
+            printTraineesNames();
+            
+            Trainee trainee;
+            do
+            {
+                Console.Write("Enter the ID of the trainee to remove: ");
+                String ID = Console.ReadLine();
+                trainee = bl.getAllTrainees(new Func<Trainee, bool>(t => t.ID.CompareTo(ID) == 0)).FirstOrDefault();
+                if (trainee != null)
+                {
+                    break;
+                }
+
+                Console.WriteLine("No student with that ID found, try again.");
+            } while (true);
+
+            bl.removeTrainee(trainee);
+            printTraineesNames();
+        }
     }
 }

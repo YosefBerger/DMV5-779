@@ -12,7 +12,7 @@ namespace BE
     }
     public enum GearBox
     {
-        AUTOMAIC, MANUAL
+        AUTOMATIC, MANUAL
     }
     public enum VehicleType
     {

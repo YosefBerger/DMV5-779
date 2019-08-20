@@ -27,7 +27,7 @@ namespace PL_WPF
 
         private void AddTraineeBtn_Click(object sender, RoutedEventArgs e)
         {
-            Window wnd = new AddTrainneWindow();
+            Window wnd = new AddTraineeWindow();
             wnd.Show();
         }
     }

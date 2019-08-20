@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="DMV" Background ="LightBlue"  Height="800" Width="800">
+    
     <Grid>
+        <!-- 
         <Button  Name="AddTraineeBtn" Content="Add Trainee" HorizontalAlignment="Left" Margin="107,102,0,0" VerticalAlignment="Top" Width="185" Height="98" FontSize="28" Click="AddTraineeBtn_Click"/>
         <Button  x:Name="AllTraineesBtn" Content="All Trainees" HorizontalAlignment="Left" Margin="408,102,0,0" VerticalAlignment="Top" Width="186" Height="98" FontSize="28"/>
-
+        -->
     </Grid>
 </Window>

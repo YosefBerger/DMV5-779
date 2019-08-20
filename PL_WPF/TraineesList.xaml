@@ -1,0 +1,43 @@
+﻿<Window x:Class="PL_WPF.TraineesList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:BE="clr-namespace:BE;assembly=BE"
+        xmlns:local="clr-namespace:PL_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="/MisradHaRishu.png"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Button Name="AddTraineeButton" Content="Add Trainee" Click="AddTrainee_Btn" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Height="30" Background="Green" FontWeight="Bold" />
+        
+
+        <DataGrid Name="Trainees" AlternatingRowBackground="LightBlue" IsReadOnly="True" Margin="10,51,-9.667,-29.667">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
+                <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
+                <DataGridTemplateColumn Header="View and Edit">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="ViewandEditButton" Content="View and Edit" Click="ViewandEdt_Btn" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+
+
+
+
+
+</Window>
+
