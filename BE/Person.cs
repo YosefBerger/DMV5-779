@@ -11,6 +11,12 @@ namespace BE
     {
         private String myID;
 
+        public Person()
+        {
+            Address = new Address();
+            BirthDay = new DateTime();
+            Gender = Gender.MALE;
+        }
       
 
         public static bool validID(string value)

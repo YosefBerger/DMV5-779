@@ -32,9 +32,7 @@
                     <TextBlock Margin="10 0 0 0" Grid.Column="0">
                         ID
                     </TextBlock >
-                    <TextBox x:Name="IDTextBox" LostKeyboardFocus="ValidateID" Margin="10 0 0 0" Grid.Column="1">
-
-                    </TextBox>
+                    <TextBox x:Name="IDTextBox" Text="{Binding Path=ID, Mode=TwoWay}" LostKeyboardFocus="ValidateID" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="1" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -45,9 +43,7 @@
                     <TextBlock Margin="10 0 0 0" Grid.Column="0">
                         First Name
                     </TextBlock >
-                    <TextBox x:Name="FirstNameTextBox" LostKeyboardFocus="ValidateString" Grid.Column="1">
-
-                    </TextBox>
+                    <TextBox x:Name="FirstNameTextBox" Text="{Binding Path=Trainee.FirstName, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="2" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -58,9 +54,7 @@
                     <TextBlock Margin="0 0 0 0" Grid.Column="0">
                         Last Name
                     </TextBlock >
-                    <TextBox x:Name="LastNameTextBox" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1">
-
-                    </TextBox>
+                    <TextBox x:Name="LastNameTextBox" Text="{Binding Path=trainee.LastName, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="3" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -70,9 +64,7 @@
                     <TextBlock Margin="10 0 0 0" Grid.Column="0">
                         DOB
                     </TextBlock >
-                    <DatePicker x:Name="DOBDatePicker" SelectedDateChanged="ValidateDOB" LostKeyboardFocus="ValidateDOB" Margin="10 0 0 0" Grid.Column="1">
-
-                    </DatePicker>
+                    <DatePicker x:Name="DOBDatePicker" Text="{Binding Path=trainee.BirthDay, Mode=TwoWay}" SelectedDateChanged="ValidateDOB" LostKeyboardFocus="ValidateDOB" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
             </Grid>
             <Grid>
@@ -94,9 +86,7 @@
                     <TextBlock Margin="10 0 0 0" Grid.Column="0">
                         Number
                     </TextBlock >
-                    <TextBox x:Name="AddressNumberTextBox" LostKeyboardFocus="ValidateNumber" Margin="10 0 0 0" Grid.Column="1">
-
-                    </TextBox>
+                    <TextBox x:Name="AddressNumberTextBox" Text="{Binding Path=AddressNumber, Mode=TwoWay}" LostKeyboardFocus="ValidateNumber" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="2" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -107,9 +97,7 @@
                     <TextBlock Margin="10 0 0 0" Grid.Column="0">
                         Street
                     </TextBlock >
-                    <TextBox x:Name="AddressStreetTextBox" LostKeyboardFocus="ValidateString" Grid.Column="1">
-
-                    </TextBox>
+                    <TextBox x:Name="AddressStreetTextBox" Text="{Binding Path=address.Street, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="3" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -120,9 +108,7 @@
                     <TextBlock Margin="0 0 0 0" Grid.Column="0">
                         City
                     </TextBlock >
-                    <TextBox x:Name="AddressCityTextBlock" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1">
-
-                    </TextBox>
+                    <TextBox x:Name="AddressCityTextBlock" Text="{Binding Path=address.Street, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
 
             </Grid>
@@ -142,10 +128,9 @@
                     <TextBlock Margin="10 0 0 0" Grid.Column="0">
                         Email
                     </TextBlock >
-                    <TextBox x:Name="EmailTextBlock" LostFocus="ValidateEmail" Margin="10 0 0 0" Grid.Column="1">
+                    <TextBox x:Name="EmailTextBlock" Text="{Binding Path=Email, Mode=TwoWay, Source={StaticResource ResourceKey=traineeViewSource}}" LostFocus="ValidateEmail" Margin="10 0 0 0" Grid.Column="1"/>
 
-                    </TextBox>
-                </Grid>
+                </Grid> 
                 <Grid Grid.Column="1" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -155,20 +140,17 @@
                     <TextBlock Margin="10 0 0 0" Grid.Column="0">
                         Gender
                     </TextBlock >
-                    <ComboBox x:Name="genderComboBox" Grid.Column="1">
-                    </ComboBox>
+                    <ComboBox x:Name="genderComboBox" SelectedItem="{Binding Path=trainee.Gender, Mode=TwoWay}" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="2" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Margin="0 0 0 0" Grid.Column="0">
                         Gear Box
                     </TextBlock >
-                    <ComboBox x:Name="gearBoxComboBox" Grid.Column="1">
-                    </ComboBox>
+                    <ComboBox x:Name="gearBoxComboBox" SelectedItem="{Binding Path=trainee.GearBox, Mode=TwoWay}" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="3" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -178,8 +160,7 @@
                     <TextBlock Margin="10 0 0 0" Grid.Column="0">
                         Vehicle Type
                     </TextBlock >
-                    <ComboBox x:Name="vehicleTypeComboBox" Grid.Column="1">
-                    </ComboBox>
+                    <ComboBox x:Name="vehicleTypeComboBox" SelectedItem="{Binding Path=trainee.VehicleType, Mode=TwoWay}" Grid.Column="1"/>
                 </Grid>
             </Grid>
             <Grid>
@@ -196,9 +177,7 @@
                     <TextBlock Grid.Column="0">
                         Driving School
                     </TextBlock>
-                    <TextBox x:Name="DrivingSchoolTextBox" LostKeyboardFocus="ValidateString" Grid.Column="1">
-                        
-                    </TextBox>
+                    <TextBox x:Name="DrivingSchoolTextBox" Text="{Binding Path=trainee.DrivingSchool, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
@@ -208,9 +187,7 @@
                     <TextBlock Grid.Column="0">
                         Driving Instructor
                     </TextBlock>
-                    <TextBox x:Name="DrivingInstructorTextBox" LostKeyboardFocus="ValidateString" Grid.Column="1">
-
-                    </TextBox>
+                    <TextBox x:Name="DrivingInstructorTextBox" Text="{Binding Path=trainee.InstructorName, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
@@ -220,7 +197,7 @@
                     <TextBlock Grid.Column="0">
                         Number of Lessons
                     </TextBlock>
-                    <TextBox x:Name="NumberOfLessonsTetBox" LostKeyboardFocus="ValidateNumber" Grid.Column="1">
+                    <TextBox x:Name="NumberOfLessonsTetBox" Text="{Binding Path=NumberLessons, Mode=TwoWay}" LostKeyboardFocus="ValidateNumber" Grid.Column="1">
 
                     </TextBox>
                 </Grid>

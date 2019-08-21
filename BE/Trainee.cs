@@ -4,6 +4,12 @@ namespace BE
 {
     public class Trainee : Person
     {
+        public Trainee()
+        {
+            VehicleType = VehicleType.PRIVATE;
+            GearBox = GearBox.AUTOMATIC;
+        }
+
         // specify gearbox that the trainee learned
         public GearBox GearBox { get; set; }
         // driving school that the trainee attended

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
@@ -20,27 +21,29 @@ namespace PL_WPF
     /// </summary>
     public partial class AddTraineeWindow : Window
     {
-        BE.Trainee trainee;
+        public BE.Trainee Trainee { get; set; }
+        public String AddressNumber = "12";
+        public String ID = "123456789";
+        public String NumberLessons = "12";
+        public String Email = "example@web.com";
+        public BE.Address address = new BE.Address();
+
         BL.IBL bl;
         public AddTraineeWindow()
         {
             InitializeComponent();
-
+            Trainee = new BE.Trainee();
+            this.DataContext = this;
             bl = BL.FactoryBL.getInstance();
-
+            
             this.genderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
+            //this.gearBoxComboBox.
             this.gearBoxComboBox.ItemsSource = Enum.GetValues(typeof(BE.GearBox));
             this.vehicleTypeComboBox.ItemsSource = Enum.GetValues(typeof(BE.VehicleType));
+            //this.genderComboBox.SelectedItem = BE.Gender.FEMALE;
         }
 
-        private void OnLoad(object sender, RoutedEventArgs e)
-        {
-            this.Owner.Hide();
-        }
-        private new void Closed(object sender, RoutedEventArgs e)
-        {
-            this.Owner.Show();
-        }
+        
 
         private void AddTraineeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -70,6 +73,12 @@ namespace PL_WPF
                 }
             };
 
+            trainee.ID = ID;
+            trainee.Email = new MailAddress(Email);
+            address.Number = Convert.ToInt32(AddressNumber);
+            trainee.Address = address;
+
+            Console.WriteLine(trainee);
             bl.addTrainee(trainee);
 
             this.Close();

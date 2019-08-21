@@ -20,9 +20,26 @@ namespace PL_WPF
     /// </summary>
     public partial class TraineesList : Window
     {
+        BL.IBL bl = BL.FactoryBL.getInstance();
         public TraineesList()
         {
             InitializeComponent();
+            Trainees.ItemsSource = bl.getAllTrainees();
+        }
+
+        private new void Activated(object sender, EventArgs e)
+        {
+            Trainees.ItemsSource = bl.getAllTrainees();
+        }
+
+        private void OnLoad(object sender, RoutedEventArgs e)
+        {
+            Trainees.ItemsSource = bl.getAllTrainees();
+            this.Owner.Hide();
+        }
+        private new void Closed(object sender, RoutedEventArgs e)
+        {
+            this.Owner.Show();
         }
 
         private void TextBox_MouseEnter(object sender, MouseEventArgs e)
