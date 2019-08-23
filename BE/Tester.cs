@@ -65,9 +65,9 @@ namespace BE
         }
 
         // implement update for tester
-        public void update(Tester tester)
+        public void Update(Tester tester)
         {
-            this.update((Person)tester);
+            this.Update((Person)tester);
             this.MaxWeeklyTests = tester.MaxWeeklyTests;
             this.YearsExperience = tester.YearsExperience;
             this.MaxDistance = tester.MaxDistance;

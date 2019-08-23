@@ -22,11 +22,6 @@ namespace PL_WPF
     public partial class AddTraineeWindow : Window
     {
         public BE.Trainee Trainee { get; set; }
-        public String AddressNumber = "12";
-        public String ID = "123456789";
-        public String NumberLessons = "12";
-        public String Email = "example@web.com";
-        public BE.Address address = new BE.Address();
 
         BL.IBL bl;
         public AddTraineeWindow()
@@ -36,6 +31,7 @@ namespace PL_WPF
             this.DataContext = this;
             bl = BL.FactoryBL.getInstance();
             
+            
             this.genderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
             //this.gearBoxComboBox.
             this.gearBoxComboBox.ItemsSource = Enum.GetValues(typeof(BE.GearBox));
@@ -43,43 +39,25 @@ namespace PL_WPF
             //this.genderComboBox.SelectedItem = BE.Gender.FEMALE;
         }
 
+        public void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         
 
         private void AddTraineeButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!validteAllFields())
+            if (true)
             {
                 MessageBox.Show("Some of the information was invalid.\nPlease try again",
                                 "Submission Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            trainee = new BE.Trainee
-            {
-                ID = IDTextBox.Text,
-                GearBox = (BE.GearBox)gearBoxComboBox.SelectedItem,
-                VehicleType = (BE.VehicleType)vehicleTypeComboBox.SelectedItem,
-                Gender = (BE.Gender)genderComboBox.SelectedItem,
-                FirstName = FirstNameTextBox.Text,
-                LastName = LastNameTextBox.Text,
-                BirthDay = DateTime.Parse(DOBDatePicker.Text),
-                DrivingSchool = DrivingSchoolTextBox.Text,
-                InstructorName = DrivingInstructorTextBox.Text,
-                NumDrivingLessons = Convert.ToInt32(NumberOfLessonsTetBox.Text),
-                Address = new BE.Address
-                {
-                    Number = Convert.ToInt32(AddressNumberTextBox.Text),
-                    Street = AddressStreetTextBox.Text,
-                    City = AddressCityTextBlock.Text
-                }
-            };
+            
 
-            trainee.ID = ID;
-            trainee.Email = new MailAddress(Email);
-            address.Number = Convert.ToInt32(AddressNumber);
-            trainee.Address = address;
-
-            Console.WriteLine(trainee);
-            bl.addTrainee(trainee);
+            Console.WriteLine(Trainee);
+            bl.addTrainee(Trainee);
 
             this.Close();
         }
@@ -91,64 +69,6 @@ namespace PL_WPF
             {
                 this.Close();
             }
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource traineeViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("traineeViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // traineeViewSource.Source = [generic data source]
-        }
-
-        private bool validteAllFields()
-        {
-            bool flag = true;
-            BE.ValidateEventArgs e = new BE.ValidateEventArgs();
-
-            // Validation code
-            // Is ID present and valid
-            ValidateID(IDTextBox, e);
-            flag = flag && e.isValid;
-
-            ValidateEmail(EmailTextBlock, e);
-            flag = flag && e.isValid;
-
-            //Is FN present
-            ValidateString(FirstNameTextBox, e);
-            flag = flag && e.isValid;
-
-            //Is LN resent
-            ValidateString(LastNameTextBox, e);
-            
-
-            //Is address infor present and is number a number
-            ValidateNumber(AddressNumberTextBox, e);
-            flag = flag && e.isValid;
-
-            ValidateString(AddressStreetTextBox, e);
-            flag = flag && e.isValid;
-
-            ValidateString(AddressCityTextBlock, e);
-            flag = flag && e.isValid;
-
-
-            //Is driving school present
-            ValidateString(DrivingSchoolTextBox, e);
-            flag = flag && e.isValid;
-
-            //Is instructor present
-            ValidateString(DrivingInstructorTextBox, e);
-
-            //Is a date selected
-            ValidateDOB(DOBDatePicker, e);
-            flag = flag && e.isValid;
-
-            //Is num lessons present and is it a number?
-            ValidateNumber(NumberOfLessonsTetBox, e);
-            flag = flag && e.isValid;
-
-            return flag;
         }
 
         private void ValidateID(object sender, EventArgs e)

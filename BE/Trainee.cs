@@ -10,14 +10,62 @@ namespace BE
             GearBox = GearBox.AUTOMATIC;
         }
 
-        // specify gearbox that the trainee learned
+        // specify gearbox that the trainee learned, must be set
         public GearBox GearBox { get; set; }
         // driving school that the trainee attended
-        public String DrivingSchool { get; set; }
+        private String _DrivingSchool;
+        public String DrivingSchool
+        {
+            get
+            {
+                return _DrivingSchool;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("Driving School Name cannot be empty");
+                }
+
+                _DrivingSchool = value;
+            }
+        }
         // name of instructor wth whom the trainee studied
-        public String InstructorName { get; set; }
+        private String _InstrucotrName;
+        public String InstructorName
+        {
+            get
+            {
+                return _InstrucotrName;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("Instructor Name cannot be blank");
+                }
+
+                _InstrucotrName = value;
+            }
+        }
         // number of lessons
-        public int NumDrivingLessons { get; set; }
+        private int _NumDrivingLessons;
+        public int NumDrivingLessons
+        {
+            get
+            {
+                return _NumDrivingLessons;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Invalid number of lessons");
+                }
+
+                _NumDrivingLessons = value;
+            }
+        }
 
         // ToString
         public override string ToString()
@@ -53,9 +101,9 @@ namespace BE
             };
         }
 
-        public void update(Trainee trainee)
+        public void Update(Trainee trainee)
         {
-            this.update((Person)trainee);
+            this.Update((Person)trainee);
             this.InstructorName = trainee.InstructorName;
             this.NumDrivingLessons = trainee.NumDrivingLessons;
             this.GearBox = trainee.GearBox;

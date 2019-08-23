@@ -6,19 +6,67 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public struct Address
+    public class Address
     {
-        public String Street { get; set; }
-        public int Number { get; set; }
-        public String City { get; set; }
+        private String _Street;
+        public String Street
+        {
+            get
+            {
+                return _Street;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("The Street Name cannot be empty");
+                }
+
+                _Street = value;
+            }
+        }
+        private int _Number;
+        public int Number
+        {
+            get
+            {
+                return _Number;
+            }
+            set
+            {
+                if (value < 1)
+                {
+                    throw new Exception("Invalid number");
+                }
+
+                _Number = value;
+            }
+        }
+        private String _City;
+        public String City
+        {
+            get
+            {
+                return _City;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("The City Name cannot be empty");
+                }
+
+                _City = value;
+            }
+        }
 
         public Address clone()
         {
             return new Address
             {
-                Street = this.Street,
-                Number = this.Number,
-                City = this.City
+                _Street = this._Street,
+                _Number = this._Number,
+                _City = this._City
             };
         }
 

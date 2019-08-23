@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
         xmlns:local="clr-namespace:PL_WPF"
-        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL_WPF.AddTraineeWindow"
+        xmlns:BE="clr-namespace:BE;assembly=BE" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PL_WPF.AddTraineeWindow"
         mc:Ignorable="d"
         Title="AddTrainneWindow" Background="LightBlue" Height="480" Width="640" Loaded="Window_Loaded" >
     <Window.Resources>
@@ -13,9 +14,8 @@
 
     <Border Padding="10">
         <StackPanel>
-            <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold">
-                Add Trainee
-            </TextBlock>
+
+            <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"><Run Text="Add Trainee"/></TextBlock>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -29,10 +29,8 @@
 
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
-                        ID
-                    </TextBlock >
-                    <TextBox x:Name="IDTextBox" Text="{Binding Path=ID, Mode=TwoWay}" LostKeyboardFocus="ValidateID" Margin="10 0 0 0" Grid.Column="1"/>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0"><Run Text="ID"/></TextBlock>
+                    <TextBox x:Name="IDTextBox" Text="{Binding ID, Mode=TwoWay}" LostKeyboardFocus="ValidateID" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="1" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -40,10 +38,8 @@
 
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
-                        First Name
-                    </TextBlock >
-                    <TextBox x:Name="FirstNameTextBox" Text="{Binding Path=Trainee.FirstName, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0"><Run Text="First Name"/></TextBlock>
+                    <TextBox x:Name="FirstNameTextBox" Text="{Binding Trainee.FirstName, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="2" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -51,20 +47,16 @@
 
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="0 0 0 0" Grid.Column="0">
-                        Last Name
-                    </TextBlock >
-                    <TextBox x:Name="LastNameTextBox" Text="{Binding Path=trainee.LastName, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1"/>
+                    <TextBlock Margin="0 0 0 0" Grid.Column="0"><Run Text="Last Name"/></TextBlock>
+                    <TextBox x:Name="LastNameTextBox" Text="{Binding trainee.LastName, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="3" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
-                        DOB
-                    </TextBlock >
-                    <DatePicker x:Name="DOBDatePicker" Text="{Binding Path=trainee.BirthDay, Mode=TwoWay}" SelectedDateChanged="ValidateDOB" LostKeyboardFocus="ValidateDOB" Margin="10 0 0 0" Grid.Column="1"/>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0"><Run Text="DOB"/></TextBlock>
+                    <DatePicker x:Name="DOBDatePicker" Text="{Binding trainee.BirthDay, Mode=TwoWay}" SelectedDateChanged="ValidateDOB" LostKeyboardFocus="ValidateDOB" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
             </Grid>
             <Grid>
@@ -74,19 +66,15 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Margin="10 0 0 0" Grid.Column="0">
-                        Address:
-                </TextBlock >
+                <TextBlock Margin="10 0 0 0" Grid.Column="0"><Run Text="Address:"/></TextBlock>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
 
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
-                        Number
-                    </TextBlock >
-                    <TextBox x:Name="AddressNumberTextBox" Text="{Binding Path=AddressNumber, Mode=TwoWay}" LostKeyboardFocus="ValidateNumber" Margin="10 0 0 0" Grid.Column="1"/>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0"><Run Text="Number"/></TextBlock>
+                    <TextBox x:Name="AddressNumberTextBox" Text="{Binding AddressNumber, Mode=TwoWay}" LostKeyboardFocus="ValidateNumber" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="2" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -94,10 +82,8 @@
 
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
-                        Street
-                    </TextBlock >
-                    <TextBox x:Name="AddressStreetTextBox" Text="{Binding Path=address.Street, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0"><Run Text="Street"/></TextBlock>
+                    <TextBox x:Name="AddressStreetTextBox" Text="{Binding address.Street, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="3" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
@@ -105,10 +91,8 @@
 
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="0 0 0 0" Grid.Column="0">
-                        City
-                    </TextBlock >
-                    <TextBox x:Name="AddressCityTextBlock" Text="{Binding Path=address.Street, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1"/>
+                    <TextBlock Margin="0 0 0 0" Grid.Column="0"><Run Text="City"/></TextBlock>
+                    <TextBox x:Name="AddressCityTextBlock" Text="{Binding address.Street, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Margin="10 0 0 0" Grid.Column="1"/>
                 </Grid>
 
             </Grid>
@@ -125,42 +109,34 @@
 
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
-                        Email
-                    </TextBlock >
-                    <TextBox x:Name="EmailTextBlock" Text="{Binding Path=Email, Mode=TwoWay, Source={StaticResource ResourceKey=traineeViewSource}}" LostFocus="ValidateEmail" Margin="10 0 0 0" Grid.Column="1"/>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0"><Run Text="Email"/></TextBlock>
+                    <TextBox x:Name="EmailTextBlock" Text="{Binding Email, Mode=TwoWay, Source={StaticResource ResourceKey=traineeViewSource}}" LostFocus="ValidateEmail" Margin="10 0 0 0" Grid.Column="1"/>
 
-                </Grid> 
+                </Grid>
                 <Grid Grid.Column="1" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
 
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
-                        Gender
-                    </TextBlock >
-                    <ComboBox x:Name="genderComboBox" SelectedItem="{Binding Path=trainee.Gender, Mode=TwoWay}" Grid.Column="1"/>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0"><Run Text="Gender"/></TextBlock>
+                    <ComboBox x:Name="genderComboBox" SelectedItem="{Binding Trainee.Gender, Mode=TwoWay}" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="2" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="0 0 0 0" Grid.Column="0">
-                        Gear Box
-                    </TextBlock >
-                    <ComboBox x:Name="gearBoxComboBox" SelectedItem="{Binding Path=trainee.GearBox, Mode=TwoWay}" Grid.Column="1"/>
+                    <TextBlock Margin="0 0 0 0" Grid.Column="0"><Run Text="Gear Box"/></TextBlock>
+                    <ComboBox x:Name="gearBoxComboBox" SelectedItem="{Binding Trainee.GearBox, Mode=TwoWay}" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="3" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 0 0 0" Grid.Column="0">
-                        Vehicle Type
-                    </TextBlock >
-                    <ComboBox x:Name="vehicleTypeComboBox" SelectedItem="{Binding Path=trainee.VehicleType, Mode=TwoWay}" Grid.Column="1"/>
+                    <TextBlock Margin="10 0 0 0" Grid.Column="0"><Run Text="Vehicle Type"/></TextBlock>
+                    <ComboBox x:Name="vehicleTypeComboBox" SelectedItem="{Binding Trainee.VehicleType, Mode=TwoWay}" Grid.Column="1"/>
                 </Grid>
             </Grid>
             <Grid>
@@ -174,32 +150,25 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0">
-                        Driving School
-                    </TextBlock>
-                    <TextBox x:Name="DrivingSchoolTextBox" Text="{Binding Path=trainee.DrivingSchool, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
+                    <TextBlock Grid.Column="0"><Run Text="Driving School"/></TextBlock>
+                    <TextBox x:Name="DrivingSchoolTextBox" Text="{Binding Trainee.DrivingSchool, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0">
-                        Driving Instructor
-                    </TextBlock>
-                    <TextBox x:Name="DrivingInstructorTextBox" Text="{Binding Path=trainee.InstructorName, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
+                    <TextBlock Grid.Column="0"><Run Text="Driving Instructor"/></TextBlock>
+                    <TextBox x:Name="DrivingInstructorTextBox" Text="{Binding Trainee.InstructorName, Mode=TwoWay}" LostKeyboardFocus="ValidateString" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0">
-                        Number of Lessons
-                    </TextBlock>
-                    <TextBox x:Name="NumberOfLessonsTetBox" Text="{Binding Path=NumberLessons, Mode=TwoWay}" LostKeyboardFocus="ValidateNumber" Grid.Column="1">
-
-                    </TextBox>
+                    <TextBlock Grid.Column="0"><Run Text="Number of Lessons"/></TextBlock>
+                    <xctk:IntegerUpDown x:Name="NumLessonsUpDown" Minimum="0" Value="{Binding Trainee.NumDrivingLessons}"/>
+                    
                 </Grid>
             </Grid>
             <Grid>
@@ -207,12 +176,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="AddTraineeButton" Click="AddTraineeButton_Click" Grid.Column="0">
-                    Add Trainee
-                </Button>
-                <Button x:Name="CancelButton" Click="CancelButton_Click" Grid.Column="1">
-                    Cancel
-                </Button>
+                <Button x:Name="AddTraineeButton" Click="AddTraineeButton_Click" Grid.Column="0" Content="Add Trainee"/>
+                <Button x:Name="CancelButton" Click="CancelButton_Click" Grid.Column="1" Content="Cancel"/>
             </Grid>
         </StackPanel>
 

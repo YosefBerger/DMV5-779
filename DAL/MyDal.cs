@@ -56,7 +56,7 @@ namespace DAL
             {
                 if (item.ID == tr.ID)
                 {
-                    item.update(tr);
+                    item.Update(tr);
                     return true;
                 }
             }
@@ -144,7 +144,7 @@ namespace DAL
             {
                 if (item.ID == tester.ID)
                 {
-                    item.update(tester);
+                    item.Update(tester);
                 }
             }
             return false;
