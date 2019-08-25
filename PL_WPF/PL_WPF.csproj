@@ -72,14 +72,24 @@
     <Compile Include="AddTrainee.xaml.cs">
       <DependentUpon>AddTrainee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditTrainee.xaml.cs">
+      <DependentUpon>EditTrainee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TraineesList.xaml.cs">
       <DependentUpon>TraineesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTrainee.xaml.cs">
+      <DependentUpon>ViewTrainee.xaml</DependentUpon>
     </Compile>
     <Page Include="AddTrainee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddTraineeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTrainee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,6 +109,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="TraineesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewTrainee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Limud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Trainee\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,12 +18,14 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                
             </Grid.RowDefinitions>
 
-            <Button Name="AddTraineeButton" Content="Add Trainee" Click="AddTrainee_Btn" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Height="30" Background="LightGreen" FontWeight="Bold" />
-        
+            <Button Name="AddTraineeButton" Grid.Row="0" Content="Add Trainee" Click="AddTrainee_Btn" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Height="30" Background="LightGreen" FontWeight="Bold" />
 
-            <DataGrid Name="Trainees" AlternatingRowBackground="LightBlue" IsReadOnly="True" Margin="10,51,-9.667,-29.667">
+
+            <DataGrid Name="Trainees" Grid.Row="1" AlternatingRowBackground="LightBlue" IsReadOnly="True" Margin="10,51,-9.667,-29.667" CanUserAddRows="False" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
                     <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
@@ -31,13 +33,14 @@
                     <DataGridTemplateColumn Header="View and Edit">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="ViewandEditButton" Content="View and Edit" Click="ViewandEdt_Btn" />
+                                <Button Name="ViewandEditButton" Content="View and Edit" Tag="{Binding Path=ID}" Click="ViewandEdt_Btn" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
+            <Button Margin="10" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Refresh list" Click="RefreshList_Click"/>
         </Grid>
     </Border>
 

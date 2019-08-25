@@ -49,14 +49,30 @@ namespace PL_WPF
 
         private void AddTrainee_Btn(object sender, RoutedEventArgs e)
         {
-            AddTraineeWindow addTrainee = new AddTraineeWindow();
-            addTrainee.Owner = this;
+            AddTrainee addTrainee = new AddTrainee
+            {
+                Owner = this
+            };
             addTrainee.ShowDialog();
         }
 
         private void ViewandEdt_Btn(object sender, RoutedEventArgs e)
         {
-            
+            ViewTrainee viewTrainee = new ViewTrainee((string)((Button)sender).Tag)
+            {
+                Owner = this
+            };
+            viewTrainee.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RefreshList_Click(object sender, RoutedEventArgs e)
+        {
+            Trainees.ItemsSource = bl.getAllTrainees();
         }
     }
 }

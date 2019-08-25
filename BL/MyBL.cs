@@ -25,7 +25,13 @@ namespace BL
         }
         public bool addTrainee(Trainee trainee)
         {
-            if(trainee.getAge() >= Configuration.TRAINEE_MIN_AGE)
+            //if(trainee.getAge() >= Configuration.TRAINEE_MIN_AGE)
+            //{
+            //    return dal.addTrainee(trainee);
+            //}
+
+            //return false;
+            if (trainee.getAge() >= Configuration.TRAINEE_MIN_AGE)
             {
                 return dal.addTrainee(trainee);
             }
@@ -38,11 +44,12 @@ namespace BL
         }
         public bool updateTrainee(Trainee trainee)
         {
-            if(trainee.getAge() >= Configuration.TRAINEE_MIN_AGE && trainee.NumDrivingLessons >= Configuration.TRAINEE_MIN_LESSONS)
-            {
-                return dal.updateTrainee(trainee);
-            }
-            return false;
+            //if(trainee.getAge() >= Configuration.TRAINEE_MIN_AGE && trainee.NumDrivingLessons >= Configuration.TRAINEE_MIN_LESSONS)
+            //{
+            //    return dal.updateTrainee(trainee);
+            //}
+            //return false;
+            return dal.updateTrainee(trainee);
         }
         public List<Tester> getAllTesters(Func<Tester, bool> condition = null)
         {

@@ -18,13 +18,13 @@ using System.Windows.Shapes;
 namespace PL_WPF
 {
     /// <summary>
-    /// Interaction logic for AddTrainee.xaml
+    /// Interaction logic for EditTrainee.xaml
     /// </summary>
-    public partial class AddTrainee : Window
+    public partial class EditTrainee : Window
     {
         private Trainee Trainee;
         private IBL BL;
-        public AddTrainee()
+        public EditTrainee()
         {
             Trainee = new Trainee();
             BL = FactoryBL.getInstance();
@@ -34,30 +34,37 @@ namespace PL_WPF
             this.DataContext = this.Trainee;
 
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
-            //this.GearBoxComboBox.SelectedItem = BE.Gender.MALE;
             this.GearBoxComboBox.ItemsSource = Enum.GetValues(typeof(BE.GearBox));
-            //this.GearBoxComboBox.SelectedItem = BE.GearBox.AUTOMATIC;
             this.VehicleTypeComboBox.ItemsSource = Enum.GetValues(typeof(BE.VehicleType));
-            //this.VehicleTypeComboBox.SelectedItem = BE.VehicleType.PRIVATE;
+        }
+        public EditTrainee(String ID)
+        {
+            BL = FactoryBL.getInstance();
+            Trainee = BL.getAllTrainees(new Func<Trainee, bool>(t => t.ID == ID)).FirstOrDefault();
+
+            InitializeComponent();
+
+            this.DataContext = this.Trainee;
+
+            this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
+            this.GearBoxComboBox.ItemsSource = Enum.GetValues(typeof(BE.GearBox));
+            this.VehicleTypeComboBox.ItemsSource = Enum.GetValues(typeof(BE.VehicleType));
         }
 
-        public void AddTrainee_Button(object sender, RoutedEventArgs e)
+        public void UpdateTrainee_Button(object sender, RoutedEventArgs e)
         {
             if (!ValidTrainee())
             {
                 MessageBox.Show("Not all of the inputs were correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            
-            if (!BL.addTrainee(Trainee))
+
+            if (!BL.updateTrainee(Trainee))
             {
-                MessageBox.Show("Not all of the inputs were correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("An error occured updating", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            Trainee added = BL.getAllTrainees(new Func<Trainee, bool>( t => t.ID == this.Trainee.ID)).FirstOrDefault();
-            MessageBox.Show(Trainee.ToString() + "\n----------\n" + added.ToString());
-            
             this.Close();
         }
 
@@ -78,7 +85,7 @@ namespace PL_WPF
                 flag = false;
                 Console.WriteLine("ID wrong");
             }
-            if(DOBPicker.SelectedDate == new DateTime())
+            if (DOBPicker.SelectedDate == new DateTime())
             {
                 flag = false;
                 Console.WriteLine("DOB Wrong");
