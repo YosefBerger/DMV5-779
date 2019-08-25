@@ -8,6 +8,10 @@ namespace BE
 {
     public class Address
     {
+        public Address()
+        {
+            _Number = 1;
+        }
         private String _Street;
         public String Street
         {

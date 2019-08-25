@@ -6,35 +6,40 @@
         xmlns:BE="clr-namespace:BE;assembly=BE"
         xmlns:local="clr-namespace:PL_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Icon="/Limud.ico" Height="450" Width="800">
     <Window.Background>
-        <ImageBrush ImageSource="/MisradHaRishu.png"/>
+        <SolidColorBrush Color="White"/>
     </Window.Background>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
 
-        <Button Name="AddTraineeButton" Content="Add Trainee" Click="AddTrainee_Btn" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Height="30" Background="Green" FontWeight="Bold" />
+    <Border Margin="10">
+        <Border.Background>
+            <ImageBrush ImageSource="MisradHaRishu_4x_Light.png" Stretch="Uniform"/>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Button Name="AddTraineeButton" Content="Add Trainee" Click="AddTrainee_Btn" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Height="30" Background="LightGreen" FontWeight="Bold" />
         
 
-        <DataGrid Name="Trainees" AlternatingRowBackground="LightBlue" IsReadOnly="True" Margin="10,51,-9.667,-29.667">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
-                <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
-                <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
-                <DataGridTemplateColumn Header="View and Edit">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="ViewandEditButton" Content="View and Edit" Click="ViewandEdt_Btn" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+            <DataGrid Name="Trainees" AlternatingRowBackground="LightBlue" IsReadOnly="True" Margin="10,51,-9.667,-29.667">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
+                    <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
+                    <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
+                    <DataGridTemplateColumn Header="View and Edit">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="ViewandEditButton" Content="View and Edit" Click="ViewandEdt_Btn" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
 
-    </Grid>
-
+        </Grid>
+    </Border>
 
 
 

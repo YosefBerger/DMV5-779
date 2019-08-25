@@ -30,7 +30,7 @@ namespace BE
                 if (string.IsNullOrWhiteSpace(value)) {
                     throw new Exception("ID cannot be empty");
                 }
-                else if (value.Length != 9 || !Int64.TryParse(value, out tmp) || !validID(value))
+                else if (!validID(value))
                 {
                     throw new Exception("Invalid ID number");
                 }
@@ -143,6 +143,13 @@ namespace BE
 
         public static bool validID(string value)
         {
+            value = value.Replace(" ", "");
+            long tmp;
+            if(string.IsNullOrWhiteSpace(value) || value.Length < 9 || !Int64.TryParse(value, out tmp))
+            {
+                return false;
+            }
+
             string m_PERID = value;
             char[] digits = m_PERID.PadLeft(9, '0').ToCharArray();
             int[] oneTwo = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
