@@ -8,15 +8,42 @@ namespace BE
 {
     public class Tester : Person
     {
-        public int YearsExperience { get; set; }    // Number of years as a tester
+        public int YearsExperience { get { return (DateTime.Today - StartYear).Days / 365; } }   // Number of years as a tester
         public int MaxWeeklyTests { get; set; }     // Max number of tests that the tester can preform per-week
 
         // This is going to hold a bool array of hours worked, 5 days x 7 hours a day
-        private bool[][] WorkingHours = new bool[5][];
-        public bool[][] getWorkingHours()
+        private bool[][] _WorkingHours = new bool[5][];
+
+        public Tester()
         {
-            return WorkingHours;
+            for(int i = 0; i < 5; i++)
+            {
+                WorkingHours[i] = new bool[7];
+                for (int j = 0; j < 7; j++)
+                {
+                    _WorkingHours[i][j] = false;
+                }
+            }
         }
+
+        public bool[][] WorkingHours
+        {
+            get
+            {
+                return _WorkingHours;
+            }
+            set
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    for(int j = 0; j < 7; j++)
+                    {
+                        _WorkingHours[i][j] = value[i][j];
+                    }
+                }
+            }
+        }
+        
         // check if the tester is working
         public bool getIfWorking(DateTime dateTime)
         {
@@ -30,6 +57,11 @@ namespace BE
 
         public double MaxDistance = 7.5;    // A radius of the max distance from the testers home that they are willing to work
 
+        public DateTime StartYear
+        {
+            get;
+            set;
+        }
 
         // To string
         public override string ToString()
@@ -57,7 +89,7 @@ namespace BE
                 ID = this.ID,
                 LastName = this.LastName,
                 VehicleType = this.VehicleType,
-                YearsExperience = this.YearsExperience,
+                StartYear = this.StartYear,
                 MaxWeeklyTests = this.MaxWeeklyTests,
                 MaxDistance = this.MaxDistance,
                 // need to do working hours
@@ -69,7 +101,7 @@ namespace BE
         {
             this.Update((Person)tester);
             this.MaxWeeklyTests = tester.MaxWeeklyTests;
-            this.YearsExperience = tester.YearsExperience;
+            this.StartYear = tester.StartYear;
             this.MaxDistance = tester.MaxDistance;
             this.WorkingHours = tester.WorkingHours;
         }

@@ -52,7 +52,7 @@ namespace PL_WPF
             {
                 MessageBox.Show("Some of the information was invalid.\nPlease try again",
                                 "Submission Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+//                return;
             }
             
 

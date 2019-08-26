@@ -19,7 +19,7 @@
 
         <StackPanel>
             <TextBlock Text="Add Tester" Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
-            <Grid Margin="0 30 0 40">
+            <Grid Margin="0 30 0 30">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="117pt"/>
@@ -41,7 +41,7 @@
                 <DatePicker x:Name="DOBPicker" SelectedDate="{Binding Path=BirthDay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="6"/>
             </Grid>
 
-            <Grid Margin="0 0 0 50">
+            <Grid Margin="0 0 0 30">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
@@ -120,16 +120,16 @@
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="6*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Vehicle Type" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
-                        <ComboBox x:Name="VehicleTypeComboBox" SelectedItem="{Binding Path=VehicleType}" Grid.Column="1"/>
+                        <TextBlock Text="Began Teaching On" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
+                        <DatePicker x:Name="StartYearDatePicker" DisplayDate="{Binding Path=StartYear, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" />
                     </Grid>
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="6*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Years of Experience" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
-                        <xctk:IntegerUpDown x:Name="YearsExperience" Minimum="0" Value="{Binding Path=YearsExperience}" Grid.Column="1" />
+                        <TextBlock Text="Vehicle Type" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
+                        <ComboBox x:Name="VehicleTypeComboBox" SelectedItem="{Binding Path=VehicleType}" Grid.Column="1"/>
                     </Grid>
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
@@ -150,8 +150,192 @@
                 </StackPanel>
                 <StackPanel Margin="0 0 0 0" Grid.Column="2">
                     <TextBlock Text="Available Hours" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" BorderThickness="3" CornerRadius="3">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="Wheat" Opacity="0" />
+                            </Border.BorderBrush>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="9"  HorizontalAlignment="Center" Margin="0 0 0 3" Grid.Column="1" />
+                                <TextBlock Text="10" HorizontalAlignment="Center" Margin="0 0 0 3" Grid.Column="2" />
+                                <TextBlock Text="11" HorizontalAlignment="Center" Margin="0 0 0 3" Grid.Column="3" />
+                                <TextBlock Text="12" HorizontalAlignment="Center" Margin="0 0 0 3" Grid.Column="4" />
+                                <TextBlock Text="13" HorizontalAlignment="Center" Margin="0 0 0 3" Grid.Column="5" />
+                                <TextBlock Text="14" HorizontalAlignment="Center" Margin="0 0 0 3" Grid.Column="6" />
+                                <TextBlock Text="15" HorizontalAlignment="Center" Margin="0 0 0 3" Grid.Column="7" />
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="1" BorderThickness="3" CornerRadius="3">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="LightBlue" Opacity="0.2" />
+                            </Border.BorderBrush>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.Background>
+                                    <SolidColorBrush Color="LightBlue" Opacity="0.2" />
+                                </Grid.Background>
+                                <TextBlock Text="Sun" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[0][0], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="1"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[0][1], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="2"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[0][2], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="3"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[0][3], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="4"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[0][4], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="5"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[0][5], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="6"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[0][6], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="7"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="2" BorderThickness="3" CornerRadius="3">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="Wheat" Opacity="0" />
+                            </Border.BorderBrush>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Mon" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[1][0], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="1"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[1][1], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="2"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[1][2], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="3"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[1][3], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="4"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[1][4], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="5"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[1][5], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="6"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[1][6], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="7"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="3" BorderThickness="3" CornerRadius="3">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="LightBlue" Opacity="0.2" />
+                            </Border.BorderBrush>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.Background>
+                                    <SolidColorBrush Color="LightBlue" Opacity="0.2" />
+                                </Grid.Background>
+                                <TextBlock Text="Tue" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[2][0], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="1"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[2][1], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="2"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[2][2], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="3"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[2][3], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="4"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[2][4], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="5"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[2][5], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="6"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[2][6], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="7"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="4" BorderThickness="3" CornerRadius="3">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="Wheat" Opacity="0" />
+                            </Border.BorderBrush>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Wed" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[3][0], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="1"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[3][1], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="2"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[3][2], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="3"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[3][3], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="4"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[3][4], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="5"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[3][5], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="6"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[3][6], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="7"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="5" BorderThickness="3" CornerRadius="3">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="LightBlue" Opacity="0.2" />
+                            </Border.BorderBrush>
+                            <Grid Grid.Row="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.Background>
+                                    <SolidColorBrush Color="LightBlue" Opacity="0.2" />
+                                </Grid.Background>
+                                <TextBlock Text="Thu" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[4][0], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="1"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[4][1], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="2"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[4][2], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="3"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[4][3], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="4"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[4][4], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="5"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[4][5], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="6"/>
+                                <CheckBox IsChecked="{Binding Path=WorkingHours[4][6], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Column="7"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
 
                 </StackPanel>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="SubmitButton" Click="SubmitButton_Click" Content="Add Tester" Grid.Column="0" Margin="20"/>
+                <Button x:Name="CancelButton" Click="CancelButton_Click" Content="Cancel" Grid.Column="1" Margin="20"/>
             </Grid>
         </StackPanel>
     </Border>
