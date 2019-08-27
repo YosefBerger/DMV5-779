@@ -1,12 +1,11 @@
-﻿<Window x:Class="PL_WPF.TraineesList"
+﻿<Window x:Class="PL_WPF.SelectTrainee"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:BE="clr-namespace:BE;assembly=BE"
         xmlns:local="clr-namespace:PL_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Icon="/Limud.ico" Height="450" Width="800">
+        Title="SelectTrainee" Icon="/Limud.ico" Height="450" Width="800">
     <Window.Background>
         <SolidColorBrush Color="White"/>
     </Window.Background>
@@ -20,12 +19,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <Button Name="AddTraineeButton" Grid.Row="0" Content="Add Trainee" Click="AddTrainee_Btn" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Height="30" Background="LightGreen" FontWeight="Bold" />
             <Button Name="BackButton" Grid.Row="0" Content="Back" Click="BackButton_Click" Margin="3" VerticalAlignment="Top" HorizontalAlignment="Left" />
-
 
             <DataGrid Name="Trainees" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
                 <DataGrid.AlternatingRowBackground>
@@ -38,22 +34,15 @@
                     <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
                     <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
                     <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
-                    <DataGridTemplateColumn Header="View and Edit">
+                    <DataGridTemplateColumn Header="Select">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="ViewandEditButton" Content="View and Edit" Tag="{Binding Path=ID}" Click="ViewandEdt_Btn" />
+                                <Button Name="Select" Content="Select" Tag="{Binding Path=ID}" Click="Select_Click" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-
-            <Button Margin="10" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Refresh list" Click="RefreshList_Click"/>
         </Grid>
     </Border>
-
-
-
-
 </Window>
-

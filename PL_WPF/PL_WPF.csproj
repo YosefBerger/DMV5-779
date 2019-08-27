@@ -69,14 +69,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddTest.xaml.cs">
+      <DependentUpon>AddTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTester.xaml.cs">
       <DependentUpon>AddTester.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddTrainee.xaml.cs">
       <DependentUpon>AddTrainee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditTester.xaml.cs">
+      <DependentUpon>EditTester.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditTrainee.xaml.cs">
       <DependentUpon>EditTrainee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectTester.xaml.cs">
+      <DependentUpon>SelectTester.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectTrainee.xaml.cs">
+      <DependentUpon>SelectTrainee.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestersList.xaml.cs">
       <DependentUpon>TestersList.xaml</DependentUpon>
@@ -90,6 +102,10 @@
     <Compile Include="ViewTrainee.xaml.cs">
       <DependentUpon>ViewTrainee.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddTester.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddTraineeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTester.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,6 +141,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SelectTester.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectTrainee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TestersList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

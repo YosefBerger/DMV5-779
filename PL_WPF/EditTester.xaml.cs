@@ -18,19 +18,29 @@ using System.Windows.Shapes;
 namespace PL_WPF
 {
     /// <summary>
-    /// Interaction logic for AddTester.xaml
+    /// Interaction logic for EditTester.xaml
     /// </summary>
-    public partial class AddTester : Window
+    public partial class EditTester : Window
     {
-        public Tester Tester { get; set; }
+        Tester Tester;
         IBL BL;
-        public AddTester()
+        public EditTester()
         {
             Tester = new Tester();
             BL = FactoryBL.getInstance();
-            this.DataContext = this.Tester;
             InitializeComponent();
 
+            this.DataContext = this.Tester;
+            this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
+            this.VehicleTypeComboBox.ItemsSource = Enum.GetValues(typeof(BE.VehicleType));
+        }
+        public EditTester(String ID)
+        {
+            BL = FactoryBL.getInstance();
+            Tester = BL.getAllTesters(new Func<Tester, bool>(t => t.ID == ID)).FirstOrDefault();
+            InitializeComponent();
+
+            this.DataContext = this.Tester;
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
             this.VehicleTypeComboBox.ItemsSource = Enum.GetValues(typeof(BE.VehicleType));
         }
@@ -39,7 +49,7 @@ namespace PL_WPF
         {
             if (ValidTester())
             {
-                BL.addTester(Tester);
+                BL.updateTester(Tester);
                 this.Close();
             }
             else

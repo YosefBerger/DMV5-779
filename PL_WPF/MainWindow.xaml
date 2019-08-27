@@ -5,12 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_WPF"
         mc:Ignorable="d"
-        Title="DMV" Background ="LightBlue"  Height="800" Width="800">
+        Title="DMV" Icon="/Limud.ico"  Height="800" Width="800">
+    <Window.Background>
+        <SolidColorBrush Color="White"/>
+    </Window.Background>
     
-    <Grid>
-        <!-- 
-        <Button  Name="AddTraineeBtn" Content="Add Trainee" HorizontalAlignment="Left" Margin="107,102,0,0" VerticalAlignment="Top" Width="185" Height="98" FontSize="28" Click="AddTraineeBtn_Click"/>
-        <Button  x:Name="AllTraineesBtn" Content="All Trainees" HorizontalAlignment="Left" Margin="408,102,0,0" VerticalAlignment="Top" Width="186" Height="98" FontSize="28"/>
-        -->
-    </Grid>
+    <Border Margin="15">
+        <Border.Background>
+            <ImageBrush ImageSource="MisradHaRishu_4x_Light.png" Stretch="Uniform"/>
+        </Border.Background>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="TestersButton" Content="Testers" Click="TestersButton_Click" Grid.Column="0" Margin="10" />
+            <Button x:Name="TraineesButton" Content="Trainees" Click="TraineesButton_Click" Grid.Column="1" Margin="10" />
+            <Button x:Name="TestsButton" Content="Tests" Click="TestsButton_Click" Grid.Column="2" Margin="10" />
+        </Grid>
+    </Border>
 </Window>

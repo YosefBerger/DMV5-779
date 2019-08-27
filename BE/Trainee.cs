@@ -85,7 +85,7 @@ namespace BE
         {
             return new Trainee
             {
-                Address = this.Address,//
+                Address = this.Address.clone(),//
                 BirthDay = this.BirthDay, //
                 Email = this.Email,//
                 FirstName = this.FirstName,//

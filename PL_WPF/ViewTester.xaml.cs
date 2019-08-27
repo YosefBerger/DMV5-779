@@ -50,11 +50,11 @@ namespace PL_WPF
 
         private void EditTester_Button(object sender, RoutedEventArgs e)
         {
-            //EditTester editTester = new EditTester(Tester.ID)
-            //{
-            //    Owner = this
-            //};
-            //editTester.Show();
+            EditTester editTester = new EditTester(Tester.ID)
+            {
+                Owner = this
+            };
+            editTester.Show();
         }
 
         private void Delete_Button(object sender, RoutedEventArgs e)

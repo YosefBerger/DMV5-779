@@ -28,11 +28,11 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock FontWeight="DemiBold" Text="ID" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0"/>
-                <TextBlock Text="{Binding Path=ID}" Grid.Column="1"/>
+                <TextBlock Text="{Binding Path=ID}" VerticalAlignment="Center" Grid.Column="1"/>
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Gender" VerticalAlignment="Center" Grid.Column="3"/>
-                <TextBlock Text="{Binding Path=Gender}" Margin="0 0 5 0" Grid.Column="4"/>
+                <TextBlock Text="{Binding Path=Gender}" VerticalAlignment="Center" Margin="0 0 5 0" Grid.Column="4"/>
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="DOB" VerticalAlignment="Center" Grid.Column="5"/>
-                <TextBlock x:Name="DOBTextBlock" Grid.Column="6"/>
+                <TextBlock x:Name="DOBTextBlock" VerticalAlignment="Center" Grid.Column="6"/>
             </Grid>
             <Grid Margin="0 0 0 50">
                 <Grid.ColumnDefinitions>
@@ -44,11 +44,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="First Name" VerticalAlignment="Center" Grid.Column="0"/>
-                <TextBlock Text="{Binding Path=FirstName}" Margin="0 0 10 0" Grid.Column="1"/>
+                <TextBlock Text="{Binding Path=FirstName}" VerticalAlignment="Center" Margin="0 0 10 0" Grid.Column="1"/>
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Last Name" VerticalAlignment="Center" Grid.Column="2"/>
-                <TextBlock Text="{Binding Path=LastName}"  Margin="0 0 10 0" Grid.Column="3"/>
+                <TextBlock Text="{Binding Path=LastName}" VerticalAlignment="Center"  Margin="0 0 10 0" Grid.Column="3"/>
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Email" VerticalAlignment="Center" Grid.Column="4"/>
-                <TextBlock Text="{Binding Path=Email}" Grid.Column="5"/>
+                <TextBlock Text="{Binding Path=Email}" VerticalAlignment="Center" Grid.Column="5"/>
             </Grid>
 
             <Grid Margin="0 0 0 10">
@@ -66,7 +66,7 @@
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Number" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="0" Grid.Column="0"/>
-                            <TextBlock Text="{Binding Path=Address.Number}" Grid.Row="0" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=Address.Number}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
                         </Grid>
                         <Grid Margin="0 0 0 3">
                             <Grid.ColumnDefinitions>
@@ -74,7 +74,7 @@
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Street" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="1" Grid.Column="0"/>
-                            <TextBlock Text="{Binding Path=Address.Street}" Grid.Column="1" />
+                            <TextBlock Text="{Binding Path=Address.Street}" VerticalAlignment="Center" Grid.Column="1" />
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -82,7 +82,7 @@
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="City" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="3" Grid.Column="0"/>
-                            <TextBlock Text="{Binding Path=Address.City}" Grid.Column="1" />
+                            <TextBlock Text="{Binding Path=Address.City}" VerticalAlignment="Center" Grid.Column="1" />
                         </Grid>
                     </StackPanel>
                 </StackPanel>
@@ -94,7 +94,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Gear Box" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
-                        <TextBlock Text="{Binding Path=GearBox}" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Path=GearBox}" VerticalAlignment="Center" Grid.Column="1"/>
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -102,7 +102,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Vehicle Type" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
-                        <TextBlock Text="{Binding Path=VehicleType}" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Path=VehicleType}" VerticalAlignment="Center" Grid.Column="1"/>
                     </Grid>
                 </StackPanel>
                 <StackPanel Margin="0 0 0 0" Grid.Column="2">
@@ -113,7 +113,7 @@
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="School Name" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
-                        <TextBlock Text="{Binding Path=DrivingSchool}" Grid.Column="1" />
+                        <TextBlock Text="{Binding Path=DrivingSchool}" VerticalAlignment="Center" Grid.Column="1" />
                     </Grid>
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
@@ -121,7 +121,7 @@
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Instructor Name" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
-                        <TextBlock Text="{Binding Path=InstructorName}" Grid.Column="1" />
+                        <TextBlock Text="{Binding Path=InstructorName}" VerticalAlignment="Center" Grid.Column="1" />
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -129,7 +129,7 @@
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Lessons" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
-                        <TextBlock Text="{Binding Path=NumDrivingLessons}"  Grid.Column="1"/>
+                        <TextBlock Text="{Binding Path=NumDrivingLessons}" VerticalAlignment="Center" Grid.Column="1"/>
                     </Grid>
                 </StackPanel>
             </Grid>

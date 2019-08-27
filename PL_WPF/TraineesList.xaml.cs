@@ -43,11 +43,6 @@ namespace PL_WPF
             this.Owner.Show();
         }
 
-        private void TextBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            
-        }
-
         private void AddTrainee_Btn(object sender, RoutedEventArgs e)
         {
             AddTrainee addTrainee = new AddTrainee
@@ -66,14 +61,14 @@ namespace PL_WPF
             viewTrainee.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void RefreshList_Click(object sender, RoutedEventArgs e)
         {
             Trainees.ItemsSource = BL.getAllTrainees();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

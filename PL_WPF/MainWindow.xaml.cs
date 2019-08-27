@@ -30,5 +30,32 @@ namespace PL_WPF
             Window wnd = new AddTraineeWindow();
             wnd.Show();
         }
+
+        private void TestersButton_Click(object sender, RoutedEventArgs e)
+        {
+            TestersList testersList = new TestersList()
+            {
+                Owner = this
+            };
+            testersList.ShowDialog();
+        }
+
+        private void TraineesButton_Click(object sender, RoutedEventArgs e)
+        {
+            TraineesList traineesList = new TraineesList()
+            {
+                Owner = this
+            };
+            traineesList.ShowDialog();
+        }
+
+        private void TestsButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddTest addTest = new AddTest()
+            {
+                Owner = this
+            };
+            addTest.ShowDialog();
+        }
     }
 }

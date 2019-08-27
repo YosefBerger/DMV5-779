@@ -10,22 +10,38 @@ namespace BE
     {
         private static int TestCounter = 0; // Allows us to have incramental test numbers
 
+        public Test()
+        {
+            dateTime = DateTime.Today;
+            if(dateTime.DayOfWeek == DayOfWeek.Friday)
+            {
+                dateTime = dateTime.AddDays(2).Date;
+            }
+            else if(dateTime.DayOfWeek == DayOfWeek.Saturday)
+            {
+                // This function would of course only be called after sundown
+                dateTime = dateTime.AddDays(1).Date;
+            }
+            dateTime.AddHours(9);
+        }
+
         private string Number;  // Hold actual test number
         public string TestNumber {
             get
             {
-                return Number;
-            }
-            set
-            {
-                Number = String.Format("{0:D8}", TestCounter);
-
-                TestCounter++;
-                // Avoid integer over flow erros
-                if(TestCounter >= 100000000)
+                if (Number == null)
                 {
-                    TestCounter = 0;
+                    Number = String.Format("{0:D8}", TestCounter);
+
+                    TestCounter++;
+                    // Avoid integer over flow
+                    if (TestCounter >= 100000000)
+                    {
+                        TestCounter = 0;
+                    }
                 }
+
+                return Number;
             }
         }
         
@@ -114,13 +130,9 @@ namespace BE
             return new Test
             {
                 Number = this.Number,
-                TestNumber = this.TestNumber,
                 testerId = this.testerId,
-                TesterId = this.TesterId,
                 traineeId = this.traineeId,
-                TraineeId = this.TraineeId,
                 dateTime = this.dateTime,
-                DateTime = this.DateTime,
                 StartAddress = this.StartAddress,
                 UseMirrors = this.UseMirrors,
                 MaintinaDistance = this.MaintinaDistance,
@@ -132,7 +144,6 @@ namespace BE
                 SpeedLimit = this.SpeedLimit,
                 Result = this.Result,
                 TesterComment = this.TesterComment,
-
             };
         }
 
@@ -140,15 +151,11 @@ namespace BE
         public void update(Test test)
         {
             this.Number = test.Number;
-            this.TestNumber = test.TestNumber;
             this.testerId = test.testerId;
-            this.TesterId = test.TesterId;
             this.traineeId = test.traineeId;
-            this.TraineeId = test.traineeId;
             this.dateTime = test.dateTime;
-            this.DateTime = test.DateTime;
 
-            this.StartAddress = test.StartAddress;
+            this.StartAddress = test.StartAddress.clone();
             this.UseMirrors = test.UseMirrors;
             this.MaintinaDistance = test.MaintinaDistance;
             this.ParkInReverse = test.ParkInReverse;

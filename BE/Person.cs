@@ -26,7 +26,6 @@ namespace BE
             }
             set
             {
-                long tmp = 0;
                 if (string.IsNullOrWhiteSpace(value)) {
                     throw new Exception("ID cannot be empty");
                 }

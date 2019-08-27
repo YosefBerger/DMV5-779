@@ -50,5 +50,10 @@ namespace PL_WPF
         {
             Testers.ItemsSource = BL.getAllTesters();
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

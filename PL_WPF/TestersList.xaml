@@ -18,14 +18,20 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
-
             </Grid.RowDefinitions>
 
             <Button Name="AddTesterButton" Grid.Row="0" Content="Add Tester" Click="AddTesterButton_Click" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Height="30" Background="LightGreen" FontWeight="Bold" />
+            <Button Name="BackButton" Grid.Row="0" Content="Back" Click="BackButton_Click" Margin="3" VerticalAlignment="Top" HorizontalAlignment="Left" />
 
-
-            <DataGrid Name="Testers" Grid.Row="1" AlternatingRowBackground="LightBlue" IsReadOnly="True" Margin="10,51,-9.667,-29.667" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid Name="Testers" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
+                <DataGrid.AlternatingRowBackground>
+                    <SolidColorBrush Color="White" Opacity=".2" />
+                </DataGrid.AlternatingRowBackground>
+                <DataGrid.Background>
+                    <SolidColorBrush Color="LightBlue" Opacity=".2" />
+                </DataGrid.Background>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
                     <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
