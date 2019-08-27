@@ -49,7 +49,10 @@ namespace PL_WPF
                 BL.addTester(Tester);
                 this.Close();
             }
-            MessageBox.Show("Something went wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            {
+                MessageBox.Show("Something went wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -64,6 +67,7 @@ namespace PL_WPF
         private bool ValidTester()
         {
             bool flag = true;
+
             if (!Person.validID(IDTextBox.Text))
             {
                 flag = false;
@@ -99,7 +103,7 @@ namespace PL_WPF
                 flag = false;
                 Console.WriteLine("City wrong");
             }
-            if (StartYearDatePicker.DisplayDate == new DateTime())
+            if (StartYearDatePicker.SelectedDate == new DateTime())
             {
                 flag = false;
                 Console.WriteLine("Start date is wrong");

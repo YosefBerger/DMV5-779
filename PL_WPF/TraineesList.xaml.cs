@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,21 +21,21 @@ namespace PL_WPF
     /// </summary>
     public partial class TraineesList : Window
     {
-        BL.IBL bl = BL.FactoryBL.getInstance();
+        IBL BL = FactoryBL.getInstance();
         public TraineesList()
         {
             InitializeComponent();
-            Trainees.ItemsSource = bl.getAllTrainees();
+            Trainees.ItemsSource = BL.getAllTrainees();
         }
 
         private new void Activated(object sender, EventArgs e)
         {
-            Trainees.ItemsSource = bl.getAllTrainees();
+            Trainees.ItemsSource = BL.getAllTrainees();
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            Trainees.ItemsSource = bl.getAllTrainees();
+            Trainees.ItemsSource = BL.getAllTrainees();
             this.Owner.Hide();
         }
         private new void Closed(object sender, RoutedEventArgs e)
@@ -72,7 +73,7 @@ namespace PL_WPF
 
         private void RefreshList_Click(object sender, RoutedEventArgs e)
         {
-            Trainees.ItemsSource = bl.getAllTrainees();
+            Trainees.ItemsSource = BL.getAllTrainees();
         }
     }
 }

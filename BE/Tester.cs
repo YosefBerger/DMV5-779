@@ -55,7 +55,7 @@ namespace BE
         }
         // To-Do getters and setters for the hours worked
 
-        public double MaxDistance = 7.5;    // A radius of the max distance from the testers home that they are willing to work
+        public double MaxDistance { get; set; }
 
         public DateTime StartYear
         {

@@ -78,8 +78,14 @@
     <Compile Include="EditTrainee.xaml.cs">
       <DependentUpon>EditTrainee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestersList.xaml.cs">
+      <DependentUpon>TestersList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TraineesList.xaml.cs">
       <DependentUpon>TraineesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTester.xaml.cs">
+      <DependentUpon>ViewTester.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewTrainee.xaml.cs">
       <DependentUpon>ViewTrainee.xaml</DependentUpon>
@@ -115,7 +121,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TestersList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TraineesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewTester.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

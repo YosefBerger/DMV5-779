@@ -26,6 +26,8 @@ namespace PL_WPF
         public ViewTrainee()
         {
             InitializeComponent();
+            this.DataContext = this.Trainee;
+            DOBTextBlock.Text = Trainee.BirthDay.ToString("mm/dd/yyy");
         }
         public ViewTrainee(Trainee trainee)
         {
@@ -33,7 +35,7 @@ namespace PL_WPF
 
             BL = FactoryBL.getInstance();
             Trainee = trainee.Clone();
-
+            DOBTextBlock.Text = Trainee.BirthDay.ToString("mm/dd/yyy");
             this.DataContext = this.Trainee;
         }
         public ViewTrainee(String ID)
@@ -42,7 +44,7 @@ namespace PL_WPF
 
             BL = FactoryBL.getInstance();
             Trainee = BL.getAllTrainees(new Func<Trainee, bool> ( t => t.ID == ID )).FirstOrDefault();
-
+            DOBTextBlock.Text = Trainee.BirthDay.ToString("mm/dd/yyy");
             this.DataContext = this.Trainee;
         }
 
