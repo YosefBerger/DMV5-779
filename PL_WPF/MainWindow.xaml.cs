@@ -51,11 +51,11 @@ namespace PL_WPF
 
         private void TestsButton_Click(object sender, RoutedEventArgs e)
         {
-            AddTest addTest = new AddTest()
+            TestsList testsList = new TestsList
             {
                 Owner = this
             };
-            addTest.ShowDialog();
+            testsList.ShowDialog();
         }
     }
 }

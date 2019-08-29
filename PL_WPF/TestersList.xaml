@@ -25,7 +25,7 @@
             <Button Name="AddTesterButton" Grid.Row="0" Content="Add Tester" Click="AddTesterButton_Click" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Height="30" Background="LightGreen" FontWeight="Bold" />
             <Button Name="BackButton" Grid.Row="0" Content="Back" Click="BackButton_Click" Margin="3" VerticalAlignment="Top" HorizontalAlignment="Left" />
 
-            <DataGrid Name="Testers" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid Name="Testers" Grid.Row="1" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" AutoGenerateColumns="False">
                 <DataGrid.AlternatingRowBackground>
                     <SolidColorBrush Color="White" Opacity=".2" />
                 </DataGrid.AlternatingRowBackground>

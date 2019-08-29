@@ -14,35 +14,55 @@
         <Border.Background>
             <ImageBrush ImageSource="MisradHaRishu_4x_Light.png" Stretch="Uniform"/>
         </Border.Background>
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+                <TextBlock Text="Select Tester" Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
 
-            <TextBlock Text="Select Tester" Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
-
-            <DataGrid Name="Testers" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
-                <DataGrid.AlternatingRowBackground>
-                    <SolidColorBrush Color="White" Opacity=".2" />
-                </DataGrid.AlternatingRowBackground>
-                <DataGrid.Background>
-                    <SolidColorBrush Color="LightBlue" Opacity=".2" />
-                </DataGrid.Background>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
-                    <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
-                    <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
-                    <DataGridTemplateColumn Header="Select">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Name="Select" Content="Select" Tag="{Binding Path=ID}" Click="Select_Click" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+                <DataGrid Name="Testers" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
+                    <DataGrid.AlternatingRowBackground>
+                        <SolidColorBrush Color="White" Opacity=".2" />
+                    </DataGrid.AlternatingRowBackground>
+                    <DataGrid.Background>
+                        <SolidColorBrush Color="LightBlue" Opacity=".2" />
+                    </DataGrid.Background>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
+                        <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
+                        <DataGridTemplateColumn Header="Select">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="Select" Content="Select" Tag="{Binding Path=ID}" Click="Select_Click" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Margin="60">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20pt" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ProgressBar x:Name="gettingTesterProgressBar" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0" Minimum="0" Maximum="105" >
+                    <ProgressBar.Background>
+                        <SolidColorBrush Color="LightBlue" Opacity=".2" />
+                    </ProgressBar.Background>
+                    <ProgressBar.Foreground>
+                        <SolidColorBrush Color="Blue" />
+                    </ProgressBar.Foreground>
+                </ProgressBar>
+                <TextBlock x:Name="loadingText" Text="Loading..." Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" />
+            </Grid>
+            <Button x:Name="CancelLoadingButton" Content="Cancel" Click="CancelLoadingButton_Click" VerticalAlignment="Bottom" Margin="100 20 100 5" />
+        </StackPanel>
     </Border>
 </Window>

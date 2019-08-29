@@ -23,6 +23,8 @@ namespace BE
                 dateTime = dateTime.AddDays(1).Date;
             }
             dateTime.AddHours(9);
+            StartAddress = new Address();
+            StartAddress.Number = 1;
         }
 
         private string Number;  // Hold actual test number
@@ -42,6 +44,10 @@ namespace BE
                 }
 
                 return Number;
+            }
+            set
+            {
+                Number = value;
             }
         }
         
@@ -120,7 +126,12 @@ namespace BE
         public bool StopSigns { get; set; }
         public bool SpeedLimit { get; set; }
 
-        public bool Result { get; set; }    // Result of the test (if they passed or failed)
+        public bool Result {
+            get
+            {
+                return UseMirrors && MaintinaDistance && ParkInReverse && Signals && ParralellParking && Awareness && StopSigns && SpeedLimit;
+            }
+        }    // Result of the test (if they passed or failed)
 
         public string TesterComment { get; set; }   // Hold any comments from the tester about the test
 
@@ -129,11 +140,11 @@ namespace BE
         {
             return new Test
             {
-                Number = this.Number,
-                testerId = this.testerId,
-                traineeId = this.traineeId,
-                dateTime = this.dateTime,
-                StartAddress = this.StartAddress,
+                TestNumber = this.TestNumber,
+                TesterId = this.TesterId,
+                TraineeId = this.TraineeId,
+                DateTime = this.DateTime,
+                StartAddress = this.StartAddress.clone(),
                 UseMirrors = this.UseMirrors,
                 MaintinaDistance = this.MaintinaDistance,
                 ParkInReverse = this.ParkInReverse,
@@ -142,7 +153,6 @@ namespace BE
                 Awareness = this.Awareness,
                 StopSigns = this.StopSigns,
                 SpeedLimit = this.SpeedLimit,
-                Result = this.Result,
                 TesterComment = this.TesterComment,
             };
         }
@@ -150,9 +160,9 @@ namespace BE
         // update test
         public void update(Test test)
         {
-            this.Number = test.Number;
-            this.testerId = test.testerId;
-            this.traineeId = test.traineeId;
+            this.Number = test.TestNumber;
+            this.testerId = test.TesterId;
+            this.traineeId = test.TraineeId;
             this.dateTime = test.dateTime;
 
             this.StartAddress = test.StartAddress.clone();
@@ -165,7 +175,6 @@ namespace BE
             this.StopSigns = test.StopSigns;
             this.SpeedLimit = test.SpeedLimit;
 
-            this.Result = test.Result;
             this.TesterComment = test.TesterComment;
         }
         // override to String

@@ -23,21 +23,24 @@ namespace PL_WPF
     {
         DateTime TodayDate { get; set; }
         Test Test;
+        IBL BL;
         public AddTest()
         {
-            this.DataContext = Test;
+            BL = FactoryBL.getInstance();
             TodayDate = DateTime.Today;
             Test = new Test();
             InitializeComponent();
+            this.DataContext = Test;
             DatePicker.SelectedDate = DateTime.Today;
             HourPicker.Value = 9;
         }
         public AddTest(String PassedTraineeID)
         {
-            this.DataContext = Test;
+            BL = FactoryBL.getInstance();
             TodayDate = DateTime.Today;
             Test = new Test();
             InitializeComponent();
+            this.DataContext = Test;
             DatePicker.SelectedDate = DateTime.Today;
             HourPicker.Value = 9;
         }
@@ -76,7 +79,28 @@ namespace PL_WPF
 
         private void FindTesterButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Person.validID(TraineeIDTextBox.Text))
+            {
+                MessageBox.Show("Invalid ID");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Test.StartAddress.City) || string.IsNullOrWhiteSpace(Test.StartAddress.Street))
+            {
+                MessageBox.Show("Invalid Adress");
+                return;
+            }
+            Trainee tmp = BL.getAllTrainees(new Func<Trainee, bool>(t => t.ID == TraineeIDTextBox.Text)).FirstOrDefault();
+            if (((DateTime.Today - tmp.BirthDay).Days / 365) < Configuration.TRAINEE_MIN_AGE || tmp.NumDrivingLessons < Configuration.TRAINEE_MIN_LESSONS)
+            {
+                MessageBox.Show("Inelidgable Trainee");
+                return;
+            }
 
+            SelectTester selectTester = new SelectTester(Test)
+            {
+                Owner = this
+            };
+            selectTester.ShowDialog();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -86,6 +110,47 @@ namespace PL_WPF
             {
                 this.Close();
             }
+        }
+
+        bool TestIsValid(Test test)
+        {
+            // Make sure the trainee exists
+            Trainee trainee = BL.GetTraineeByID(test.TraineeId);
+            if (trainee == null)
+            {
+                Console.WriteLine("Invalid TraineeID");
+                return false;
+            }
+
+            // Make sure the Trainee hasn't already passed a test
+            List<Test> testsTakenByTrainee = BL.traineeTests(trainee);
+            List<Test> passedTests = (from t in testsTakenByTrainee
+                                      where t.Result
+                                      select t).ToList();
+            if (passedTests.Count != 0)
+            {
+                Console.WriteLine("The Trainee has already passed a test");
+                return false;
+            }
+
+            // Make sure that the Starting Address is valid
+            if (test.StartAddress == null || test.StartAddress.City == null || test.StartAddress.Street == null || test.StartAddress.Number < 0)
+            {
+                Console.WriteLine("Invalid STartAddress");
+                return false;
+            }
+
+            // Make sure there are no conflicting dates
+            List<Test> conflictingTests = BL.getAllTests(new Func<Test, bool>
+               (it => it.TraineeId == test.TraineeId && Math.Abs((test.DateTime.Date - it.DateTime.Date).Days) <= Configuration.DAYS_FROM_TEST));
+            if (conflictingTests.Count != 0)
+            {
+                DateTime nonConfDate = BL.GetNonConflictingDate(test);
+                Console.WriteLine("Conflicting date, try " + nonConfDate.ToString("mm/dd//yyyy"));
+                return false;
+            }
+
+            return true;
         }
     }
 }

@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -78,6 +81,9 @@
     <Compile Include="AddTrainee.xaml.cs">
       <DependentUpon>AddTrainee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditTest.xaml.cs">
+      <DependentUpon>EditTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditTester.xaml.cs">
       <DependentUpon>EditTester.xaml</DependentUpon>
     </Compile>
@@ -90,11 +96,20 @@
     <Compile Include="SelectTrainee.xaml.cs">
       <DependentUpon>SelectTrainee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SugestDate.xaml.cs">
+      <DependentUpon>SugestDate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TestersList.xaml.cs">
       <DependentUpon>TestersList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestsList.xaml.cs">
+      <DependentUpon>TestsList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TraineesList.xaml.cs">
       <DependentUpon>TraineesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTest.xaml.cs">
+      <DependentUpon>ViewTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewTester.xaml.cs">
       <DependentUpon>ViewTester.xaml</DependentUpon>
@@ -115,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddTraineeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,11 +168,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SugestDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TestersList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TestsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TraineesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
