@@ -16,14 +16,17 @@ namespace DAL
         public static List<Trainee> Trainees
         {
             get { return trainees; }
+            set { trainees = value; }
         }
         public static List<Test> Tests 
         {
             get { return tests; }
+            set { tests = value; }
         }
         public static List<Tester> Testers
         {
             get { return testers; }
+            set { testers = value;  }
         }
 
     }

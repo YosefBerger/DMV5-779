@@ -46,6 +46,7 @@
     <Compile Include="IDal.cs" />
     <Compile Include="MyDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XML_IDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

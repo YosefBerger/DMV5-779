@@ -152,8 +152,7 @@ namespace BL
 
         public Tester GetTesterByID(String ID)
         {
-            List<Tester> testers = getAllTesters(new Func<Tester, bool>(it => it.ID == ID));
-            return (testers.Count == 0) ? null : testers.First();
+            return dal.GetTesterByID(ID);
         }
 
         public DateTime NewValidDateTime(Test t)
@@ -193,14 +192,12 @@ namespace BL
 
         public Test GetTestByNumber(String Number)
         {
-            List<Test> tests = getAllTests(new Func<Test, bool>(t => t.TestNumber == Number));
-            return (tests.Count == 0) ? null : tests.First();
+            return dal.GetTestByNumber(Number);
         }
 
         public Trainee GetTraineeByID(String ID)
         {
-            List<Trainee> trainees = getAllTrainees(new Func<Trainee, bool>(t => t.ID == ID));
-            return (trainees.Count == 0) ? null : trainees.First();
+            return dal.GetTraineeByID(ID);
         }
 
         /// <summary>

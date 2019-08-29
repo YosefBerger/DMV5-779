@@ -166,5 +166,23 @@ namespace DAL
             }
             return result.ToList();
         }
+
+        public Test GetTestByNumber(String Number)
+        {
+            List<Test> tests = getAllTests(new Func<Test, bool>(t => t.TestNumber == Number));
+            return (tests.Count == 0) ? null : tests.FirstOrDefault();
+        }
+
+        public Tester GetTesterByID(String ID)
+        {
+            List<Tester> testers = getAllTesters(new Func<Tester, bool>(it => it.ID == ID));
+            return (testers.Count == 0) ? null : testers.FirstOrDefault();
+        }
+
+        public Trainee GetTraineeByID(String ID)
+        {
+            List<Trainee> trainees = getAllTrainees(new Func<Trainee, bool>(t => t.ID == ID));
+            return (trainees.Count == 0) ? null : trainees.FirstOrDefault();
+        }
     }
 }

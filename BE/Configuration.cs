@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    
     // We think this should be in BL but the PDF says to put it here, so that's fun I guess
     public static class Configuration
     {

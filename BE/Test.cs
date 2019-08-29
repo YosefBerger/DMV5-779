@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    
     public class Test
     {
         private static int TestCounter = 0; // Allows us to have incramental test numbers
@@ -27,29 +28,8 @@ namespace BE
             StartAddress.Number = 1;
         }
 
-        private string Number;  // Hold actual test number
-        public string TestNumber {
-            get
-            {
-                if (Number == null)
-                {
-                    Number = String.Format("{0:D8}", TestCounter);
-
-                    TestCounter++;
-                    // Avoid integer over flow
-                    if (TestCounter >= 100000000)
-                    {
-                        TestCounter = 0;
-                    }
-                }
-
-                return Number;
-            }
-            set
-            {
-                Number = value;
-            }
-        }
+        //private string Number;  // Hold actual test number
+        public string TestNumber { get; set; }
         
         
 
@@ -160,7 +140,6 @@ namespace BE
         // update test
         public void update(Test test)
         {
-            this.Number = test.TestNumber;
             this.testerId = test.TesterId;
             this.traineeId = test.TraineeId;
             this.dateTime = test.dateTime;
@@ -182,7 +161,7 @@ namespace BE
         {
             string result = "";
 
-            result += String.Format("Test Number:      {0}\n", Number);
+            result += String.Format("Test Number:      {0}\n", TestNumber);
             result += String.Format("Tester:           {0}\n", TesterId);
             result += String.Format("Trainee:          {0}\n", TraineeId);
             result += String.Format("Date/Time:        {0}\n", DateTime);

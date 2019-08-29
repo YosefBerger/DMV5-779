@@ -2,6 +2,7 @@
 
 namespace BE
 {
+    [Serializable]
     public class Trainee : Person
     {
         public Trainee()
