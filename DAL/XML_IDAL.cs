@@ -57,24 +57,28 @@ namespace DAL
             {
                 FileStream TraineeFile = new FileStream(TraineesPath, FileMode.Create);
                 TraineeFile.Close();
+                DataSource.Trainees = new List<Trainee>();
+                saveListToXML<Trainee>(new List<Trainee>(), TraineesPath);
             }
             else
             {
                 DataSource.Trainees = (LoadListFromXML<Trainee>(TraineesPath));
             }
 
-            // Varify that Trainee file exists
+            // Varify that Tester file exists
             if (!File.Exists(TestersPath))
             {
                 FileStream TesterFile = new FileStream(TestersPath, FileMode.Create);
                 TesterFile.Close();
+                DataSource.Testers = new List<Tester>();
+                saveListToXML<Tester>(new List<Tester>(), TestersPath);
             }
             else
             {
                 DataSource.Testers = (LoadListFromXML<Tester>(TestersPath));
             }
-            saveListToXML<Trainee>(DataSource.Trainees, TraineesPath);
-            saveListToXML<Test>(DataSource.Tests, TestsPath);
+            //saveListToXML<Trainee>(DataSource.Trainees, TraineesPath);
+            //saveListToXML<Test>(DataSource.Tests, TestsPath);
         }
 
         protected static XML_IDAL instance = null;
@@ -96,8 +100,8 @@ namespace DAL
             XElement addressElement = new XElement("Address");
 
             XElement street = new XElement("Street", address.Street);
-            XElement city = new XElement("city", address.City);
-            XElement number = new XElement("number", address.Number);
+            XElement city = new XElement("City", address.City);
+            XElement number = new XElement("Number", address.Number);
 
             addressElement.Add(street, city, number);
 
@@ -169,7 +173,7 @@ namespace DAL
         {
             XElement testElement = new XElement("Test");
 
-            foreach (PropertyInfo item in typeof(BE.Tester).GetProperties())
+            foreach (PropertyInfo item in typeof(BE.Test).GetProperties())
             {
                 // Convert Address
                 if (item.Name == "StartAddress")
@@ -205,7 +209,7 @@ namespace DAL
         {
             Test test = new Test();
 
-            foreach (PropertyInfo item in typeof(BE.Tester).GetRuntimeProperties())
+            foreach (PropertyInfo item in typeof(BE.Test).GetRuntimeProperties())
             {
                 TypeConverter typeConverter = TypeDescriptor.GetConverter(item.PropertyType);
 
@@ -217,6 +221,7 @@ namespace DAL
                 {
                     test.DateTime = ConvertDateTime(testElement.Element("DateTime"));
                 }
+                //else if (item.Name == )
                 else
                 {
                     item.SetValue(test, typeConverter.ConvertFrom(testElement.Element(item.Name).Value));
@@ -234,8 +239,25 @@ namespace DAL
             //ConfigRoot.Element("TestNumber").Value = (int.Parse(ConfigRoot.Element("TestNumber").Value) + 1).ToString();
             //ConfigRoot.Save(ConfigPath);
 
+            int TestNumber;
+
             // Load the most recently used TestNumber
-            int TestNumber = int.Parse(ConfigRoot.Element("TestNumber").Value);
+            XElement numbElement = ConfigRoot.Element("TestNumber");
+            // Make sure the element exists
+            /*
+            if (numbElement == null)
+            {
+                TestNumber = 0;
+            }
+            // Get the value from the element
+            else
+            {
+                string valString = numbElement.Value;
+                TestNumber = (valString == null) ? 0 : int.Parse(valString);
+            }*/
+
+            TestNumber = int.Parse(ConfigRoot.Element("TestNumber").Value);
+
             // Save it to make sure we don't go around the loop too many times
             int counter = TestNumber;
 
@@ -259,7 +281,8 @@ namespace DAL
             }
 
             // Save the number to XML
-            ConfigRoot.Element("TestNumber").Value = int.Parse(ConfigRoot.Element("TestNumber").Value).ToString();
+            //ConfigRoot.Element("TestNumber").Value = int.Parse(ConfigRoot.Element("TestNumber").Value).ToString();
+            ConfigRoot.Element("TestNumber").Value = TestNumber.ToString();
             ConfigRoot.Save(ConfigPath);
 
             // Add the number to the test and save
@@ -300,7 +323,7 @@ namespace DAL
                 testElement.Element(item.Name).SetValue(item.GetValue(test).ToString());
             }
 
-            TestsRoot.Save(TestersPath);
+            TestsRoot.Save(TestsPath);
             return true;
         }
 
@@ -335,7 +358,7 @@ namespace DAL
             try
             {
                 Test = (from t in TestsRoot.Elements()
-                        where t.Element("Number").Value == Number
+                        where t.Element("TestNumber").Value.CompareTo(Number) == 0
                         select t).FirstOrDefault();
             }
             catch
@@ -356,57 +379,80 @@ namespace DAL
         #region Trainee
         public bool addTrainee(Trainee tr)
         {
+            
             Trainee trainee = (from t in DataSource.Trainees
                                where t.ID == tr.ID
                                select t).FirstOrDefault();
             if (trainee == null)
             {
                 DataSource.Trainees.Add(tr);
-                saveListToXML(DataSource.Trainees, TraineesPath);
+                saveListToXML<Trainee>(DataSource.Trainees, TraineesPath);
                 return true;
             }
+
+            /*
+            List<Trainee> trainees = LoadListFromXML<Trainee>(TraineesPath);
+            Trainee tmp = (from t in trainees
+                           where t.ID == tr.ID
+                           select t).FirstOrDefault();
+            if (tmp == null)
+            {
+                trainees.Add(tr);
+                saveListToXML<Trainee>(trainees, TraineesPath);
+                return true;
+            }*/
+
             throw new Exception("DAL: This trainee ID already exists at the Misrad HaRishui");
-
-
         }
+
         public bool removeTrainee(Trainee tr)
         {
+            
             Trainee tmp = (from t in DataSource.Trainees
                            where t.ID == tr.ID
                            select t).FirstOrDefault();
             if (tmp != null)
             {
-                DataSource.Trainees.Remove(tr);
-                saveListToXML(DataSource.Trainees, TraineesPath);
+                DataSource.Trainees.Remove(tmp);
+                saveListToXML<Trainee>(DataSource.Trainees, TraineesPath);
                 return true;
             }
+
+            /*
+            List<Trainee> trainees = LoadListFromXML<Trainee>(TraineesPath);
+            if (trainees.Remove(tr))
+            {
+                saveListToXML<Trainee>(trainees, TraineesPath);
+            }
+            */
+
             throw new Exception("DAL: This trainee ID does not exist at the Misrad HaRishui");
         }
 
         public List<Trainee> getAllTrainees(Func<Trainee, bool> condition = null)
         {
-            //<Trainee> result = null;
+            List<Trainee> result = null;
 
 
             if (condition != null)
             {
-                /*
-                result = from item in DataSource.Trainees
+                
+                result = (from item in DataSource.Trainees
                             where (condition(item))
-                            select item.Clone();*/
-                return LoadListFromXML<Trainee>(TraineesPath).Where(condition).ToList();
+                            select item.Clone()).ToList();
+                //return LoadListFromXML<Trainee>(TraineesPath).Where(condition).ToList();
             }
             else
             {
-                return LoadListFromXML<Trainee>(TraineesPath);
-                /*result = from item in DataSource.Trainees
-                            select item.Clone();*/
+                //return LoadListFromXML<Trainee>(TraineesPath);
+                result = (from item in DataSource.Trainees
+                            select item.Clone()).ToList();
             }
-            //return result.ToList();
+            return result;
         }
         public Trainee GetTraineeByID(String ID)
         {
-            DataSource.Trainees = LoadListFromXML<Trainee>(TraineesPath);
+            //DataSource.Trainees = LoadListFromXML<Trainee>(TraineesPath);
             Trainee trainee = (from t in DataSource.Trainees
                                where t.ID == ID
                                select t).FirstOrDefault();
@@ -420,7 +466,7 @@ namespace DAL
             if (index != -1)
             {
                 DataSource.Trainees[index] = tr;
-                saveListToXML(DataSource.Trainees, TraineesPath);
+                saveListToXML<Trainee>(DataSource.Trainees, TraineesPath);
                 return true;
             }
             throw new Exception("DAL: This trainee ID does not exist at the Misrad HaRishui");
@@ -433,10 +479,13 @@ namespace DAL
             Tester tmp = (from t in DataSource.Testers
                           where t.ID == tester.ID
                           select t).FirstOrDefault();
+
+            /*
+            Tester tmp = GetTesterByID(tester.ID);*/
             if (tmp == null)
             {
                 DataSource.Testers.Add(tester);
-                saveListToXML(DataSource.Testers, TestersPath);
+                saveListToXML<Tester>(DataSource.Testers, TestersPath);
                 return true;
             }
             throw new Exception("DAL: This tester ID is already in the Misrad HaRishui");
@@ -447,12 +496,21 @@ namespace DAL
             Tester tmp = (from t in DataSource.Testers
                           where t.ID == tester.ID
                           select t).FirstOrDefault();
+            
             if (tmp != null)
             {
-                DataSource.Testers.Remove(tester);
-                saveListToXML(DataSource.Testers, TestersPath);
+                DataSource.Testers.Remove(tmp);
+                saveListToXML<Tester>(DataSource.Testers, TestersPath);
                 return true;
             }
+
+            /*
+            List<Tester> testers = getAllTesters();
+            if (testers.Remove(tester)){
+                saveListToXML<Tester>(testers, TestersPath);
+                return true;
+            }*/
+
             throw new Exception("DAL: This tester ID is not in the Misrad HaRishui");
         }
         public bool updateTester(Tester tester)
@@ -461,34 +519,48 @@ namespace DAL
             if (index != -1)
             {
                 DataSource.Testers[index] = tester;
-                saveListToXML(DataSource.Trainees, TestersPath);
+                saveListToXML<Tester>(DataSource.Testers, TestersPath);
                 return true;
             }
+
+            /*
+            List<Tester> testers = getAllTesters();
+            Tester toUopdate = (from t in testers
+                         where t.ID == tester.ID
+                         select t).FirstOrDefault();
+
+            if (toUopdate != null)
+            {
+                toUopdate.Update(tester);
+                saveListToXML<Tester>(testers, TestersPath);
+                return true;
+            }*/
+            
             throw new Exception("DAL: This tester ID does not exist at the Misrad HaRishui");
         }
         public List<Tester> getAllTesters(Func<Tester, bool> condition = null)
         {
-            //IEnumerable<Tester> result = null;
+            IEnumerable<Tester> result = null;
 
             if (condition != null)
-            {/*
+            {
                 result = from item in DataSource.Testers
                             where (condition(item))
-                            select item.Clone();*/
-                return LoadListFromXML<Tester>(TraineesPath).Where(condition).ToList();
+                            select item.Clone();
+                //return LoadListFromXML<Tester>(TraineesPath).Where(condition).ToList();
             }
             else
             {
-                return LoadListFromXML<Tester>(TraineesPath).ToList();
-                /*result = from item in DataSource.Testers
-                            select item.Clone();*/
+                //return LoadListFromXML<Tester>(TraineesPath).ToList();
+                result = from item in DataSource.Testers
+                            select item.Clone();
             }
-            // return result.ToList();
+            return result.ToList();
         }
         public Tester GetTesterByID(String ID)
         {
-
-            return LoadListFromXML<Tester>(TestersPath).FirstOrDefault(new Func<Tester, bool>(x => x.ID == ID));
+            return DataSource.Testers.Where(x => x.ID == ID).FirstOrDefault();
+            //return LoadListFromXML<Tester>(TestersPath).FirstOrDefault(new Func<Tester, bool>(x => x.ID == ID));
         }
         #endregion
 
@@ -496,7 +568,8 @@ namespace DAL
         public static void saveListToXML<T>(List<T> list, string path)
         {
             FileStream file = new FileStream(path, FileMode.Create);
-            XmlSerializer serializer = new XmlSerializer(list.GetType());
+            //XmlSerializer serializer = new XmlSerializer(list.GetType());
+            XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
             serializer.Serialize(file, list);
             file.Close();
         }

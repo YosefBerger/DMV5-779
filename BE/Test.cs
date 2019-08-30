@@ -26,6 +26,7 @@ namespace BE
             dateTime.AddHours(9);
             StartAddress = new Address();
             StartAddress.Number = 1;
+            TesterComment = "";
         }
 
         //private string Number;  // Hold actual test number
@@ -111,9 +112,24 @@ namespace BE
             {
                 return UseMirrors && MaintinaDistance && ParkInReverse && Signals && ParralellParking && Awareness && StopSigns && SpeedLimit;
             }
+            set
+            {
+                
+            }
         }    // Result of the test (if they passed or failed)
 
-        public string TesterComment { get; set; }   // Hold any comments from the tester about the test
+        String testerComment;
+        public string TesterComment
+        {
+            get
+            {
+                return testerComment;
+            }
+            set
+            {
+                testerComment = (value == null) ? "" : value;
+            }
+        }   // Hold any comments from the tester about the test
 
         // copy constructor
         public Test Clone()

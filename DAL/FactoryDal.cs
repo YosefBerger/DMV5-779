@@ -10,8 +10,8 @@ namespace DAL
     {
         public static IDal getInstance()
         {
-            return new MyDal();
-            //return new XMLDal();
+            //return new MyDal();
+            return new XML_IDAL();
         }
     }
 }
