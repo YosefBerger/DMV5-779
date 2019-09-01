@@ -256,7 +256,7 @@ namespace DAL
                 TestNumber = (valString == null) ? 0 : int.Parse(valString);
             }*/
 
-            TestNumber = int.Parse(ConfigRoot.Element("TestNumber").Value);
+            TestNumber = int.Parse(ConfigRoot.Element("TestNumber").Value) + 1;
 
             // Save it to make sure we don't go around the loop too many times
             int counter = TestNumber;
@@ -309,20 +309,32 @@ namespace DAL
         }
         public bool updateTest(Test test)
         {
-            XElement testElement = (from t in TestsRoot.Elements()
-                                    where t.Element("TestNumber").Value == test.TestNumber
-                                    select t).FirstOrDefault();
+            Test toUpdate = null;
 
-            if (testElement == null)
+            // Find the test to dupdate
+            foreach (XElement t in TestsRoot.Elements())
+            {
+                if (t.Element("TestNumber").Value.CompareTo(test.TestNumber) == 0)
+                {
+                    // Get it in order to update it
+                    toUpdate = ConvertTest(t);
+
+                    // Remove the XElement from TesstRoot
+                    t.Remove();
+                }
+            }
+
+            // If we didn't find one, just return
+            if (toUpdate == null)
             {
                 return false;
             }
 
-            foreach (PropertyInfo item in typeof(Test).GetProperties())
-            {
-                testElement.Element(item.Name).SetValue(item.GetValue(test).ToString());
-            }
+            // Update the test we got from TestsRoot with the passed test
+            toUpdate.update(test);
 
+            // Add the updated Test to TestsRoot and save it
+            TestsRoot.Add(ConvertTest(toUpdate));
             TestsRoot.Save(TestsPath);
             return true;
         }
