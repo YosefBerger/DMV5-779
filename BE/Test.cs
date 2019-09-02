@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BE
 {
     
-    public class Test
+    public class Test : IComparable
     {
         private static int TestCounter = 0; // Allows us to have incramental test numbers
 
@@ -195,6 +195,26 @@ namespace BE
             result += String.Format("Comment from the tester:\n\t\"{0}\"\n", TesterComment);
 
             return result;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (TestNumber == null)
+            {
+                return -1;
+            }
+
+            return TestNumber.CompareTo(((Test)obj).TestNumber);
+        }
+
+        public int CompareTo(Test obj)
+        {
+            if (TestNumber == null)
+            {
+                return -1;
+            }
+
+            return TestNumber.CompareTo(obj.TestNumber);
         }
     }
 }
