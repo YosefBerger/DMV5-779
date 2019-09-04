@@ -22,13 +22,15 @@ namespace PL_WPF
     public partial class SelectTrainee : Window
     {
         IBL BL = FactoryBL.getInstance();
+        List<Trainee> trainees;
 
         public String SelectedID { get; set; }
 
         public SelectTrainee()
         {
             InitializeComponent();
-            Trainees.ItemsSource = BL.getAllTrainees();
+            trainees = BL.getAllTrainees();
+            Trainees.ItemsSource = trainees;
         }
 
         private void Select_Click(object sender, RoutedEventArgs e)
@@ -41,6 +43,30 @@ namespace PL_WPF
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void LevenshteinSearh_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(((TextBox)sender).Text))
+            {
+                Trainees.ItemsSource = trainees;
+                return;
+            }
+
+            List<Trainee> tmp = new List<Trainee>();
+            String querry = ((TextBox)sender).Text;
+
+            foreach (Trainee t in trainees)
+            {
+                if (LevenshteinDistance.Calculate(querry, t.ID) < LevenshteinDistance.len(querry, t.ID) + 2 ||
+                    LevenshteinDistance.Calculate(querry, t.FirstName) < LevenshteinDistance.len(querry, t.FirstName) + 3 ||
+                    LevenshteinDistance.Calculate(querry, t.LastName) < LevenshteinDistance.len(querry, t.LastName) + 3)
+                {
+                    tmp.Add(t);
+                }
+            }
+
+            Trainees.ItemsSource = tmp;
         }
     }
 }

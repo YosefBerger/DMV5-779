@@ -402,7 +402,6 @@ namespace BL
             else
             {
                 testers = new List<Tester>();
-                int counter = 0;
                 foreach (Tester t in list)
                 {
                     double dist = getDistance(t.Address, address);
@@ -417,7 +416,6 @@ namespace BL
                         {
                             return null;
                         }
-                        backgroundWorker.ReportProgress((counter++/list.Count) * 100);
                     }
                 }
                 //testers = (from t in list

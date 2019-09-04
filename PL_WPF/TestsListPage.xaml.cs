@@ -68,13 +68,15 @@ namespace PL_WPF
 
             foreach (Test t in tests)
             {
-                if (LevenshteinDistance.Calculate(querry, t.TestNumber) < LevenshteinDistance.len(querry, t.TestNumber) ||
-                    LevenshteinDistance.Calculate(querry, t.TesterId) < LevenshteinDistance.len(querry, t.TesterId) ||
-                    LevenshteinDistance.Calculate(querry, t.TraineeId) < LevenshteinDistance.len(querry, t.TraineeId))
+                if (LevenshteinDistance.Calculate(querry, t.TestNumber) < LevenshteinDistance.len(querry, t.TestNumber) + 2 ||
+                    LevenshteinDistance.Calculate(querry, t.TesterId) < LevenshteinDistance.len(querry, t.TesterId) + 2 ||
+                    LevenshteinDistance.Calculate(querry, t.TraineeId) < LevenshteinDistance.len(querry, t.TraineeId) + 2)
                 {
-
+                    tmp.Add(t);
                 }
             }
+
+            Tests.ItemsSource = tmp;
         }
     }
 }

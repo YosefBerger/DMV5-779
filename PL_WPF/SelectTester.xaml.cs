@@ -26,13 +26,16 @@ namespace PL_WPF
         public bool IsCanceled { get; set; }
         BackgroundWorker getTestersWorker;
         Test test;
+        List<Tester> testers;
 
         public SelectTester()
         {
             InitializeComponent();
-            gettingTesterProgressBar.Visibility = Visibility.Hidden;
+            
+            Spinner.Visibility = Visibility.Hidden;
             loadingText.Visibility = Visibility.Hidden;
-            Testers.ItemsSource = BL.getAllTesters();
+            testers = BL.getAllTesters();
+            Testers.ItemsSource = testers;
             IsCanceled = true;
         }
         public SelectTester(Test test)
@@ -42,13 +45,14 @@ namespace PL_WPF
             InitializeComponent();
             //List<Tester> testers = BL.getAllTesters(new Func<Tester, bool>(t => t.getIfWorking(test.DateTime) && t.));
 
+            SearchIcon.Visibility = Visibility.Hidden;
+            LevenshteinSearh.Visibility = Visibility.Hidden;
             Testers.Visibility = Visibility.Hidden;
 
             getTestersWorker = new BackgroundWorker();
             getTestersWorker.DoWork += new DoWorkEventHandler(GetValidTesters);
-            getTestersWorker.ProgressChanged += new ProgressChangedEventHandler(GetTestersProgressChanged);
             getTestersWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetTestersRunWorkerCompleted);
-            getTestersWorker.WorkerReportsProgress = true;
+            getTestersWorker.WorkerReportsProgress = false;
             getTestersWorker.WorkerSupportsCancellation = true;
             getTestersWorker.RunWorkerAsync(test);
         }
@@ -71,19 +75,18 @@ namespace PL_WPF
                     this.Close();
                     return;
                 }
+                this.Close();
+                return;
             }
 
-            gettingTesterProgressBar.Visibility = Visibility.Hidden;
+            Spinner.Visibility = Visibility.Hidden;
             loadingText.Visibility = Visibility.Hidden;
 
-            Testers.ItemsSource = (List<Tester>)e.Result;
+            testers = (List<Tester>)e.Result;
+            Testers.ItemsSource = testers;
+            SearchIcon.Visibility = Visibility.Hidden;
+            LevenshteinSearh.Visibility = Visibility.Hidden;
             Testers.Visibility = Visibility.Visible;
-            MessageBox.Show("Done");
-        }
-
-        void GetTestersProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            gettingTesterProgressBar.Value = e.ProgressPercentage;
         }
 
         void GetValidTesters (object sender, DoWorkEventArgs e)
@@ -175,6 +178,30 @@ namespace PL_WPF
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void LevenshteinSearh_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(((TextBox)sender).Text))
+            {
+                Testers.ItemsSource = testers;
+                return;
+            }
+
+            List<Tester> tmp = new List<Tester>();
+            String querry = ((TextBox)sender).Text;
+
+            foreach (Tester t in testers)
+            {
+                if (LevenshteinDistance.Calculate(querry, t.ID) < LevenshteinDistance.len(querry, t.ID) + 2 ||
+                    LevenshteinDistance.Calculate(querry, t.FirstName) < LevenshteinDistance.len(querry, t.FirstName) + 3 ||
+                    LevenshteinDistance.Calculate(querry, t.LastName) < LevenshteinDistance.len(querry, t.LastName) + 3)
+                {
+                    tmp.Add(t);
+                }
+            }
+
+            Testers.ItemsSource = tmp;
         }
     }
 }

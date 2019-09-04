@@ -23,11 +23,13 @@ namespace PL_WPF
     public partial class TestersListPage : Page
     {
         private IBL BL;
+        List<Tester> testers;
         public TestersListPage()
         {
             InitializeComponent();
             BL = FactoryBL.getInstance();
-            Testers.ItemsSource = BL.getAllTesters();
+            testers = BL.getAllTesters();
+            Testers.ItemsSource = testers;
         }
 
        
@@ -38,6 +40,28 @@ namespace PL_WPF
             this.NavigationService.Navigate(view);
         }
 
-       
+        private void LevenshteinSearh_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(((TextBox)sender).Text))
+            {
+                Testers.ItemsSource = testers;
+                return;
+            }
+
+            List<Tester> tmp = new List<Tester>();
+            String querry = ((TextBox)sender).Text;
+
+            foreach (Tester t in testers)
+            {
+                if (LevenshteinDistance.Calculate(querry, t.ID) < LevenshteinDistance.len(querry, t.ID) + 2 ||
+                    LevenshteinDistance.Calculate(querry, t.FirstName) < LevenshteinDistance.len(querry, t.FirstName) + 3 ||
+                    LevenshteinDistance.Calculate(querry, t.LastName) < LevenshteinDistance.len(querry, t.LastName) + 3)
+                {
+                    tmp.Add(t);
+                }
+            }
+
+            Testers.ItemsSource = tmp;
+        }
     }
 }
