@@ -22,10 +22,12 @@ namespace PL_WPF
     public partial class TraineeListPage : Page
     {
         IBL BL = FactoryBL.getInstance();
+        List<Trainee> trainees;
         public TraineeListPage()
         {
             InitializeComponent();
-            Trainees.ItemsSource = BL.getAllTrainees();
+            trainees = BL.getAllTrainees();
+            Trainees.ItemsSource = trainees;
         }
         
 
@@ -43,6 +45,30 @@ namespace PL_WPF
         {
             ViewTraineePage view = new ViewTraineePage((String)((Button)sender).Tag);
             this.NavigationService.Navigate(view);
+        }
+
+        private void LevenshteinSearh_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(((TextBox)sender).Text))
+            {
+                Trainees.ItemsSource = trainees;
+                return;
+            }
+
+            List<Trainee> tmp = new List<Trainee>();
+            String querry = ((TextBox)sender).Text;
+
+            foreach (Trainee t in trainees)
+            {
+                if (LevenshteinDistance.Calculate(querry, t.ID) < LevenshteinDistance.len(querry, t.ID) + 2 ||
+                    LevenshteinDistance.Calculate(querry, t.FirstName) < LevenshteinDistance.len(querry, t.FirstName) + 3 ||
+                    LevenshteinDistance.Calculate(querry, t.LastName) < LevenshteinDistance.len(querry, t.LastName) + 3)
+                {
+                    tmp.Add(t);
+                }
+            }
+
+            Trainees.ItemsSource = tmp;
         }
     }
 }

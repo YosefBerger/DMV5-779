@@ -9,7 +9,7 @@ namespace BE
     
     public class Test : IComparable
     {
-        private static int TestCounter = 0; // Allows us to have incramental test numbers
+        // private static int TestCounter = 0; // Allows us to have incramental test numbers
 
         public Test()
         {

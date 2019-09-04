@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:PL_WPF"
         mc:Ignorable="d"
         Title="SelectTrainee" Icon="/Limud.ico" Height="450" Width="800">
@@ -18,12 +19,24 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Button Name="BackButton" Grid.Row="0" Content="Back" Click="BackButton_Click" Margin="3" VerticalAlignment="Top" HorizontalAlignment="Left" />
+            <!--Levenshtein TextBox-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Name="LevenshteinSearh" TextChanged="LevenshteinSearh_TextChanged" Margin="10 15" Width="200"/>
+                <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
+            </Grid>
 
-            <DataGrid Name="Trainees" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
+            <Button Name="BackButton" Grid.Row="1" Content="Back" Click="BackButton_Click" Margin="3" VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+            <DataGrid Name="Trainees" Grid.Row="2" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
                 <DataGrid.AlternatingRowBackground>
                     <SolidColorBrush Color="White" Opacity=".2" />
                 </DataGrid.AlternatingRowBackground>
