@@ -54,8 +54,8 @@ namespace PL_WPF
 
                 MessageBox.Show(tmp ? "The test was removed." : "An error occured", "Delete Test", MessageBoxButton.OK, tmp ? MessageBoxImage.Asterisk : MessageBoxImage.Error);
 
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
         }
     }

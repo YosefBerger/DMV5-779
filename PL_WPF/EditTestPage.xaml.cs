@@ -38,8 +38,8 @@ namespace PL_WPF
         {
             if (BL.updateTest(test))
             {
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
 
             MessageBox.Show("An error occured", "Delete Test", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -47,8 +47,8 @@ namespace PL_WPF
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Home home = new Home();
-            this.NavigationService.Navigate(home);
+            HomePage HomePage = new HomePage();
+            this.NavigationService.Navigate(HomePage);
         }
     }
 }

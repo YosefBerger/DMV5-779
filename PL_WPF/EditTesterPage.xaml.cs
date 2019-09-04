@@ -51,8 +51,8 @@ namespace PL_WPF
             if (ValidTester())
             {
                 BL.updateTester(Tester);
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
             else
             {
@@ -65,8 +65,8 @@ namespace PL_WPF
             MessageBoxResult result = MessageBox.Show("Are you sure you would like to cancel?", "Confirm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
         }
 

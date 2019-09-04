@@ -66,8 +66,8 @@ namespace PL_WPF
                 return;
             }
 
-            Home home = new Home();
-            this.NavigationService.Navigate(home);
+            HomePage HomePage = new HomePage();
+            this.NavigationService.Navigate(HomePage);
         }
 
         public void Cancel_Button(object sender, RoutedEventArgs e)
@@ -75,8 +75,8 @@ namespace PL_WPF
             MessageBoxResult result = MessageBox.Show("Are you sure you want to cancel?", "Confirm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
         }
 

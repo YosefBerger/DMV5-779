@@ -117,10 +117,13 @@
     <Compile Include="EditTraineePage.xaml.cs">
       <DependentUpon>EditTraineePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
+    <Compile Include="HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LevenshteinDistance.cs" />
+    <Compile Include="OurMissionPage.xaml.cs">
+      <DependentUpon>OurMissionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages.xaml.cs">
       <DependentUpon>Pages.xaml</DependentUpon>
     </Compile>
@@ -233,7 +236,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Home.xaml">
+    <Page Include="HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -252,6 +255,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OurMissionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -370,6 +377,9 @@
   <ItemGroup>
     <Folder Include="Pages\" />
     <Folder Include="Trainee\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\HighwayFlage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

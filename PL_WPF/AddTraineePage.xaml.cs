@@ -65,9 +65,9 @@ namespace PL_WPF
                 MessageBox.Show("Not all of the inputs were correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            //go to Home Page
-            Home home = new Home();
-            this.NavigationService.Navigate(home);
+            //go to HomePage Page
+            HomePage HomePage = new HomePage();
+            this.NavigationService.Navigate(HomePage);
         }
 
         /// <summary>
@@ -77,12 +77,12 @@ namespace PL_WPF
         /// <param name="e"></param>
         public void Cancel_Button(object sender, RoutedEventArgs e)
         {
-            // confrim user's desire to close, and if so, go to home page
+            // confrim user's desire to close, and if so, go to HomePage page
             MessageBoxResult result = MessageBox.Show("Are you sure you want to cancel?", "Confirm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
         }
         #endregion

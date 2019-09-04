@@ -100,8 +100,8 @@ namespace PL_WPF
             selectTester.ShowDialog();
             if(!selectTester.IsCanceled)
             {
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
         }
 
@@ -110,8 +110,8 @@ namespace PL_WPF
             MessageBoxResult result = MessageBox.Show("Are you sure you would like to cancel?", "Confrm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
 
             }
         }
