@@ -22,6 +22,9 @@ namespace PL_WPF
     public partial class SelectTrainee : Window
     {
         IBL BL = FactoryBL.getInstance();
+
+        public String SelectedID { get; set; }
+
         public SelectTrainee()
         {
             InitializeComponent();
@@ -30,7 +33,8 @@ namespace PL_WPF
 
         private void Select_Click(object sender, RoutedEventArgs e)
         {
-            ((AddTest)Owner).TraineeIDTextBox.Text = ((Button)sender).Tag.ToString();
+            //((AddTest)Owner).TraineeIDTextBox.Text = ((Button)sender).Tag.ToString();
+            SelectedID = ((Button)sender).Tag.ToString();
             this.Close();
         }
 

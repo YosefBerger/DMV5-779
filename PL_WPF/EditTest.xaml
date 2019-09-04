@@ -15,16 +15,10 @@
             <ImageBrush ImageSource="MisradHaRishu_4x_Light.png" Stretch="Uniform"/>
         </Border.Background>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Button Grid.Row="0" Height="13pt" Width="auto" Content="Back" Click="BackButton_Click" HorizontalAlignment="Left" />
-            <TextBlock Grid.Row="0" Text="View Test" Margin="10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
-            <Grid Grid.Row="1">
+        <StackPanel>
+            <Button Content="Back" Click="BackButton_Click" HorizontalAlignment="Left" />
+            <TextBlock Text="View Test" Margin="10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
@@ -40,8 +34,7 @@
                 <TextBlock FontWeight="DemiBold" Text="Tester ID" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="4"/>
                 <TextBlock x:Name="TesterID" Text="{Binding Path=TesterId, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Grid.Column="5" />
             </Grid>
-            
-            <Grid Grid.Row="2" Margin="0 30 0 0">
+            <Grid Margin="0 30 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -190,14 +183,13 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Tester Comment" Margin="0 0 0 3" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
-                    <ScrollViewer Grid.Row="1">
+                    <TextBlock Text="Tester Comment" Margin="0 0 0 3" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                    <ScrollViewer>
                         <TextBox Text="{Binding Path=TesterComment, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="1" />
                     </ScrollViewer>
                 </Grid>
             </Grid>
-            
-            <Grid Grid.Row="3">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -205,7 +197,7 @@
                 <Button x:Name="UpdateButton" Content="Update" Click="UpdateButton_Click" Margin="20" Grid.Column="0" />
                 <Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click"  Margin="20" Grid.Column="1" />
             </Grid>
-        </Grid>
+        </StackPanel>
 
     </Border>
 </Window>

@@ -21,15 +21,12 @@ namespace PL_WPF
     /// </summary>
     public partial class TestsList : Window
     {
-        List<Test> ItemsSource;
         IBL BL;
         public TestsList()
         {
             BL = FactoryBL.getInstance();
             InitializeComponent();
-            ItemsSource = BL.getAllTests();
-            ItemsSource.Sort();
-            Tests.ItemsSource = ItemsSource;
+            Tests.ItemsSource = BL.getAllTests();
         }
 
         private void ViewandEdt_Btn(object sender, RoutedEventArgs e)
@@ -61,9 +58,7 @@ namespace PL_WPF
 
         private void RefreshList_Click(object sender, RoutedEventArgs e)
         {
-            ItemsSource = BL.getAllTests();
-            ItemsSource.Sort();
-            Tests.ItemsSource = ItemsSource;
+            Tests.ItemsSource = BL.getAllTests();
         }
     }
 }

@@ -23,6 +23,7 @@ namespace PL_WPF
     public partial class SelectTester : Window
     {
         IBL BL = FactoryBL.getInstance();
+        public bool IsCanceled { get; set; }
         BackgroundWorker getTestersWorker;
         Test test;
 
@@ -32,10 +33,12 @@ namespace PL_WPF
             gettingTesterProgressBar.Visibility = Visibility.Hidden;
             loadingText.Visibility = Visibility.Hidden;
             Testers.ItemsSource = BL.getAllTesters();
+            IsCanceled = true;
         }
         public SelectTester(Test test)
         {
             this.test = test;
+            IsCanceled = true;
             InitializeComponent();
             //List<Tester> testers = BL.getAllTesters(new Func<Tester, bool>(t => t.getIfWorking(test.DateTime) && t.));
 
@@ -164,7 +167,7 @@ namespace PL_WPF
                 }
                 else
                 {
-                    this.Owner.Close();
+                    IsCanceled = false;
                     this.Close();
                 }
             }

@@ -72,14 +72,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTest.xaml.cs">
       <DependentUpon>AddTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddTester.xaml.cs">
       <DependentUpon>AddTester.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTesterPage.xaml.cs">
+      <DependentUpon>AddTesterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTestPage.xaml.cs">
+      <DependentUpon>AddTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTests.xaml.cs">
+      <DependentUpon>AddTests.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTrainee.xaml.cs">
       <DependentUpon>AddTrainee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTraineePage.xaml.cs">
+      <DependentUpon>AddTraineePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContactUs.xaml.cs">
+      <DependentUpon>ContactUs.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditTest.xaml.cs">
       <DependentUpon>EditTest.xaml</DependentUpon>
@@ -87,8 +105,23 @@
     <Compile Include="EditTester.xaml.cs">
       <DependentUpon>EditTester.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditTesterPage.xaml.cs">
+      <DependentUpon>EditTesterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditTestPage.xaml.cs">
+      <DependentUpon>EditTestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditTrainee.xaml.cs">
       <DependentUpon>EditTrainee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditTraineePage.xaml.cs">
+      <DependentUpon>EditTraineePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages.xaml.cs">
+      <DependentUpon>Pages.xaml</DependentUpon>
     </Compile>
     <Compile Include="SelectTester.xaml.cs">
       <DependentUpon>SelectTester.xaml</DependentUpon>
@@ -102,8 +135,17 @@
     <Compile Include="TestersList.xaml.cs">
       <DependentUpon>TestersList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestersListPage.xaml.cs">
+      <DependentUpon>TestersListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TestsList.xaml.cs">
       <DependentUpon>TestsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestsListPage.xaml.cs">
+      <DependentUpon>TestsListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TraineeListPage.xaml.cs">
+      <DependentUpon>TraineeListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TraineesList.xaml.cs">
       <DependentUpon>TraineesList.xaml</DependentUpon>
@@ -114,9 +156,22 @@
     <Compile Include="ViewTester.xaml.cs">
       <DependentUpon>ViewTester.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewTesterPage.xaml.cs">
+      <DependentUpon>ViewTesterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTestPage.xaml.cs">
+      <DependentUpon>ViewTestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewTrainee.xaml.cs">
       <DependentUpon>ViewTrainee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewTraineePage.xaml.cs">
+      <DependentUpon>ViewTraineePage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,11 +180,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddTesterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddTrainee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddTraineePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddTraineeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContactUs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,7 +216,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EditTesterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditTrainee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTraineePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,6 +251,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SelectTester.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,7 +271,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TestersListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TestsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestsListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TraineeListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,7 +299,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ViewTesterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ViewTrainee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewTraineePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -248,6 +367,7 @@
     <Resource Include="Limud.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Pages\" />
     <Folder Include="Trainee\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
