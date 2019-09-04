@@ -120,6 +120,7 @@
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LevenshteinDistance.cs" />
     <Compile Include="Pages.xaml.cs">
       <DependentUpon>Pages.xaml</DependentUpon>
     </Compile>

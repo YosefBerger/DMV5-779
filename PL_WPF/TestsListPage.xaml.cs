@@ -22,12 +22,14 @@ namespace PL_WPF
     /// </summary>
     public partial class TestsListPage : Page
     {
+        List<Test> tests;
         IBL BL;
         public TestsListPage()
         {
             BL = FactoryBL.getInstance();
             InitializeComponent();
-            Tests.ItemsSource = BL.getAllTests();
+            tests = BL.getAllTests();
+            Tests.ItemsSource = tests;
         }
 
         private void ViewandEdt_Btn(object sender, RoutedEventArgs e)
@@ -40,8 +42,39 @@ namespace PL_WPF
             }
         }
 
-       
+        private void LevenshteinSearh_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(((TextBox)sender).Text))
+            {
+                Tests.ItemsSource = tests;
+                return;
+            }
 
-        
+            List<Test> tmp = new List<Test>();
+            String querry = ((TextBox)sender).Text;
+
+            if (querry.CompareTo("passed") == 0)
+            {
+                foreach (Test t in tests)
+                {
+                    if (t.Result)
+                    {
+                        tmp.Add(t);
+                    }
+                }
+                Tests.ItemsSource = tmp;
+                return;
+            }
+
+            foreach (Test t in tests)
+            {
+                if (LevenshteinDistance.Calculate(querry, t.TestNumber) < LevenshteinDistance.len(querry, t.TestNumber) ||
+                    LevenshteinDistance.Calculate(querry, t.TesterId) < LevenshteinDistance.len(querry, t.TesterId) ||
+                    LevenshteinDistance.Calculate(querry, t.TraineeId) < LevenshteinDistance.len(querry, t.TraineeId))
+                {
+
+                }
+            }
+        }
     }
 }

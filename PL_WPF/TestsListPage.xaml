@@ -3,19 +3,32 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       xmlns:local="clr-namespace:PL_WPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TestsListPage">
 
     <Border Margin="45">
-
+        
         <Grid>
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
+            
+            <!--Levenshtein TextBox-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Name="LevenshteinSearh" TextChanged="LevenshteinSearh_TextChanged" Margin="10 15" Width="200"/>
+                <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
+            </Grid>
 
             <DataGrid Name="Tests" Grid.Row="1" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" AutoGenerateColumns="False">
                 <DataGrid.AlternatingRowBackground>
