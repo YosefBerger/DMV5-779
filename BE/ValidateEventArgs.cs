@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
+
+/// <summary>
+/// 
+/// </summary>
+/// 
 namespace BE
 {
     public class ValidateEventArgs : EventArgs

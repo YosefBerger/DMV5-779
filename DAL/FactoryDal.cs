@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
+
+    //factor dal is an empty instance of dal interface
     public class FactoryDal
     {
         public static IDal getInstance()

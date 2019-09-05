@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    /// <summary>
+    /// these enums are used to assign values to related things like a car can be auto or manual
+    /// </summary>
     public enum Gender
     {
         MALE, FEMALE

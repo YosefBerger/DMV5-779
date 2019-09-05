@@ -8,11 +8,17 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    /// <summary>
+    /// A tester is a person who tests students students at a driving test
+    /// </summary>
     [Serializable()]
     public class Tester : Person, ISerializable
     {
-        public int YearsExperience { get { return (DateTime.Today - StartYear).Days / 365; } }   // Number of years as a tester
-        public int MaxWeeklyTests { get; set; }     // Max number of tests that the tester can preform per-week
+        public int YearsExperience { get { return (DateTime.Today - StartYear).Days / 365; } }  // Number of years as a tester
+        public int MaxWeeklyTests { get; set; }  // Max number of tests that the tester can preform per-week
+        public bool[][] WorkingHours { get; set; }  // This is going to hold a bool array of hours worked, 5 days x 7 hours a day
+        public double MaxDistance { get; set; }
+        public DateTime StartYear { get; set; }
 
         public Tester()
         {
@@ -27,49 +33,14 @@ namespace BE
             }
         }
 
-        // This is going to hold a bool array of hours worked, 5 days x 7 hours a day
-        public bool[][] WorkingHours { get; set; }
-        
-        // check if the tester is working
-        public bool getIfWorking(DateTime dateTime)
-        {
-            if((int)dateTime.DayOfWeek < 6 && dateTime.Hour <= 15 && dateTime.Hour >= 9)
-            {
-                return WorkingHours[(int)dateTime.DayOfWeek][dateTime.Hour - 9];
-            }
-            return false;
-        }
-        // To-Do getters and setters for the hours worked
-
-        public double MaxDistance { get; set; }
-
-        public DateTime StartYear
-        {
-            get;
-            set;
-        }
-
-        // To string
-        public override string ToString()
-        {
-            String result = "";
-
-            result += base.ToString();
-            result += String.Format("Experience:   {0} years\n", YearsExperience);
-            result += String.Format("Max Tests:    {0}\n", MaxWeeklyTests);
-            result += String.Format("Max Distance: {0}\n", MaxDistance);
-
-            return result;
-        }
-
         // Copy constructor
         public Tester Clone()
         {
             bool[][] tmpWorkingHours = new bool[5][];
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 tmpWorkingHours[i] = new bool[7];
-                for(int j = 0; j < 7; j++)
+                for (int j = 0; j < 7; j++)
                 {
                     tmpWorkingHours[i][j] = this.WorkingHours[i][j];
                 }
@@ -107,6 +78,30 @@ namespace BE
             }
         }
 
+        // check if the tester is working
+        public bool getIfWorking(DateTime dateTime)
+        {
+            if((int)dateTime.DayOfWeek < 6 && dateTime.Hour <= 15 && dateTime.Hour >= 9)
+            {
+                return WorkingHours[(int)dateTime.DayOfWeek][dateTime.Hour - 9];
+            }
+            return false;
+        }
+        // To-Do getters and setters for the hours worked
+        
+        // To string
+        public override string ToString()
+        {
+            String result = "";
+
+            result += base.ToString();
+            result += String.Format("Experience:   {0} years\n", YearsExperience);
+            result += String.Format("Max Tests:    {0}\n", MaxWeeklyTests);
+            result += String.Format("Max Distance: {0}\n", MaxDistance);
+
+            return result;
+        }
+        
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("ID", ID);
@@ -130,38 +125,6 @@ namespace BE
             info.AddValue("MaxDistance", MaxDistance);
             info.AddValue("WorkingHours", WorkingHours);
         }
-
-        /*
-        public Tester(SerializationInfo info, StreamingContext context)
-        {
-            ID = (String)info.GetValue("ID", typeof(String));
-            FirstName = (String)info.GetValue("FirstName", typeof(String));
-            LastName = (String)info.GetValue("LastName", typeof(String));
-            Gender = (Gender)info.GetValue("Gender", typeof(Gender));
-            Email = (String)info.GetValue("Email", typeof(String));
-            VehicleType = (VehicleType)info.GetValue("VehicleType", typeof(VehicleType));
-            BirthDay = new DateTime(
-                    (int)info.GetValue("DOBYear", typeof(int)),
-                    (int)info.GetValue("DOBMonth", typeof(int)),
-                    (int)info.GetValue("DOBDay", typeof(int)),
-                    (int)info.GetValue("DOBHour", typeof(int)), 0, 0
-                );
-            Address = new Address
-            {
-                Street = (String)info.GetValue("Street", typeof(String)),
-                City = (String)info.GetValue("City", typeof(String)),
-                Number = (int)info.GetValue("Number", typeof(int))
-            };
-            StartYear = new DateTime(
-                    (int)info.GetValue("StartYear", typeof(int)),
-                    (int)info.GetValue("StartMonth", typeof(int)),
-                    (int)info.GetValue("StartDay", typeof(int)),
-                    (int)info.GetValue("StartHour", typeof(int)), 0, 0
-                );
-            MaxDistance = (double)info.GetValue("MaxDistance", typeof(double));
-            MaxWeeklyTests = (int)info.GetValue("MaxWeeklyTests", typeof(int));
-            WorkingHours = (bool[][])info.GetValue
-        }*/
     }
 }
 

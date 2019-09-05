@@ -12,6 +12,8 @@ using System.Xml;
 
 namespace BL
 {
+
+    //implimintation of the IBL interface
     internal class MyBL : IBL
     {
         IDal dal = FactoryDal.getInstance();
