@@ -68,7 +68,11 @@ namespace PL_WPF
 
             e.Result = BL.NewValidDateTime(e.Argument as Test);
         }
-
+        /// <summary>
+        /// close the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

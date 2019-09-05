@@ -57,6 +57,7 @@ namespace PL_WPF
             getTestersWorker.RunWorkerAsync(test);
         }
         #endregion
+
         void GetTestersRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)

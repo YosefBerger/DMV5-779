@@ -49,25 +49,38 @@ namespace PL_WPF
         #endregion
 
         #region Buttons
+        /// <summary>
+        /// the user types into the textbox a trainee ID that he is searching for
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TraineeListButton_Click(object sender, RoutedEventArgs e)
         {
             SelectTrainee selectTrainee = new SelectTrainee();
             selectTrainee.ShowDialog();
             TraineeIDTextBox.Text = selectTrainee.SelectedID;
         }
+        /// <summary>
+        /// Search for a tester based on the filled in information
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FindTesterButton_Click(object sender, RoutedEventArgs e)
         {
+            // if the ID is invalid, display error message
             if (!Person.validID(TraineeIDTextBox.Text))
             {
 
                 MessageBox.Show("Invalid ID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            // if address is invalid or empty, display error message
             if (string.IsNullOrWhiteSpace(Test.StartAddress.City) || string.IsNullOrWhiteSpace(Test.StartAddress.Street))
             {
-                MessageBox.Show("nvalid Address", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Invalid Address", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            // check that the trainee is old enough and that he has done enough lessons.  If not, display error message
             Trainee tmp = BL.getAllTrainees(new Func<Trainee, bool>(t => t.ID == TraineeIDTextBox.Text)).FirstOrDefault();
             if (((DateTime.Today - tmp.BirthDay).Days / 365) < Configuration.TRAINEE_MIN_AGE || tmp.NumDrivingLessons < Configuration.TRAINEE_MIN_LESSONS)
             {
@@ -78,6 +91,7 @@ namespace PL_WPF
             SelectTester selectTester = new SelectTester(Test);
 
             selectTester.ShowDialog();
+            // If the tester is cacneled, then go to home page
             if (!selectTester.IsCanceled)
             {
                 HomePage HomePage = new HomePage();
@@ -85,8 +99,14 @@ namespace PL_WPF
             }
         }
 
+        /// <summary>
+        /// cancel, and all current progress is lost
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            // ask user if he is sure about canceling, and if yes, then go to home page.  If not, then stay on the current page
             MessageBoxResult result = MessageBox.Show("Are you sure you would like to cancel?", "Confrm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
@@ -97,8 +117,15 @@ namespace PL_WPF
         }
         #endregion 
 
+        
+        /// <summary>
+        /// choosing correct date for the test
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DatePicker_LostFocus(object sender, RoutedEventArgs e)
         {
+            
             if (((DatePicker)sender).SelectedDate.Value.CompareTo(DateTime.Today) < 0 || ((int)((DatePicker)sender).SelectedDate.Value.DayOfWeek) > 4)
             {
                 ((DatePicker)sender).SelectedDate = Test.DateTime;
@@ -110,8 +137,14 @@ namespace PL_WPF
             }
         }
 
+        /// <summary>
+        /// choosing the hour for the test
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HourPicker_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            // if the hour is invalid or not chosen, then it will be defaulted to 9
             if (HourPicker.Value == null || HourPicker.Value < 9 || HourPicker.Value > 15)
             {
                 HourPicker.Value = 9;
@@ -120,12 +153,14 @@ namespace PL_WPF
             DateString.Text = Test.DateTime.ToString("MM/dd/yyyy HH:mm");
         }
 
-        
+
+        #region Utility Functions
         /// <summary>
         /// Check that the filled out test is valid
         /// </summary>
         /// <param name="test"></param>
         /// <returns></returns>
+
         bool TestIsValid(Test test)
         {
             bool tmp = true;
@@ -174,5 +209,6 @@ namespace PL_WPF
             Console.WriteLine(errorText);
             return tmp;
         }
+        #endregion
     }
 }

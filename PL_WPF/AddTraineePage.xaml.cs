@@ -32,7 +32,7 @@ namespace PL_WPF
             Trainee = new Trainee();
             BL = FactoryBL.getInstance(); // give an instance of IBL
 
-            InitializeComponent(); // run constructor for all elements in the window, wout this a run time error occurs
+            InitializeComponent(); // run constructor for all elements in the window, without this a run time error occurs
 
             this.DataContext = this.Trainee; // bind Trainee to the data context, wthout this data context would be null and we wouldnt be able to bind at all
 
