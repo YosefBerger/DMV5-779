@@ -24,6 +24,8 @@ namespace PL_WPF
     {
         List<Test> tests;
         IBL BL;
+
+        #region Constructor
         public TestsListPage()
         {
             BL = FactoryBL.getInstance();
@@ -31,6 +33,7 @@ namespace PL_WPF
             tests = BL.getAllTests();
             Tests.ItemsSource = tests;
         }
+        #endregion
 
         private void ViewandEdt_Btn(object sender, RoutedEventArgs e)
         {

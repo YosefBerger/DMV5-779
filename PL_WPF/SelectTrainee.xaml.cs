@@ -25,14 +25,14 @@ namespace PL_WPF
         List<Trainee> trainees;
 
         public String SelectedID { get; set; }
-
+        #region Constructor
         public SelectTrainee()
         {
             InitializeComponent();
             trainees = BL.getAllTrainees();
             Trainees.ItemsSource = trainees;
         }
-
+        #endregion
         private void Select_Click(object sender, RoutedEventArgs e)
         {
             //((AddTest)Owner).TraineeIDTextBox.Text = ((Button)sender).Tag.ToString();

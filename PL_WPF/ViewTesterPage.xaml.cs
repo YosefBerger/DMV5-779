@@ -24,6 +24,8 @@ namespace PL_WPF
     {
         Tester Tester;
         IBL BL;
+
+        #region Constructor
         public ViewTesterPage()
         {
             InitializeComponent();
@@ -48,7 +50,9 @@ namespace PL_WPF
             DOBTextBlock.Text = Tester.BirthDay.ToString("mm/dd/yyy");
             this.DataContext = this.Tester;
         }
+        #endregion
 
+        #region Buttons
         private void EditTester_Button(object sender, RoutedEventArgs e)
         {
             EditTesterPage edit = new EditTesterPage(Tester.ID);
@@ -70,7 +74,7 @@ namespace PL_WPF
                 this.NavigationService.Navigate(HomePage);
             }
         }
+        #endregion
 
-       
     }
 }

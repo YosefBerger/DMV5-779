@@ -25,6 +25,7 @@ namespace PL_WPF
         DateTime TodayDate { get; set; }
         Test Test;
         IBL BL;
+        #region Constructors
         public AddTestPage()
         {
             BL = FactoryBL.getInstance();
@@ -45,13 +46,56 @@ namespace PL_WPF
             DatePicker.SelectedDate = DateTime.Today;
             HourPicker.Value = 9;
         }
+        #endregion
 
+        #region Buttons
         private void TraineeListButton_Click(object sender, RoutedEventArgs e)
         {
             SelectTrainee selectTrainee = new SelectTrainee();
             selectTrainee.ShowDialog();
             TraineeIDTextBox.Text = selectTrainee.SelectedID;
         }
+        private void FindTesterButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Person.validID(TraineeIDTextBox.Text))
+            {
+
+                MessageBox.Show("Invalid ID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Test.StartAddress.City) || string.IsNullOrWhiteSpace(Test.StartAddress.Street))
+            {
+                MessageBox.Show("nvalid Address", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            Trainee tmp = BL.getAllTrainees(new Func<Trainee, bool>(t => t.ID == TraineeIDTextBox.Text)).FirstOrDefault();
+            if (((DateTime.Today - tmp.BirthDay).Days / 365) < Configuration.TRAINEE_MIN_AGE || tmp.NumDrivingLessons < Configuration.TRAINEE_MIN_LESSONS)
+            {
+                MessageBox.Show("Ineligible Trainee", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            SelectTester selectTester = new SelectTester(Test);
+
+            selectTester.ShowDialog();
+            if (!selectTester.IsCanceled)
+            {
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
+            }
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you would like to cancel?", "Confrm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
+
+            }
+        }
+        #endregion 
 
         private void DatePicker_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -76,46 +120,12 @@ namespace PL_WPF
             DateString.Text = Test.DateTime.ToString("MM/dd/yyyy HH:mm");
         }
 
-        private void FindTesterButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!Person.validID(TraineeIDTextBox.Text))
-            {
-                MessageBox.Show("Invalid ID");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(Test.StartAddress.City) || string.IsNullOrWhiteSpace(Test.StartAddress.Street))
-            {
-                MessageBox.Show("Invalid Adress");
-                return;
-            }
-            Trainee tmp = BL.getAllTrainees(new Func<Trainee, bool>(t => t.ID == TraineeIDTextBox.Text)).FirstOrDefault();
-            if (((DateTime.Today - tmp.BirthDay).Days / 365) < Configuration.TRAINEE_MIN_AGE || tmp.NumDrivingLessons < Configuration.TRAINEE_MIN_LESSONS)
-            {
-                MessageBox.Show("Inelidgable Trainee");
-                return;
-            }
-
-            SelectTester selectTester = new SelectTester(Test);
-           
-            selectTester.ShowDialog();
-            if(!selectTester.IsCanceled)
-            {
-                HomePage HomePage = new HomePage();
-                this.NavigationService.Navigate(HomePage);
-            }
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("Are you sure you would like to cancel?", "Confrm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                HomePage HomePage = new HomePage();
-                this.NavigationService.Navigate(HomePage);
-
-            }
-        }
-
+        
+        /// <summary>
+        /// Check that the filled out test is valid
+        /// </summary>
+        /// <param name="test"></param>
+        /// <returns></returns>
         bool TestIsValid(Test test)
         {
             bool tmp = true;
@@ -161,6 +171,7 @@ namespace PL_WPF
                 tmp = false;
             }
 
+            Console.WriteLine(errorText);
             return tmp;
         }
     }

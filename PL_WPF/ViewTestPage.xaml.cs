@@ -25,6 +25,8 @@ namespace PL_WPF
     {
         Test test;
         IBL BL;
+
+        #region Constructors
         public ViewTestPage()
         {
             InitializeComponent();
@@ -38,7 +40,9 @@ namespace PL_WPF
             TestHour.Text = test.DateTime.Hour + ":00";
             BL = FactoryBL.getInstance();
         }
+        #endregion
 
+        #region Buttons
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             EditTestPage edit = new EditTestPage(test);
@@ -58,5 +62,6 @@ namespace PL_WPF
                 this.NavigationService.Navigate(HomePage);
             }
         }
+        #endregion
     }
 }

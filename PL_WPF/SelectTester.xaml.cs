@@ -27,7 +27,7 @@ namespace PL_WPF
         BackgroundWorker getTestersWorker;
         Test test;
         List<Tester> testers;
-
+        #region Constructors
         public SelectTester()
         {
             InitializeComponent();
@@ -56,7 +56,7 @@ namespace PL_WPF
             getTestersWorker.WorkerSupportsCancellation = true;
             getTestersWorker.RunWorkerAsync(test);
         }
-
+        #endregion
         void GetTestersRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)

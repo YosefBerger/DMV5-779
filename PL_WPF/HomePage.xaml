@@ -9,15 +9,9 @@
       Title="HomePagePage">
 
     <Border Padding="45">
-        <StackPanel>
-            <Image Source="C:\Users\Yosef\Desktop\DMV5-779-master\DMV5-779\PL_WPF\Pics\HighwayFlage.jpg" Height="370" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-            <FlowDocumentReader>
-                <FlowDocument>
-                    <Paragraph>
-                               Select a new page to continue.
-                    </Paragraph>
-                </FlowDocument>
-            </FlowDocumentReader>
+        <StackPanel Margin="14">
+            <TextBlock HorizontalAlignment="Center" Text="Select a new page to continue" FontWeight="Bold" FontSize="26pt" />
+            <Image Source="C:\Users\Yosef\Desktop\DMV5-779-master\DMV5-779\PL_WPF\Pics\HighwayFlage.jpg" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
         </StackPanel>
         
         
