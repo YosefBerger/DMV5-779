@@ -148,8 +148,8 @@
                                 <TextBlock FontWeight="DemiBold" Text="Signals" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 3 3" Grid.Column="0"/>
                                 <CheckBox IsChecked="{Binding Path=Signals, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Column="1" />
                                 <!--Parallel Parking-->
-                                <TextBlock FontWeight="DemiBold" Text="Parralell Parking" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 3 3" Grid.Column="2"/>
-                                <CheckBox IsChecked="{Binding Path=ParralellParking, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Column="13" />
+                                <TextBlock FontWeight="DemiBold" Text="Parallel Parking" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 3 3" Grid.Column="2"/>
+                                <CheckBox IsChecked="{Binding Path=ParallelParking, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Column="13" />
 
                             </Grid>
                         </Border>

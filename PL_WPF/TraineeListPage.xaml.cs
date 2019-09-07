@@ -35,17 +35,7 @@ namespace PL_WPF
         #endregion
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RefreshList_Click(object sender, RoutedEventArgs e)
-        {
-            Trainees.ItemsSource = BL.getAllTrainees();
-            TraineeListPage refresh = new TraineeListPage();
-            this.NavigationService.Navigate(refresh);
-        }
+        
         /// <summary>
         /// allow user to select the trainee they want to view and edit
         /// </summary>
