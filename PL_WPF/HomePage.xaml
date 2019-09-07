@@ -10,10 +10,14 @@
 
     <!--Home Page is simply a picture of a highway with Israeli Flag-->
     <Border Padding="45">
-        <StackPanel Margin="14">
-            <TextBlock HorizontalAlignment="Center" Text="Select a new page to continue" FontWeight="Bold" FontSize="26pt" />
-            <Image Source="C:\Users\Yosef\Desktop\DMV5-779-master\DMV5-779\PL_WPF\Pics\HighwayFlage.jpg" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-        </StackPanel>
+        <Grid Margin="14">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Select a new page to continue" FontWeight="Bold" FontSize="26pt" />
+            <Image Source="/Pics/HighwayFlage.jpg" Grid.Row="1" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+        </Grid>
         
         
     </Border>

@@ -10,7 +10,6 @@
       Title="TraineeList">
     <!--Border Definition-->
     <Border Margin="45">
-       <!--Stack Panel of elements-->
         <StackPanel>
             <TextBlock Text="Trainees" Margin="0 0 0 3" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
 
@@ -27,11 +26,10 @@
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="3*" />
                     </Grid.ColumnDefinitions>
-                    <!--Levenshtein Search Box with search icon-->
                     <TextBox Grid.Column="0" Name="LevenshteinSearh" TextChanged="LevenshteinSearh_TextChanged" Margin="10 15" Width="200"/>
                     <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
                 </Grid>
-                <!--DataGrid Defintion-->
+
                 <DataGrid Name="Trainees" Grid.Row="1" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" AutoGenerateColumns="False">
                     <DataGrid.AlternatingRowBackground>
                         <SolidColorBrush Color="White" Opacity=".2" />
@@ -39,13 +37,11 @@
                     <DataGrid.Background>
                         <SolidColorBrush Color="LightBlue" Opacity=".2" />
                     </DataGrid.Background>
-                    <!--DataGrid Columns are ID, First Name, Last Name, View and Edit-->
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
                         <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
                         <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
                         <DataGridTemplateColumn Header="View and Edit">
-                            <!--View and Edit Button-->
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Name="ViewandEditButton" Content="View and Edit" Tag="{Binding Path=ID}" Click="ViewandEditButton_Click" />
@@ -54,6 +50,8 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
+
+                <Button Margin="10" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Refresh list" Click="RefreshList_Click"/>
             </Grid>
         </StackPanel>
     </Border>

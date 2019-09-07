@@ -34,8 +34,6 @@
                 <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
             </Grid>
 
-            
-
             <DataGrid Name="Trainees" Grid.Row="2" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
                 <DataGrid.AlternatingRowBackground>
                     <SolidColorBrush Color="White" Opacity=".2" />
