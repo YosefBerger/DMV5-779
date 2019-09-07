@@ -7,8 +7,41 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ContactUs">
-
-    <Grid>
-        
+        <Grid Margin="45">
+        <FlowDocumentScrollViewer Margin="50">
+            <FlowDocument>
+                <Paragraph>
+                    <Image Source="C:\Users\Yosef\Desktop\DMV5-779\PL_WPF\Images\Logo\DMV_PIC.jpg"
+                           Width="90" Height="90" Margin="0 0 30 0"/>
+                    <Run FontSize="40" FontWeight="Bold">
+                        This Project is By:
+                    </Run>
+                </Paragraph>
+                <List>
+                    <ListItem>
+                        <Paragraph>
+                            Yosef Berger 525871662
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Saul Rothman 337923676
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Yosef Schoen
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            We are currently students at Machon Lev, at the end of our second year, studying computer science.
+                        </Paragraph>
+                     
+                    </ListItem>
+                </List>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
     </Grid>
+
 </Page>

@@ -5,10 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PL_WPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="ViewTestPage">
-
+    <!--Border Definition-->
     <Border Margin="45">
+        <!--Structure-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -45,7 +46,7 @@
                 
                 <!--Time and Address-->
                 <StackPanel Grid.Column="0">
-                    <!--Date-->
+                    <!--Test Date-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -54,7 +55,7 @@
                         <TextBlock FontWeight="DemiBold" HorizontalAlignment="Right" Text="Date of Test" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0" />
                         <TextBlock x:Name="TestDate" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
-                    <!--Time-->
+                    <!--Test Time-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -63,8 +64,7 @@
                         <TextBlock FontWeight="DemiBold" HorizontalAlignment="Right" Text="Hour of Test" VerticalAlignment="Center" Margin="0 3 2 0" Grid.Column="0" />
                         <TextBlock x:Name="TestHour" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
-                    
-                    <!--Address-->
+                    <!--Start Address number-->
                     <TextBlock Text="Start Address" Margin="0 20 0 10" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
                     <!--Number-->
                     <Grid Margin="0 0 0 3">
@@ -75,7 +75,7 @@
                         <TextBlock FontWeight="DemiBold" Text="Number" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0"/>
                         <TextBlock x:Name="AddressNumber" Text="{Binding Path=StartAddress.Number}" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
-                    <!--Street-->
+                    <!--Start Street-->
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -84,7 +84,7 @@
                         <TextBlock FontWeight="DemiBold" Text="Street" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0"/>
                         <TextBlock x:Name="AddressStreet" Text="{Binding Path=StartAddress.Street}" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
-                    <!--City-->
+                    <!--Start City-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -94,8 +94,7 @@
                         <TextBlock x:Name="AddressCity" Text="{Binding Path=StartAddress.City}" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
                 </StackPanel>
-                
-                <!--Test Criteria-->
+                <!--Stack Panel for Criteria to pass the test with check boxes-->
                 <StackPanel Grid.Column="1" Margin="5 0">
                     <TextBlock Text="Criteria" Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
                     <Grid>
@@ -108,12 +107,12 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
-                        <!--Mirros and Reverse Parking-->
+                        <!--Checkboxes for each criteria-->
                         <Border Grid.Row="0" Grid.Column="0" BorderThickness="3" CornerRadius="3" HorizontalAlignment="Stretch">
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="LightBlue" Opacity="0" />
                             </Border.BorderBrush>
+                            <!--Use Mirrors and Park in Reverse-->
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -127,8 +126,7 @@
                                 <CheckBox IsChecked="{Binding Path=ParkInReverse}" IsHitTestVisible="False" Grid.Column="3" />
                             </Grid>
                         </Border>
-                        
-                        <!--Signals and Parralell Parking-->
+                        <!--Signals and Parallel Parkig-->
                         <Border Grid.Row="1" BorderThickness="3" CornerRadius="3" HorizontalAlignment="Stretch">
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="LightBlue" Opacity="0.2" />
@@ -147,12 +145,11 @@
                                 <TextBlock FontWeight="DemiBold" Text="Signals" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 3 3" Grid.Column="0"/>
                                 <CheckBox IsChecked="{Binding Path=Signals}" VerticalAlignment="Center" IsHitTestVisible="False" Grid.Column="1" />
 
-                                <TextBlock FontWeight="DemiBold" Text="Parralell Parking" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 3 3" Grid.Column="2"/>
-                                <CheckBox IsChecked="{Binding Path=ParralellParking}" VerticalAlignment="Center" IsHitTestVisible="False" Grid.Column="13" />
+                                <TextBlock FontWeight="DemiBold" Text="Parallel Parking" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 3 3" Grid.Column="2"/>
+                                <CheckBox IsChecked="{Binding Path=ParallelParking}" VerticalAlignment="Center" IsHitTestVisible="False" Grid.Column="13" />
 
                             </Grid>
                         </Border>
-                        
                         <!--Stop Signs and Awareness-->
                         <Border Grid.Row="2" BorderThickness="3" CornerRadius="3" HorizontalAlignment="Stretch">
                             <Border.BorderBrush>
@@ -172,8 +169,7 @@
                                 <CheckBox IsChecked="{Binding Path=Awareness}" IsHitTestVisible="False" VerticalAlignment="Center" Grid.Column="3" />
                             </Grid>
                         </Border>
-                        
-                        <!--Speed Limit and Maintaining a Distance-->
+                        <!--Speed Limit and Maintain Distance-->
                         <Border Grid.Row="3" BorderThickness="3" CornerRadius="3" HorizontalAlignment="Stretch">
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="LightBlue" Opacity="0.2" />
@@ -197,8 +193,7 @@
                             </Grid>
                         </Border>
                     </Grid>
-                    
-                    <!--If the trainee passed the test-->
+                    <!--if Trainee Passed, then the Passed box is checked-->
                     <Border Grid.Row="4" Margin="5" BorderThickness="3" CornerRadius="3" HorizontalAlignment="Center">
                         <Border.BorderBrush>
                             <SolidColorBrush Color="Blue" Opacity="0.2" />
@@ -216,8 +211,7 @@
                         </Grid>
                     </Border>
                 </StackPanel>
-                
-                <!--Tester Comment-->
+                <!--Tester Comment section-->
                 <Grid Grid.Column="2" Margin="5 0 5 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -229,15 +223,14 @@
                     </ScrollViewer>
                 </Grid>
             </Grid>
-            
-            <!--Edit and Delete buttons-->
+            <!--Buttons for Edit and Delete-->
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button x:Name="EditButton" Content="Edit" Click="EditButton_Click" Margin="20" Grid.Column="0" Padding="5" Style="{StaticResource btnBlue}"/>
-                <Button x:Name="DeleteButton" Content="Delete" Click="DeleteButton_Click"  Margin="20" Grid.Column="1" Padding="5" Style="{StaticResource btnGray}" />
+                <Button x:Name="DeleteButton" Content="Delete" Click="DeleteButton_Click"  Margin="20" Grid.Column="1" Padding="5" Style="{StaticResource btnLightRed}" />
             </Grid>
         </Grid>
 

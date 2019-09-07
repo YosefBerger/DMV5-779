@@ -25,7 +25,7 @@ namespace BE
         public bool MaintinaDistance { get; set; }
         public bool ParkInReverse { get; set; }
         public bool Signals { get; set; }
-        public bool ParralellParking { get; set; }
+        public bool ParallelParking { get; set; }
         public bool Awareness { get; set; }
         public bool StopSigns { get; set; }
         public bool SpeedLimit { get; set; }
@@ -63,7 +63,7 @@ namespace BE
                 MaintinaDistance = this.MaintinaDistance,
                 ParkInReverse = this.ParkInReverse,
                 Signals = this.Signals,
-                ParralellParking = this.ParralellParking,
+                ParallelParking = this.ParallelParking,
                 Awareness = this.Awareness,
                 StopSigns = this.StopSigns,
                 SpeedLimit = this.SpeedLimit,
@@ -83,7 +83,7 @@ namespace BE
             this.MaintinaDistance = test.MaintinaDistance;
             this.ParkInReverse = test.ParkInReverse;
             this.Signals = test.Signals;
-            this.ParralellParking = test.ParralellParking;
+            this.ParallelParking = test.ParallelParking;
             this.Awareness = test.Awareness;
             this.StopSigns = test.StopSigns;
             this.SpeedLimit = test.SpeedLimit;
@@ -152,7 +152,7 @@ namespace BE
         public bool Result {
             get
             {
-                return UseMirrors && MaintinaDistance && ParkInReverse && Signals && ParralellParking && Awareness && StopSigns && SpeedLimit;
+                return UseMirrors && MaintinaDistance && ParkInReverse && Signals && ParallelParking && Awareness && StopSigns && SpeedLimit;
             }
             set
             {
@@ -186,7 +186,7 @@ namespace BE
             result += String.Format("Use Mirrors:      {0}\n", UseMirrors ? "PASS" : "FAIL");
             result += String.Format("Parke in Reverse: {0}\n", ParkInReverse ? "PASS" : "FAIL");
             result += String.Format("Signals:          {0}\n", Signals ? "PASS" : "FAIL");
-            result += String.Format("Parralel Parking: {0}\n", ParralellParking ? "PASS" : "FAIL");
+            result += String.Format("Parralel Parking: {0}\n", ParallelParking ? "PASS" : "FAIL");
             result += String.Format("Awareness:        {0}\n", Awareness ? "PASS" : "FAIL");
             result += String.Format("Stop Signs:       {0}\n", StopSigns ? "PASS" : "FAIL");
             result += String.Format("Speed Limit:      {0}\n", Signals ? "PASS" : "FAIL");
