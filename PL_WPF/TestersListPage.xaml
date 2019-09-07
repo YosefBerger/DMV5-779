@@ -8,48 +8,53 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TestersListPage">
-
+    <!--Border Definition-->
     <Border Margin="45">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <!--Levenshtein TextBox-->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="3*" />
-                </Grid.ColumnDefinitions>
-                <TextBox Grid.Column="0" Name="LevenshteinSearh" TextChanged="LevenshteinSearh_TextChanged" Margin="10 15" Width="200"/>
-                <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
+        <!--Stack Panel containing elements of the page-->
+        <StackPanel>
+            <TextBlock Text="Testers" Margin="0 0 0 3" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <!--Levenshtein TextBox-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <!--Levenshtein TextBox-->
+                    <TextBox Grid.Column="0" Name="LevenshteinSearh" TextChanged="LevenshteinSearh_TextChanged" Margin="10 15" Width="200"/>
+                    <!--Magnifying Glass-->
+                    <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
+                </Grid>
+                <!--DataGrid for veiewing the Testsers-->
+                <DataGrid Name="Testers" Grid.Row="1" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" AutoGenerateColumns="False">
+                    <DataGrid.AlternatingRowBackground>
+                        <SolidColorBrush Color="White" Opacity=".2" />
+                    </DataGrid.AlternatingRowBackground>
+                    <DataGrid.Background>
+                        <SolidColorBrush Color="LightBlue" Opacity=".2" />
+                    </DataGrid.Background>
+                    <!--DataGrid Columns-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
+                        <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
+                        <DataGridTemplateColumn Header="View and Edit">
+                            <!--View and Edit Button-->
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="ViewandEditButton" Content="View and Edit" Tag="{Binding Path=ID}" Click="ViewandEdt_Btn" Style="{StaticResource btnBlue}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
-
-            <DataGrid Name="Testers" Grid.Row="1" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" AutoGenerateColumns="False">
-                <DataGrid.AlternatingRowBackground>
-                    <SolidColorBrush Color="White" Opacity=".2" />
-                </DataGrid.AlternatingRowBackground>
-                <DataGrid.Background>
-                    <SolidColorBrush Color="LightBlue" Opacity=".2" />
-                </DataGrid.Background>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
-                    <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
-                    <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
-                    <DataGridTemplateColumn Header="View and Edit">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Name="ViewandEditButton" Content="View and Edit" Tag="{Binding Path=ID}" Click="ViewandEdt_Btn" Style="{StaticResource btnBlue}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-
-           
-        </Grid>
-
+        </StackPanel>
     </Border>
 </Page>

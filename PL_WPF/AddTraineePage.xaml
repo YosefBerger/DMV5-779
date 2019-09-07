@@ -75,7 +75,7 @@
                 </Grid.ColumnDefinitions>
                 <!--Trainee address-->
                 <StackPanel Margin="0 0 10 0" Grid.Column="0">
-                    <TextBlock Text="Adress" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Address" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
                     <StackPanel>
                         <Grid Margin="0 0 0 3">
                             <Grid.ColumnDefinitions>

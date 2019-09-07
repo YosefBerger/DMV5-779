@@ -40,6 +40,11 @@ namespace PL_WPF
             this.Close();
         }
 
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void LevenshteinSearh_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(((TextBox)sender).Text))

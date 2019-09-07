@@ -9,10 +9,12 @@
       d:DesignHeight="500" d:DesignWidth="800"
       Title="AddTesters">
 
-  
+    <!--Border Definition-->
     <Border Margin="45">
+        <!--Stack Panel holds the elements of the Page-->
         <StackPanel>
             <TextBlock Text="Add Tester" Margin="0 0 0 3" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
+            <!--Grid for ID, Gender, and Date of Birth Picker-->
             <Grid Margin="0 30 0 30">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -34,7 +36,7 @@
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="DOB" VerticalAlignment="Center" Grid.Column="5"/>
                 <DatePicker x:Name="DOBPicker" SelectedDate="{Binding Path=BirthDay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="6"/>
             </Grid>
-
+            <!--Grid for First Name, Last Name, and Email-->
             <Grid Margin="0 0 0 8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -63,22 +65,22 @@
                     </TextBox.Text>
                 </TextBox>
             </Grid>
-
+            <!--Grid for Tester Address-->
             <Grid Margin="0 0 0 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Margin="0 0 10 0" Grid.Column="0">
-                    <TextBlock Text="Adress" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
+                <StackPanel Margin="-26,0,35.667,-0.333" Grid.Column="0">
+                    <TextBlock Text="Address" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
                     <StackPanel>
                         <Grid Margin="0 0 0 3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Number" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="0" Grid.Column="0"/>
+                            <TextBlock Text=" Number" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="-10,0,5.333,0" Grid.Row="0" Grid.Column="0" Width="50"/>
                             <xctk:IntegerUpDown x:Name="NumberIntUpDown" Value="{Binding Path=Address.Number}" Minimum="1" Grid.Row="0" Grid.Column="1"/>
                         </Grid>
                         <Grid Margin="0 0 0 3">
@@ -93,6 +95,7 @@
                                 </TextBox.Text>
                             </TextBox>
                         </Grid>
+                        <!--Grid for City-->
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -107,16 +110,19 @@
                         </Grid>
                     </StackPanel>
                 </StackPanel>
+                <!--Stack Panel for Tester Expertise-->
                 <StackPanel Margin="0 0 10 0" Grid.Column="1">
-                    <TextBlock Text="Expertice" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Expertise" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
+                    <!--Teacher experience-->
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="6*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Began Teaching On" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
+                        <TextBlock Text="   Began Teaching On" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="-17,0,5.333,-0.333" Grid.Column="0" Width="115"/>
                         <DatePicker x:Name="StartYearDatePicker" DisplayDate="{Binding Path=StartYear, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" />
                     </Grid>
+                    <!--Vehicle type-->
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
@@ -125,14 +131,16 @@
                         <TextBlock Text="Vehicle Type" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
                         <ComboBox x:Name="VehicleTypeComboBox" SelectedItem="{Binding Path=VehicleType}" Grid.Column="1"/>
                     </Grid>
+                    <!--Max texts per week-->
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="6*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Max Tests Per Week" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
+                        <TextBlock Text="   Max Tests Per Week" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="-19,0,5.333,0" Grid.Column="0" Width="117"/>
                         <xctk:IntegerUpDown Minimum="0" Value="{Binding Path=MaxWeeklyTests}" Grid.Column="1" />
                     </Grid>
+                    <!--Max Distance-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
@@ -143,6 +151,7 @@
                     </Grid>
                 </StackPanel>
                 <StackPanel Margin="0 0 0 0" Grid.Column="2">
+                    <!--Grid for available hours with checkboxes-->
                     <TextBlock Text="Available Hours" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
                     <Grid>
 
@@ -322,7 +331,7 @@
 
                 </StackPanel>
             </Grid>
-
+            <!--Submit and Cancel Button-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

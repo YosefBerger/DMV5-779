@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:PL_WPF"
              StartupUri="Pages.xaml">
     <Application.Resources>
+        
         <Color x:Key="BackgroundLight">#efefef</Color>
         <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}"/>
         <!--createa  color then create a brush for that color-->
@@ -26,6 +27,8 @@
                 </Grid>
             </Border>
         </ControlTemplate>
+        <!--Choosing the colors of the buttons-->
+        <!--Blue Button-->
         <Style TargetType="Button" x:Key="btnBlue">
             <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="Foreground" Value="#000"/>
@@ -45,6 +48,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <!--When mouse is over button, make button datk blue-->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="DarkBlue"/>
@@ -52,7 +56,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
+        <!--Green Button-->
         <Style TargetType="Button" x:Key="btnGreen">
             <Setter Property="Background" Value="#fff"/>
             <Setter Property="Foreground" Value="#000"/>
@@ -73,16 +77,17 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <!--mouse over turn button dark green-->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Background" Value="DarkGreen" />
                     <Setter Property="Foreground" Value=" #fff"/>
 
                 </Trigger>
             </Style.Triggers>
 
         </Style>
-
+        <!--Light Read for delete Buttons-->
         <Style TargetType="Button" x:Key="btnLightRed">
             <Setter Property="Background" Value="#fff"/>
             <Setter Property="Foreground" Value="#000"/>
@@ -103,6 +108,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <!--When mouse is over, button becomes light coral-->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="LightCoral"/>
@@ -112,7 +118,7 @@
             </Style.Triggers>
 
         </Style>
-
+        <!--Gray Button-->
         <Style TargetType="Button" x:Key="btnGray">
             <Setter Property="Background" Value="#fff"/>
             <Setter Property="Foreground" Value="#000"/>
@@ -133,6 +139,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <!--When mouse is over the button, it becoems light pink-->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="LightPink"/>

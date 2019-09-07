@@ -13,7 +13,7 @@
             <ImageBrush ImageSource="MisradHaRishu_4x_Light.png" Stretch="Uniform"/>
         </Grid.Background>
         
-        <!--Top of the Page Buttons-->
+        <!--stackpanel of buttons-->
         <StackPanel Orientation="Horizontal" Height="Auto" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Center">
             <Button Content="Home" Click="Button_ClickHomePage" Padding="5" Style="{StaticResource btnBlue}"/>
             <Button Content="Add Trainee" Click="Button_ClickAddTrainees" Padding="5" Style="{StaticResource btnBlue}"/>
@@ -23,7 +23,7 @@
             <Button Content="Add Test" Click="Button_ClickAddTestPage" Padding="5" Style="{StaticResource btnBlue}"/>
             <Button Content="View Tests" Click="Button_ClickViewTestsList" Padding="5" Style="{StaticResource btnBlue}"/>
         </StackPanel>
-        <!--Bottom of the Page-->
+
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Height="Auto" Width="Auto" HorizontalAlignment="Center">
             <Button Content="Contact Us" Click="Button_ClickContactUs" Padding="5" Style="{StaticResource btnGreen}" FontSize="10"/>
             <Button Content="Our Mission" Click="Button_ClickOurMissionPage" Style="{StaticResource btnGreen}" FontSize="10"/>

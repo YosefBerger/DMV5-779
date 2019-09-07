@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,60 +12,63 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BE;
 using BL;
+using BE;
+using System.Net.Mail;
 
 namespace PL_WPF
 {
     /// <summary>
-    /// Interaction logic for AddTrainees.xaml
+    /// Interaction logic for EditTraineePage.xaml
     /// </summary>
-    public partial class AddTraineePage: Page
+    public partial class EditTraineePage : Page
     {
-        //data members
         private Trainee Trainee;
         private IBL BL;
-
-        #region Ctor
-        public AddTraineePage()
+        #region Constructors
+        public EditTraineePage()
         {
             Trainee = new Trainee();
-            BL = FactoryBL.getInstance(); // give an instance of IBL
+            BL = FactoryBL.getInstance();
 
-            InitializeComponent(); // run constructor for all elements in the window, without this a run time error occurs
+            InitializeComponent();
 
-            this.DataContext = this.Trainee; // bind Trainee to the data context, wthout this data context would be null and we wouldnt be able to bind at all
+            this.DataContext = this.Trainee;
 
-            // for each combobox give it the elements to display
-            this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender)); 
+            this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
             this.GearBoxComboBox.ItemsSource = Enum.GetValues(typeof(BE.GearBox));
             this.VehicleTypeComboBox.ItemsSource = Enum.GetValues(typeof(BE.VehicleType));
-            
+        }
+        public EditTraineePage(String ID)
+        {
+            BL = FactoryBL.getInstance();
+            Trainee = BL.getAllTrainees(new Func<Trainee, bool>(t => t.ID == ID)).FirstOrDefault();
+
+            InitializeComponent();
+
+            this.DataContext = this.Trainee;
+
+            this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
+            this.GearBoxComboBox.ItemsSource = Enum.GetValues(typeof(BE.GearBox));
+            this.VehicleTypeComboBox.ItemsSource = Enum.GetValues(typeof(BE.VehicleType));
         }
         #endregion
 
         #region Buttons
-        /// <summary>
-        /// Attemps to add the trainee to the DMV system, through checking for valid input,
-        /// and creates an error message for invalid input
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void AddTrainee_Button(object sender, RoutedEventArgs e)
+        public void UpdateTrainee_Button(object sender, RoutedEventArgs e)
         {
-            // ensure the Trainee is valid, if not, display error message
             if (!ValidTrainee())
             {
                 MessageBox.Show("Not all of the inputs were correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            // attempt to add to BL, if add fails, show error message
-            if (!BL.addTrainee(Trainee))
+
+            if (!BL.updateTrainee(Trainee))
             {
-                MessageBox.Show("Not all of the inputs were correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("An error occured updating", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            //go to HomePage
+
             HomePage HomePage = new HomePage();
             this.NavigationService.Navigate(HomePage);
         }
@@ -78,7 +80,6 @@ namespace PL_WPF
         /// <param name="e"></param>
         public void Cancel_Button(object sender, RoutedEventArgs e)
         {
-            // confrim user's desire to close, and if so, go to HomePage page
             MessageBoxResult result = MessageBox.Show("Are you sure you want to cancel?", "Confirm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {

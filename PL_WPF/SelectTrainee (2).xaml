@@ -15,7 +15,7 @@
         <Border.Background>
             <ImageBrush ImageSource="MisradHaRishu_4x_Light.png" Stretch="Uniform"/>
         </Border.Background>
-        
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />

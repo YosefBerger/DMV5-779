@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:PL_WPF"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="AddTestPage">
 
     <Border Margin="45">
-        
-
+        <!--Stack Panel holds the elements of the page-->
         <StackPanel>
             <TextBlock Text="Add Test" Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
+            <!--Trainee ID, Test Date, Test Time-->
             <Grid Margin="0 0 0 5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
@@ -33,16 +33,17 @@
                         <Binding Path="TraineeId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" />
                     </TextBox.Text>
                 </TextBox>
-                <Button x:Name="TraineeListButton" Content="Open List" Click="TraineeListButton_Click" Margin="3 0 0 0" Grid.Row="0" Grid.Column="2" />
-
+                <!--Button to open the trainiee list-->
+                <Button x:Name="TraineeListButton" Content="Open List" Click="TraineeListButton_Click" Margin="3 0 0 0" Grid.Row="0" Grid.Column="2" Style="{StaticResource btnBlue}" />
+                <!--Picking the Date-->
                 <TextBlock FontWeight="DemiBold" Text="Test Date" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 3 0" Grid.Row="0" Grid.Column="4" />
                 <DatePicker x:Name="DatePicker" LostFocus="DatePicker_LostFocus" Grid.Row="0" Grid.Column="5" />
-
+                <!--Choosing test time-->
                 <TextBlock FontWeight="DemiBold" Text="Test Time" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 3 0" Grid.Row="1" Grid.Column="4" />
                 <xctk:IntegerUpDown Margin="0 5 0 0" x:Name="HourPicker" ValueChanged="HourPicker_ValueChanged" Minimum="9" Maximum="15" Grid.Column="5" Grid.Row="1" />
             </Grid>
             <TextBlock x:Name="DateString" />
-
+            <!--Starting Address number-->
             <Grid Margin="0 0 0 3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -51,6 +52,7 @@
                 <TextBlock Text="Number" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="0" Grid.Column="0"/>
                 <xctk:IntegerUpDown x:Name="NumberIntUpDown" Value="{Binding Path=StartAddress.Number}" Minimum="1" Grid.Row="0" Grid.Column="1"/>
             </Grid>
+            <!--Statng Street-->
             <Grid Margin="0 0 0 3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -63,6 +65,7 @@
                     </TextBox.Text>
                 </TextBox>
             </Grid>
+            <!--Starting City-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -75,14 +78,14 @@
                     </TextBox.Text>
                 </TextBox>
             </Grid>
-
+            <!--Find Tester Button and Cancel Button-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="FindTesterButton" Margin="20" Content="Find Tester" Click="FindTesterButton_Click" Grid.Column="0" />
-                <Button x:Name="CancelButton" Margin="20" Content="Cancel" Click="CancelButton_Click" Grid.Column="1" />
+                <Button x:Name="FindTesterButton" Margin="20" Content="Find Tester" Click="FindTesterButton_Click" Grid.Column="0" Style="{StaticResource btnBlue}"/>
+                <Button x:Name="CancelButton" Margin="20" Content="Cancel" Click="CancelButton_Click" Grid.Column="1" Style="{StaticResource btnGray}"/>
             </Grid>
 
         </StackPanel>

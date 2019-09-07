@@ -7,13 +7,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
       Title="ViewTraineePage">
-    <!--Border Definition-->
+
     <Border Margin="45">
-        <!--Stack Panel of Elements-->
+        
         <StackPanel>
             
             <TextBlock Text="View Trainee" Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
-            <!--Trainee ID, Gender, DOB-->
             <Grid Margin="0 30 0 40">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -24,17 +23,13 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <!--ID-->
                 <TextBlock FontWeight="DemiBold" Text="ID" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0"/>
                 <TextBlock Text="{Binding Path=ID}" VerticalAlignment="Center" Grid.Column="1"/>
-                <!--Gender-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Gender" VerticalAlignment="Center" Grid.Column="3"/>
                 <TextBlock Text="{Binding Path=Gender}" VerticalAlignment="Center" Margin="0 0 5 0" Grid.Column="4"/>
-                <!--Date of Birth-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="DOB" VerticalAlignment="Center" Grid.Column="5"/>
                 <TextBlock x:Name="DOBTextBlock" VerticalAlignment="Center" Grid.Column="6"/>
             </Grid>
-            <!--First Name, Last Name, Email-->
             <Grid Margin="0 0 0 50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -44,38 +39,31 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <!--First Name-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="First Name" VerticalAlignment="Center" Grid.Column="0"/>
                 <TextBlock Text="{Binding Path=FirstName}" VerticalAlignment="Center" Margin="0 0 10 0" Grid.Column="1"/>
-                <!--Last Name-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Last Name" VerticalAlignment="Center" Grid.Column="2"/>
                 <TextBlock Text="{Binding Path=LastName}" VerticalAlignment="Center"  Margin="0 0 10 0" Grid.Column="3"/>
-                <!--Email-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Email" VerticalAlignment="Center" Grid.Column="4"/>
                 <TextBlock Text="{Binding Path=Email}" VerticalAlignment="Center" Grid.Column="5"/>
             </Grid>
-            <!--Address, Vehicle, Driving School-->
+
             <Grid Margin="0 0 0 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Margin="0 0 0 0" Grid.Column="0">
-                    <TextBlock Text="Address" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
-                    <!--Stack Panel for Address-->
+                <StackPanel Margin="0 0 10 0" Grid.Column="0">
+                    <TextBlock Text="Adress" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
                     <StackPanel>
-                        <!--Number-->
                         <Grid Margin="0 0 0 3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
-                            <!--Number-->
                             <TextBlock Text="Number" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="0" Grid.Column="0"/>
                             <TextBlock Text="{Binding Path=Address.Number}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
                         </Grid>
-                        <!--Street-->
                         <Grid Margin="0 0 0 3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -84,7 +72,6 @@
                             <TextBlock Text="Street" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="1" Grid.Column="0"/>
                             <TextBlock Text="{Binding Path=Address.Street}" VerticalAlignment="Center" Grid.Column="1" />
                         </Grid>
-                        <!--City-->
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -95,10 +82,8 @@
                         </Grid>
                     </StackPanel>
                 </StackPanel>
-                <!--Stack Panel for Vehicle-->
                 <StackPanel Margin="0 0 10 0" Grid.Column="1">
                     <TextBlock Text="Vehicle" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
-                    <!--Gear Box-->
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -107,7 +92,6 @@
                         <TextBlock Text="Gear Box" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
                         <TextBlock Text="{Binding Path=GearBox}" VerticalAlignment="Center" Grid.Column="1"/>
                     </Grid>
-                    <!--Vehicle Type-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -117,10 +101,8 @@
                         <TextBlock Text="{Binding Path=VehicleType}" VerticalAlignment="Center" Grid.Column="1"/>
                     </Grid>
                 </StackPanel>
-                <!--Stak Panel for Drving School-->
                 <StackPanel Margin="0 0 0 0" Grid.Column="2">
                     <TextBlock Text="Driving School" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
-                    <!--School Name-->
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -129,7 +111,6 @@
                         <TextBlock Text="School Name" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
                         <TextBlock Text="{Binding Path=DrivingSchool}" VerticalAlignment="Center" Grid.Column="1" />
                     </Grid>
-                    <!--Instructor Name-->
                     <Grid Margin="0 0 0 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -138,7 +119,6 @@
                         <TextBlock Text="Instructor Name" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
                         <TextBlock Text="{Binding Path=InstructorName}" VerticalAlignment="Center" Grid.Column="1" />
                     </Grid>
-                    <!--Number of Lessons-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -149,14 +129,13 @@
                     </Grid>
                 </StackPanel>
             </Grid>
-            <!--Edit and Delete Button-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="EditButton" Click="EditTrainee_Button" Content="Edit" Grid.Column="0" Margin="20" Padding="5" Style="{StaticResource btnBlue}"/>
-                <Button x:Name="DeleteButton" Click="Delete_Button" Content="Delete" Grid.Column="1" Margin="20" Padding="5" Style="{StaticResource btnLightRed}"/>
+                <Button x:Name="DeleteButton" Click="Delete_Button" Content="Delete" Grid.Column="1" Margin="20" Padding="5" Style="{StaticResource btnGray}"/>
             </Grid>
         </StackPanel>
     </Border>

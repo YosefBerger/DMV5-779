@@ -22,6 +22,9 @@ namespace PL_WPF
     /// </summary>
     public partial class AddTestPage : Page
     {
+        /// <summary>
+        /// data members
+        /// </summary>
         DateTime TodayDate { get; set; }
         Test Test;
         IBL BL;
