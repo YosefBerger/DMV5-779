@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PL_WPF
 {
     /// <summary>
-    /// Interaction logic for About.xaml
+    /// Interaction logic for HomePagePage.xaml
     /// </summary>
-    public partial class About : Page
+    public partial class HomePage : Page
     {
-        public About()
+        public HomePage()
         {
             InitializeComponent();
         }

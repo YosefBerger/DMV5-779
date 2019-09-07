@@ -23,16 +23,17 @@ namespace PL_WPF
     {
         IBL BL = FactoryBL.getInstance();
         List<Trainee> trainees;
+
+        #region Constructor
         public TraineeListPage()
         {
             InitializeComponent();
             trainees = BL.getAllTrainees();
             Trainees.ItemsSource = trainees;
         }
-        
+        #endregion
 
-       
-       
+
 
         private void RefreshList_Click(object sender, RoutedEventArgs e)
         {

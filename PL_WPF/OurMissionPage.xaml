@@ -1,0 +1,63 @@
+﻿<Page x:Class="PL_WPF.OurMissionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PL_WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="OurMissionPage">
+    <Grid Margin="0 45">
+        <FlowDocumentScrollViewer Margin="0 40">
+            <FlowDocument>
+                <Paragraph>
+                    <Image Source="C:\Users\Yosef\Desktop\DMV5-779\PL_WPF\Images\Logo\DMV_PIC.jpg"
+                           Width="90" Height="90" Margin="0 0 30 0"/>
+                    <Run FontSize="100">
+                        Our Mission
+                    </Run>
+                </Paragraph>
+
+                <Paragraph FontSize="30">
+                    <Bold FontStyle="Oblique" FontSize="40">Our Mission</Bold> is to provide the Israeli public with the simple service of signing up for their license exams!  In additon, we also manage our testers to make sure that every single employee is 
+                    qualfied to help the trainees pass their driving tests.
+                    <Bold FontSize="40">Open to the Public Since 1948,</Bold> we have served generations of the Israeli Public proudly and look forward to doing so for many years to come!
+                </Paragraph>
+
+                <List>
+                    <ListItem>
+                        <Paragraph>
+                            Click on Add Trainee to add a trainee
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Click on View Trainee to view a list of the trainees with options to edit and delete
+                        </Paragraph>
+                    </ListItem>
+
+                    <ListItem>
+                        <Paragraph>
+                            Click on Add Tester to add a tester
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Click on View Tester to view a list of testers with options to edit and delete a tester
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Click on Add Test to schedule a test date
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Click on Conact Us to see our contact iformation
+                        </Paragraph>
+                    </ListItem>
+                </List>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Page>

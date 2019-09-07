@@ -25,6 +25,7 @@ namespace PL_WPF
     {
         public Tester Tester { get; set; }
         IBL BL;
+        #region Constructor
         public AddTesterPage()
         {
             Tester = new Tester();
@@ -35,14 +36,17 @@ namespace PL_WPF
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
             this.VehicleTypeComboBox.ItemsSource = Enum.GetValues(typeof(BE.VehicleType));
         }
+        #endregion
 
+        #region Buttons
+       
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if (ValidTester())
             {
                 BL.addTester(Tester);
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
             else
             {
@@ -55,54 +59,61 @@ namespace PL_WPF
             MessageBoxResult result = MessageBox.Show("Are you sure you would like to cancel?", "Confirm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
         }
+        #endregion
 
+        #region Utility Functions
+        /// <summary>
+        ///  helper functions inorder to check for valid testers
+        /// </summary>
+        /// <returns></returns>
         private bool ValidTester()
         {
+            String ErrorMessage = "";
             bool flag = true;
 
             if (!Person.validID(IDTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("ID wrong");
+                ErrorMessage += "ID Wrong";
             }
             if (DOBPicker.SelectedDate == new DateTime())
             {
                 flag = false;
-                Console.WriteLine("DOB Wrong");
+                ErrorMessage += "\nDate of Birth Wrong";
             }
             if (string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("First Name wrong");
+                ErrorMessage += "\nFirst Name Wrong";
             }
             if (string.IsNullOrWhiteSpace(LastNameTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("Last Name wrong");
+                ErrorMessage += "\nLast Name Wrong";
             }
             if (string.IsNullOrWhiteSpace(StreetTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("Street name wrong");
+                ErrorMessage += "\nStreet Name Wrong";
             }
             if (NumberIntUpDown.Value == null)
             {
                 flag = false;
-                Console.WriteLine("Address number wrong");
+                ErrorMessage += "\nAddress Number Wrong";
             }
             if (string.IsNullOrWhiteSpace(CityTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("City wrong");
+                ErrorMessage += "\nCity Wrong";
             }
             if (StartYearDatePicker.SelectedDate == new DateTime())
             {
                 flag = false;
-                Console.WriteLine("Start date is wrong");
+                ErrorMessage += "\nStart Date is Wrong";
             }
             try
             {
@@ -111,10 +122,11 @@ namespace PL_WPF
             catch
             {
                 flag = false;
-                Console.WriteLine("email wrong");
+                ErrorMessage += "\nEmail Wrong";
             }
-
+            Console.WriteLine(ErrorMessage);
             return flag;
         }
+        #endregion
     }
 }

@@ -12,8 +12,8 @@
             <ImageBrush ImageSource="MisradHaRishu_4x_Light.png" Stretch="Uniform"/>
         </Grid.Background>
         <StackPanel Orientation="Horizontal" Height="Auto" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <Button Content="Home" Click="Button_ClickHome" Padding="5" Style="{StaticResource btnBlue}"/>
-            <Button Content="Add Trainees" Click="Button_ClickAddTrainees" Padding="5" Style="{StaticResource btnBlue}"/>
+            <Button Content="Home" Click="Button_ClickHomePage" Padding="5" Style="{StaticResource btnBlue}"/>
+            <Button Content="Add Trainee" Click="Button_ClickAddTrainees" Padding="5" Style="{StaticResource btnBlue}"/>
             <Button Content="View Trainees" Click="Button_ClickViewTraineesList" Padding="5" Style="{StaticResource btnBlue}"/>
             <Button Content="Add Tester" Click ="Button_ClickAddTesterPage" Padding="5" Style="{StaticResource btnBlue}"/>
             <Button Content="View Testers" Click="Button_ClickViewTestersList" Padding="5" Style="{StaticResource btnBlue}"/>
@@ -21,9 +21,9 @@
             <Button Content="View Tests" Click="Button_ClickViewTestsList" Padding="5" Style="{StaticResource btnBlue}"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Height="Auto" Width="Auto" Margin="334,0,334.333,-0.333">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Height="Auto" Width="Auto" HorizontalAlignment="Center">
             <Button Content="Contact Us" Click="Button_ClickContactUs" Padding="5" Style="{StaticResource btnGreen}" FontSize="10"/>
-            <Button Content="About" Click="Button_ClickAbout" Padding="5" Style="{StaticResource btnGreen}" FontSize="10"/>
+            <Button Content="Our Mission" Click="Button_ClickOurMissionPage" Style="{StaticResource btnGreen}" FontSize="10"/>
 
         </StackPanel>
         <Image Source="C:\Users\Yosef\Desktop\DMV5-779\PL_WPF\Images\Menorah.jpg" Height="60" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10"/>

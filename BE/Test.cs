@@ -6,10 +6,30 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    
+    /// <summary>
+    /// A Driving Test will hold all info about a test for a license
+    /// Things about the student, teacher, date of the test ect... 
+    /// </summary>
     public class Test : IComparable
     {
         // private static int TestCounter = 0; // Allows us to have incramental test numbers
+        //private string Number;  // Hold actual test number
+        public string TestNumber { get; set; }
+        private string testerId;    // Hold the actualle tester ID
+        private string traineeId;    // Hold the actualle tester ID
+        private DateTime dateTime;
+        public Address StartAddress { get; set; } // The address from which the test was/will be started
+
+        // Aspects that they will be tested on
+        public bool UseMirrors { get; set; }
+        public bool MaintinaDistance { get; set; }
+        public bool ParkInReverse { get; set; }
+        public bool Signals { get; set; }
+        public bool ParralellParking { get; set; }
+        public bool Awareness { get; set; }
+        public bool StopSigns { get; set; }
+        public bool SpeedLimit { get; set; }
+        String testerComment;
 
         public Test()
         {
@@ -28,108 +48,6 @@ namespace BE
             StartAddress.Number = 1;
             TesterComment = "";
         }
-
-        //private string Number;  // Hold actual test number
-        public string TestNumber { get; set; }
-        
-        
-
-        private string testerId;    // Hold the actualle tester ID
-        public string TesterId      // Get and set the tester ID
-        {
-            get
-            {
-                return testerId;
-            }
-            set
-            {
-                // Make sure the passed ID is valid
-                if (!Tester.validID(value))
-                {
-                    throw new Exception("not valid ID");
-                }
-                testerId = value;
-            }
-        }
-
-        private string traineeId;    // Hold the actualle tester ID
-        public string TraineeId      // Get and set the tester ID
-        {
-            get
-            {
-                return traineeId;
-            }
-            set
-            {
-                // Make sure the passed ID is valid
-                if (!Trainee.validID(value))
-                {
-                    throw new Exception("not valid ID");
-                }
-                traineeId = value;
-            }
-        }
-
-        private DateTime dateTime;
-        public DateTime DateTime
-        {
-            get
-            {
-                return dateTime;
-            }
-            set
-            {
-                dateTime = value;
-                
-                // Make sure the hour is valid
-                if (dateTime.Hour > 15 || dateTime.Hour < 9)
-                {
-                    throw new Exception("Hour is out of bounds");
-                }
-                // Make sure the day of the week is valid
-                if ((int)dateTime.DayOfWeek > 4)
-                {
-                    throw new Exception("Day is out of bounds");
-                }
-            }
-        }
-        
-
-        public Address StartAddress { get; set; } // The address from which the test was/will be started
-
-        // Aspects that they will be tested on
-        public bool UseMirrors { get; set; }
-        public bool MaintinaDistance { get; set; }
-        public bool ParkInReverse { get; set; }
-        public bool Signals { get; set; }
-        public bool ParralellParking { get; set; }
-        public bool Awareness { get; set; }
-        public bool StopSigns { get; set; }
-        public bool SpeedLimit { get; set; }
-
-        public bool Result {
-            get
-            {
-                return UseMirrors && MaintinaDistance && ParkInReverse && Signals && ParralellParking && Awareness && StopSigns && SpeedLimit;
-            }
-            set
-            {
-                
-            }
-        }    // Result of the test (if they passed or failed)
-
-        String testerComment;
-        public string TesterComment
-        {
-            get
-            {
-                return testerComment;
-            }
-            set
-            {
-                testerComment = (value == null) ? "" : value;
-            }
-        }   // Hold any comments from the tester about the test
 
         // copy constructor
         public Test Clone()
@@ -172,6 +90,88 @@ namespace BE
 
             this.TesterComment = test.TesterComment;
         }
+
+        public string TesterId      // Get and set the tester ID
+        {
+            get
+            {
+                return testerId;
+            }
+            set
+            {
+                // Make sure the passed ID is valid
+                if (!Tester.validID(value))
+                {
+                    throw new Exception("not valid ID");
+                }
+                testerId = value;
+            }
+        }
+        
+        public string TraineeId      // Get and set the tester ID
+        {
+            get
+            {
+                return traineeId;
+            }
+            set
+            {
+                // Make sure the passed ID is valid
+                if (!Trainee.validID(value))
+                {
+                    throw new Exception("not valid ID");
+                }
+                traineeId = value;
+            }
+        }
+
+        
+        public DateTime DateTime
+        {
+            get
+            {
+                return dateTime;
+            }
+            set
+            {
+                dateTime = value;
+                
+                // Make sure the hour is valid
+                if (dateTime.Hour > 15 || dateTime.Hour < 9)
+                {
+                    throw new Exception("Hour is out of bounds");
+                }
+                // Make sure the day of the week is valid
+                if ((int)dateTime.DayOfWeek > 4)
+                {
+                    throw new Exception("Day is out of bounds");
+                }
+            }
+        }
+        
+        public bool Result {
+            get
+            {
+                return UseMirrors && MaintinaDistance && ParkInReverse && Signals && ParralellParking && Awareness && StopSigns && SpeedLimit;
+            }
+            set
+            {
+                
+            }
+        }    // Result of the test (if they passed or failed)
+        
+        public string TesterComment
+        {
+            get
+            {
+                return testerComment;
+            }
+            set
+            {
+                testerComment = (value == null) ? "" : value;
+            }
+        }   // Hold any comments from the tester about the test
+        
         // override to String
         public override string ToString()
         {
@@ -197,6 +197,7 @@ namespace BE
             return result;
         }
 
+        //this will enable objects to be campared with a Test
         public int CompareTo(object obj)
         {
             if (TestNumber == null)
@@ -207,6 +208,7 @@ namespace BE
             return TestNumber.CompareTo(((Test)obj).TestNumber);
         }
 
+        //this will enable Tests to be campared with a Test
         public int CompareTo(Test obj)
         {
             if (TestNumber == null)

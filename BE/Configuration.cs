@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    
+    /// <summary>
+    /// the configurations class is to hold the values of important things used throughout the program
+    /// </summary>
     // We think this should be in BL but the PDF says to put it here, so that's fun I guess
     public static class Configuration
     {

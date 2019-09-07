@@ -35,9 +35,9 @@ namespace PL_WPF
 
         }
 
-        private void Button_ClickHome(object sender, RoutedEventArgs e)
+        private void Button_ClickHomePage(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Home();
+            Main.Content = new HomePage();
         }
         private void Button_ClickViewTraineesList(object sender, RoutedEventArgs e)
         {
@@ -49,9 +49,9 @@ namespace PL_WPF
             Main.Content = new ContactUs();
         }
 
-        private void Button_ClickAbout(object sender, RoutedEventArgs e)
+        private void Button_ClickOurMissionPage(object sender, RoutedEventArgs e)
         {
-            Main.Content = new About();
+            Main.Content = new OurMissionPage();
         }
 
         private void Button_ClickViewTestersList(object sender, RoutedEventArgs e)

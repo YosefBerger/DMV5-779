@@ -24,6 +24,8 @@ namespace PL_WPF
     {
         Tester Tester;
         IBL BL;
+
+        #region Constructor
         public ViewTesterPage()
         {
             InitializeComponent();
@@ -48,7 +50,9 @@ namespace PL_WPF
             DOBTextBlock.Text = Tester.BirthDay.ToString("mm/dd/yyy");
             this.DataContext = this.Tester;
         }
+        #endregion
 
+        #region Buttons
         private void EditTester_Button(object sender, RoutedEventArgs e)
         {
             EditTesterPage edit = new EditTesterPage(Tester.ID);
@@ -66,11 +70,11 @@ namespace PL_WPF
                 {
                     MessageBox.Show("An error removing occured", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
         }
+        #endregion
 
-       
     }
 }

@@ -10,6 +10,9 @@ using DAL;
 
 namespace BL
 {
+    /// <summary>
+    /// The BL Layer holds all the rules and logic of the program it sends valid data to the DAL Layer
+    /// </summary>
     public interface IBL
     {
         bool addTrainee(Trainee tr);
@@ -134,6 +137,7 @@ namespace BL
         /// <returns></returns>
         List<Test> traineeTests(Trainee trainee);
 
+        //ways to group Testers and Trainees by vertain criteria
         IEnumerable<IGrouping<VehicleType, Tester>> testerByVehicalType(bool sorted = false);
         IEnumerable<IGrouping<String, Trainee>> traineesBySchool(bool sorted = false);
         IEnumerable<IGrouping<String, Trainee>> traineesByInstructor(bool sorted = false);

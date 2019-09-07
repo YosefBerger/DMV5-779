@@ -4,16 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BE
 {
-    
+    /// <summary>
+    /// Address is a class that will be used by a person
+    /// it has a string for the city and street name and a number for the address
+    /// </summary>
     public class Address
     {
-        public Address()
-        {
-            _Number = 1;
-        }
+        //members
         private String _Street;
+        private int _Number;
+        private String _City;
+
+        //constuctor
+        public Address() { _Number = 1; }
+
+        //copy constuctor
+        public Address clone()
+        {
+            return new Address
+            {
+                _Street = this._Street,
+                _Number = this._Number,
+                _City = this._City
+            };
+        }
+
+        //getters and setters for members
         public String Street
         {
             get
@@ -22,6 +41,7 @@ namespace BE
             }
             set
             {
+                //address can't be empty
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new Exception("The Street Name cannot be empty");
@@ -30,7 +50,7 @@ namespace BE
                 _Street = value;
             }
         }
-        private int _Number;
+       
         public int Number
         {
             get
@@ -41,13 +61,14 @@ namespace BE
             {
                 if (value < 1)
                 {
+                    //number can't be negative
                     throw new Exception("Invalid number");
                 }
 
                 _Number = value;
             }
         }
-        private String _City;
+        
         public String City
         {
             get
@@ -65,16 +86,7 @@ namespace BE
             }
         }
 
-        public Address clone()
-        {
-            return new Address
-            {
-                _Street = this._Street,
-                _Number = this._Number,
-                _City = this._City
-            };
-        }
-
+        //overiding to string method
         public override string ToString()
         {
             String result = "";

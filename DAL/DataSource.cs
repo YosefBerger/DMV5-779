@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
+    /// <summary>
+    /// The DS Layer holds all of the 'raw data' in the program
+    /// this program has three lists
+    /// one for trainees, one for testers, and one for tests
+    /// </summary>
     public static class DataSource
     {
+        
         private static List<Trainee> trainees = new List<Trainee>();
         private static List<Test> tests = new List<Test>();
         private static List<Tester> testers = new List<Tester>();

@@ -7,6 +7,11 @@ using BE;
 
 namespace DAL
 {
+    /// <summary>
+    /// the DAL Layer accesses all of the raw data in the DS Layer
+    /// it can add new data to it, delete current data, and update current data
+    /// it can also view the data filtered by various conditions
+    /// </summary>
     public interface IDal
     {
         bool addTrainee(Trainee tr);

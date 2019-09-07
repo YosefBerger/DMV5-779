@@ -24,6 +24,7 @@ namespace PL_WPF
     {
         Test test;
         IBL BL;
+        #region Constructor
         public EditTestPage(Test test)
         {
             InitializeComponent();
@@ -33,13 +34,15 @@ namespace PL_WPF
             TestHour.Text = test.DateTime.Hour + ":00";
             BL = FactoryBL.getInstance();
         }
+        #endregion
 
+        #region Buttons
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (BL.updateTest(test))
             {
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
 
             MessageBox.Show("An error occured", "Delete Test", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -47,8 +50,14 @@ namespace PL_WPF
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Home home = new Home();
-            this.NavigationService.Navigate(home);
+            MessageBoxResult result = MessageBox.Show("Are you sure you would like to cancel?", "Confirm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if(result == MessageBoxResult.Yes)
+            {
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
+            }
+            
         }
+        #endregion
     }
 }

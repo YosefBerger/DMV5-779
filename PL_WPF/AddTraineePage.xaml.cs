@@ -65,9 +65,9 @@ namespace PL_WPF
                 MessageBox.Show("Not all of the inputs were correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            //go to Home Page
-            Home home = new Home();
-            this.NavigationService.Navigate(home);
+            //go to HomePage Page
+            HomePage HomePage = new HomePage();
+            this.NavigationService.Navigate(HomePage);
         }
 
         /// <summary>
@@ -77,69 +77,70 @@ namespace PL_WPF
         /// <param name="e"></param>
         public void Cancel_Button(object sender, RoutedEventArgs e)
         {
-            // confrim user's desire to close, and if so, go to home page
+            // confrim user's desire to close, and if so, go to HomePage page
             MessageBoxResult result = MessageBox.Show("Are you sure you want to cancel?", "Confirm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Home home = new Home();
-                this.NavigationService.Navigate(home);
+                HomePage HomePage = new HomePage();
+                this.NavigationService.Navigate(HomePage);
             }
         }
         #endregion
 
         #region Utility Functions
         /// <summary>
-        /// Checks if entered information into the page is vald
+        /// Checks if entered information into the page is valid
         /// </summary>
         /// <returns></returns>
         private bool ValidTrainee()
         {
+            String errorText = "";
             bool flag = true;
             // check for valid information, if any information is invalid, write to console, and set the flag to false.
             if (!Person.validID(IDTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("ID wrong");
+                errorText += "ID Wrong";
             }
             if (DOBPicker.SelectedDate == new DateTime())
             {
                 flag = false;
-                Console.WriteLine("DOB Wrong");
+                errorText += "\nDate of Birth Wrong";
             }
             if (string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("First NAme wrong");
+                errorText += "\nFirst Name Wrong";
             }
             if (string.IsNullOrWhiteSpace(LastNameTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("Last Name wrong");
+                errorText += "\nLast Name Wrong";
             }
             if (string.IsNullOrWhiteSpace(StreetTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("Street name wrong");
+                errorText += "\nStreet Name Wrong";
             }
             if (NumberIntUpDown.Value == null)
             {
                 flag = false;
-                Console.WriteLine("Address number wrong");
+                errorText += "\nAddress Number Wrong";
             }
             if (string.IsNullOrWhiteSpace(CityTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("City wrong");
+                errorText += "\nCity Wrong";
             }
             if (string.IsNullOrWhiteSpace(DrivingSchoolNameTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("School name wrong");
+                errorText += "\nSchool Name Wrong";
             }
             if (string.IsNullOrWhiteSpace(DrivingInstructorNameTextBox.Text))
             {
                 flag = false;
-                Console.WriteLine("Instructor name wrong");
+                errorText += "\nInstructor Name Wrong";
             }
             try
             {
@@ -148,9 +149,9 @@ namespace PL_WPF
             catch
             {
                 flag = false;
-                Console.WriteLine("email wrong");
+                errorText += "\nEmal Wrong";
             }
-
+            Console.WriteLine(errorText);
             return flag;
         }
         #endregion
