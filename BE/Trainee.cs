@@ -5,16 +5,48 @@ namespace BE
     [Serializable]
     public class Trainee : Person
     {
+
+        private String _InstrucotrName;  // name of instructor wth whom the trainee studied
+        public GearBox GearBox { get; set; }  // specify gearbox that the trainee learned, must be set
+        private String _DrivingSchool;  // driving school that the trainee attended
+        private int _NumDrivingLessons; // number of lessons
+
         public Trainee()
         {
             VehicleType = VehicleType.PRIVATE;
             GearBox = GearBox.AUTOMATIC;
         }
 
-        // specify gearbox that the trainee learned, must be set
-        public GearBox GearBox { get; set; }
-        // driving school that the trainee attended
-        private String _DrivingSchool;
+        // clone copy constructor
+        public Trainee Clone()
+        {
+            return new Trainee
+            {
+                Address = this.Address.clone(),//
+                BirthDay = this.BirthDay, //
+                Email = this.Email,//
+                FirstName = this.FirstName,//
+                Gender = this.Gender,//
+                ID = this.ID, //
+                LastName = this.LastName, //
+                VehicleType = this.VehicleType,//
+                GearBox = this.GearBox,//
+                DrivingSchool = this.DrivingSchool,
+                InstructorName = this.InstructorName,
+                NumDrivingLessons = this.NumDrivingLessons
+
+            };
+        }
+
+        public void Update(Trainee trainee)
+        {
+            this.Update((Person)trainee);
+            this.InstructorName = trainee.InstructorName;
+            this.NumDrivingLessons = trainee.NumDrivingLessons;
+            this.GearBox = trainee.GearBox;
+            this.DrivingSchool = trainee.DrivingSchool;
+        }
+
         public String DrivingSchool
         {
             get
@@ -31,8 +63,7 @@ namespace BE
                 _DrivingSchool = value;
             }
         }
-        // name of instructor wth whom the trainee studied
-        private String _InstrucotrName;
+        
         public String InstructorName
         {
             get
@@ -49,8 +80,7 @@ namespace BE
                 _InstrucotrName = value;
             }
         }
-        // number of lessons
-        private int _NumDrivingLessons;
+        
         public int NumDrivingLessons
         {
             get
@@ -80,35 +110,6 @@ namespace BE
             result += String.Format("Number of Driving Lessons Passed: {0}\n", NumDrivingLessons);
 
             return result;
-        }
-        // clone copy constructor
-        public Trainee Clone()
-        {
-            return new Trainee
-            {
-                Address = this.Address.clone(),//
-                BirthDay = this.BirthDay, //
-                Email = this.Email,//
-                FirstName = this.FirstName,//
-                Gender = this.Gender,//
-                ID = this.ID, //
-                LastName = this.LastName, //
-                VehicleType = this.VehicleType,//
-                GearBox = this.GearBox,//
-                DrivingSchool = this.DrivingSchool,
-                InstructorName = this.InstructorName,
-                NumDrivingLessons = this.NumDrivingLessons
-
-            };
-        }
-
-        public void Update(Trainee trainee)
-        {
-            this.Update((Person)trainee);
-            this.InstructorName = trainee.InstructorName;
-            this.NumDrivingLessons = trainee.NumDrivingLessons;
-            this.GearBox = trainee.GearBox;
-            this.DrivingSchool = trainee.DrivingSchool;
         }
     }
 }

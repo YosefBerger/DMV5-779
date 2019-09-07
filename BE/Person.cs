@@ -8,16 +8,29 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    /// <summary>
+    /// A Person class is used by Trainee and Tester
+    /// it holds all values they share which are properties of people
+    /// </summary>
     public class Person
     {
+
+        private String _ID;
+        private String _FirstName;
+        private String _LastName;
+        private MailAddress _Email;
+        public DateTime BirthDay { get; set; }
+        public Address Address { get; set; }
+        public Gender Gender { get; set; }
+        public VehicleType VehicleType { get; set; }    // Both tester and trainee need this value, so we put it here
+
         public Person()
         {
             Address = new Address();
             BirthDay = new DateTime();
             Gender = Gender.MALE;
         }
-
-        private String _ID;
+        
         public String ID
         {
             get
@@ -26,9 +39,12 @@ namespace BE
             }
             set
             {
+                //id cannot be empty
                 if (string.IsNullOrWhiteSpace(value)) {
                     throw new Exception("ID cannot be empty");
                 }
+
+                //id must be a valid number (see VALIDID(string value).)
                 else if (!validID(value))
                 {
                     throw new Exception("Invalid ID number");
@@ -37,8 +53,7 @@ namespace BE
                 _ID = value;
             }
         }
-
-        private String _FirstName;
+       
         public String FirstName
         {
             get
@@ -47,6 +62,7 @@ namespace BE
             }
             set
             {
+                //the name must not be empty
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new Exception("First Name cannot be empty");
@@ -55,7 +71,7 @@ namespace BE
                 _FirstName = value;
             }
         }
-        private String _LastName;
+        
         public String LastName
         {
             get
@@ -64,6 +80,7 @@ namespace BE
             }
             set
             {
+                //same for last name
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new Exception("Last Name cannot be empty");
@@ -72,10 +89,11 @@ namespace BE
                 _LastName = value;
             }
         }
-        private MailAddress _Email;
+        
         public String Email {
             get
             {
+                //turns the email to a string needs to manually use null string if its null
                 return (_Email == null) ? "" : _Email.ToString();
             }
             set
@@ -90,26 +108,7 @@ namespace BE
                 }
             }
         }
-        public DateTime BirthDay { get; set; }
-        public Address Address { get; set; }
-        public Gender Gender { get; set; }
-        public VehicleType VehicleType { get; set; }    // Both tester and trainee need this value, so we put it here
 
-        public override string ToString()
-        {
-            String result = "";
-
-            result += String.Format("ID:           {0}\n", ID);
-            result += String.Format("FirstName:    {0}\n", FirstName);
-            result += String.Format("LastName:     {0}\n", LastName);
-            result += String.Format("Gender:       {0}\n", Gender);
-            result += String.Format("Vehicle Tyep: {0}\n", VehicleType);
-            result += String.Format("Email:        {0}\n", Email);
-            result += String.Format("BirthDay:     {0}\n", BirthDay);
-            result += String.Format("Address:      {0}\n", Address);
-          
-            return result;
-        }
         public int getAge()
         {
             // find today's date
@@ -127,6 +126,22 @@ namespace BE
             return year;
         }
 
+        public override string ToString()
+        {
+            String result = "";
+
+            result += String.Format("ID:           {0}\n", ID);
+            result += String.Format("FirstName:    {0}\n", FirstName);
+            result += String.Format("LastName:     {0}\n", LastName);
+            result += String.Format("Gender:       {0}\n", Gender);
+            result += String.Format("Vehicle Tyep: {0}\n", VehicleType);
+            result += String.Format("Email:        {0}\n", Email);
+            result += String.Format("BirthDay:     {0}\n", BirthDay);
+            result += String.Format("Address:      {0}\n", Address);
+
+            return result;
+        }
+
         // implement update for person, which will be used by Trainee and Tester
         public void Update(Person pr)
         {
@@ -140,15 +155,17 @@ namespace BE
             this.VehicleType = pr.VehicleType;
         }
 
+        //this checks to make sure the id is valid
         public static bool validID(string value)
         {
             value = value.Replace(" ", "");
             long tmp;
+            //id is invalid if it is empty has less then 9 digits and cannot be parsed
             if(string.IsNullOrWhiteSpace(value) || value.Length < 9 || !Int64.TryParse(value, out tmp))
             {
                 return false;
             }
-
+         
             string m_PERID = value;
             char[] digits = m_PERID.PadLeft(9, '0').ToCharArray();
             int[] oneTwo = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };

@@ -7,6 +7,13 @@ using BE;
 
 namespace DAL
 {
+    /// <summary>
+    /// all of the add X methods chech to make sure the data is not already in the system
+    /// all of the delete X methods and update X methods chech to make sure the data is in the system
+    /// all of the getAll X methods return a list filtered by a condition of that type of data
+    /// </summary>
+
+    //implimentation of the dal interface
     internal class MyDal : IDal
     {
         public bool addTrainee(Trainee tr)
