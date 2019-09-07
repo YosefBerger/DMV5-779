@@ -34,9 +34,11 @@ namespace PL_WPF
         }
         public ViewTestPage(Test test)
         {
+            // Use the passed test
             this.test = test;
             InitializeComponent();
             this.DataContext = this.test;
+            // Since we cannot bind a TextBlock to a DateTime, jsut get the strings
             TestDate.Text = test.DateTime.ToString("mm/dd/yyyy");
             TestHour.Text = test.DateTime.Hour + ":00";
             BL = FactoryBL.getInstance();

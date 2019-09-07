@@ -26,7 +26,7 @@ namespace PL_WPF
         List<Test> tests;
         IBL BL;
 
-        #region Constructor
+        
         public TestsListPage()
         {
             BL = FactoryBL.getInstance();
@@ -34,7 +34,6 @@ namespace PL_WPF
             tests = BL.getAllTests();
             Tests.ItemsSource = tests;
         }
-        #endregion
 
         //sends user to the selected test's page
         private void ViewandEdt_Btn(object sender, RoutedEventArgs e)
@@ -52,6 +51,7 @@ namespace PL_WPF
         //shortens the list of potential tests by distance to current text
         private void LevenshteinSearh_TextChanged(object sender, TextChangedEventArgs e)
         {
+            // if no string, display everyone
             if (string.IsNullOrWhiteSpace(((TextBox)sender).Text))
             {
                 Tests.ItemsSource = tests;
@@ -60,20 +60,7 @@ namespace PL_WPF
 
             List<Test> tmp = new List<Test>();
             String querry = ((TextBox)sender).Text;
-
-            // if no string, display everyone
-            if (querry.CompareTo("passed") == 0)
-            {
-                foreach (Test t in tests)
-                {
-                    if (t.Result)
-                    {
-                        tmp.Add(t);
-                    }
-                }
-                Tests.ItemsSource = tmp;
-                return;
-            }
+            
 
             foreach (Test t in tests)
             {

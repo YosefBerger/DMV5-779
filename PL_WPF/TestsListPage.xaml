@@ -11,8 +11,8 @@
 
     <!--Border Definitions-->
     <Border Margin="45">
-        <!--Stack Panel of elements contained in the page-->
-        <StackPanel>
+        <!--Grid of elements contained in the page-->
+        <Grid>
             <TextBlock Text="Tests" Margin="0 0 0 3" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
             <Grid>
 
@@ -58,6 +58,6 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-        </StackPanel> 
+        </Grid> 
     </Border>
 </Page>

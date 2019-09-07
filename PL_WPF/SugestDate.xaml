@@ -22,9 +22,17 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
+            
+            <!--Page Title-->
             <TextBlock x:Name="TitleTextBlock" Text="Finding A New Date" Margin="10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Grid.Row="0"/>
+            
+            <!--Spinner to display while loading-->
             <fa:ImageAwesome x:Name="Spinner" Icon="CircleOutlineNotch" Spin="True" Height="48" Width="48" Grid.Row="1" />
+
+            <!--Hold the sugested date-->
             <TextBox Height="auto" x:Name="DepositTextBox" Width="200pt" HorizontalAlignment="Center" Grid.Row="1" />
+            
+            <!--Close the Window-->
             <Button x:Name="CloseButton" Click="CloseButton_Click" VerticalAlignment="Bottom" Content="Close" Grid.Row="3" Margin="50 20" Style="{StaticResource btnLightRed}"/>
         </Grid>
     </Border>

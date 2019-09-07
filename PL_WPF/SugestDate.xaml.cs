@@ -24,6 +24,8 @@ namespace PL_WPF
     {
         IBL BL;
         BackgroundWorker getDate;
+
+        #region Constructors
         public SugestDate()
         {
             InitializeComponent();
@@ -32,11 +34,18 @@ namespace PL_WPF
         {
             BL = FactoryBL.getInstance();
             InitializeComponent();
+
+            // Hide the text box
             DepositTextBox.Visibility = Visibility.Hidden;
             
             GetDate(test);
         }
+        #endregion
 
+        /// <summary>
+        /// Create and start a background worker to find a new test date
+        /// </summary>
+        /// <param name="test"></param>
         private void GetDate(Test test)
         {
             getDate = new BackgroundWorker();
@@ -45,27 +54,46 @@ namespace PL_WPF
             getDate.RunWorkerAsync(test);
         }
 
+        /// <summary>
+        /// Once date is found display it
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void getDateWorkerRunComplete(object sender, RunWorkerCompletedEventArgs e)
         {
+            // Hide the spinner
             Spinner.Visibility = Visibility.Hidden;
+
+            // Change the date
             TitleTextBlock.Text = "Sugested Date";
+            // If somehting whent wrong close the window
             if(e.Result == null)
             {
                 this.Close();
                 return;
             }
+
+            // Convert the date to a string and put it in the text box
             DepositTextBox.Text = ((DateTime)e.Result).ToString("mm/dd/yyyy");
+            // Show the text box
             DepositTextBox.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// Get the new date
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void getDateWorkerDoWork(object sender, DoWorkEventArgs e)
         {
+            // If no test was passed just close
             if(e.Argument == null)
             {
                 this.Close();
                 return;
             }
 
+            // Get the new test date
             e.Result = BL.NewValidDateTime(e.Argument as Test);
         }
         /// <summary>

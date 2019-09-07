@@ -10,8 +10,8 @@
       Title="TestersListPage">
     <!--Border Definition-->
     <Border Margin="45">
-        <!--Stack Panel containing elements of the page-->
-        <StackPanel>
+        <!--Grid containing elements of the page-->
+        <Grid>
             <TextBlock Text="Testers" Margin="0 0 0 3" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
             <Grid>
                 <Grid.RowDefinitions>
@@ -55,6 +55,6 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-        </StackPanel>
+        </Grid>
     </Border>
 </Page>
