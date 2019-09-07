@@ -25,7 +25,7 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock FontWeight="DemiBold" Text="ID" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0"/>
-                <TextBlock x:Name="IDTextBox" Text="{Binding ID}" Grid.Column="1"/>
+                <TextBlock x:Name="IDTextBox" Text="{Binding ID}" VerticalAlignment="Center" Grid.Column="1"/>
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Gender" VerticalAlignment="Center" Grid.Column="3"/>
                 <ComboBox x:Name="GenderComboBox" SelectedItem="{Binding Path=Gender, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0" Grid.Column="4"/>
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="DOB" VerticalAlignment="Center" Grid.Column="5"/>

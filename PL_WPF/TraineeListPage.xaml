@@ -16,7 +16,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <!--Levenshtein TextBox-->
             <Grid Grid.Row="0">
@@ -43,14 +42,12 @@
                     <DataGridTemplateColumn Header="View and Edit">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="ViewandEditButton" Content="View and Edit" Tag="{Binding Path=ID}" Click="ViewandEditButton_Click" />
+                                <Button Name="ViewandEditButton" Content="View and Edit" Tag="{Binding Path=ID}" Style="{StaticResource btnBlue}" Click="ViewandEditButton_Click" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-
-            <Button Margin="10" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Refresh list" Click="RefreshList_Click"/>
         </Grid>
     </Border>
 

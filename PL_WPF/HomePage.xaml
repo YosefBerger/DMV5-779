@@ -8,12 +8,16 @@
       d:DesignHeight="500" d:DesignWidth="800"
       Title="HomePagePage">
 
-    <Border Padding="45">
-        <StackPanel Margin="14">
-            <TextBlock HorizontalAlignment="Center" Text="Select a new page to continue" FontWeight="Bold" FontSize="26pt" />
-            <Image Source="C:\Users\Yosef\Desktop\DMV5-779-master\DMV5-779\PL_WPF\Pics\HighwayFlage.jpg" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-        </StackPanel>
-        
-        
+    <Border Padding="35">
+        <Grid Margin="14">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Select a new page to continue" FontWeight="Bold" FontSize="26pt" />
+            <Image Source="/Pics/HighwayFlage.jpg" Grid.Row="1" Height="auto" HorizontalAlignment="Center" Stretch="Uniform" VerticalAlignment="Center"/>
+        </Grid>
+
+
     </Border>
 </Page>

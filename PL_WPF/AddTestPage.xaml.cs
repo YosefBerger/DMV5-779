@@ -106,7 +106,6 @@ namespace PL_WPF
             else
             {
                 Test.DateTime = ((DatePicker)sender).SelectedDate.Value.Date.AddHours((double)HourPicker.Value);
-                DateString.Text = Test.DateTime.ToString("MM/dd/yyyy HH:mm");
             }
         }
 
@@ -117,7 +116,6 @@ namespace PL_WPF
                 HourPicker.Value = 9;
             }
             Test.DateTime = Test.DateTime.Date.AddHours((double)HourPicker.Value);
-            DateString.Text = Test.DateTime.ToString("MM/dd/yyyy HH:mm");
         }
 
         
