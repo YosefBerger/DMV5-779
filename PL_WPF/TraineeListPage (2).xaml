@@ -1,28 +1,23 @@
-﻿<Window x:Class="PL_WPF.SelectTrainee"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:fa="http://schemas.fontawesome.io/icons/"
-        xmlns:local="clr-namespace:PL_WPF"
-        mc:Ignorable="d"
-        Title="SelectTrainee" Icon="/Limud.ico" Height="450" Width="800">
-    <Window.Background>
-        <SolidColorBrush Color="White"/>
-    </Window.Background>
+﻿<Page x:Class="PL_WPF.TraineeListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      xmlns:local="clr-namespace:PL_WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TraineeList">
 
-    <Border Margin="15">
-        <Border.Background>
-            <ImageBrush ImageSource="MisradHaRishu_4x_Light.png" Stretch="Uniform"/>
-        </Border.Background>
+    <Border Margin="45">
         
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-
             <!--Levenshtein TextBox-->
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -34,9 +29,7 @@
                 <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
             </Grid>
 
-            <Button Name="BackButton" Grid.Row="1" Content="Back" Click="BackButton_Click" Margin="3" VerticalAlignment="Top" HorizontalAlignment="Left" />
-
-            <DataGrid Name="Trainees" Grid.Row="2" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid Name="Trainees" Grid.Row="1" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" AutoGenerateColumns="False">
                 <DataGrid.AlternatingRowBackground>
                     <SolidColorBrush Color="White" Opacity=".2" />
                 </DataGrid.AlternatingRowBackground>
@@ -47,15 +40,18 @@
                     <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
                     <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
                     <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
-                    <DataGridTemplateColumn Header="Select">
+                    <DataGridTemplateColumn Header="View and Edit">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="Select" Content="Select" Tag="{Binding Path=ID}" Click="Select_Click" />
+                                <Button Name="ViewandEditButton" Content="View and Edit" Tag="{Binding Path=ID}" Click="ViewandEditButton_Click" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+
+            <Button Margin="10" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Refresh list" Click="RefreshList_Click"/>
         </Grid>
     </Border>
-</Window>
+
+</Page>

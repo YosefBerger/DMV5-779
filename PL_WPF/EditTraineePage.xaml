@@ -6,11 +6,11 @@
       xmlns:local="clr-namespace:PL_WPF"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="EditTraineePage">
-
+    <!--Boarder Definition-->
     <Border Margin="45">
-        
+        <!--Stack Panel elements-->
         <StackPanel>
             <TextBlock Text="Edit Trainee" Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
             <Grid Margin="0 30 0 40">
@@ -23,17 +23,21 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
+                <!--ID-->
                 <TextBlock FontWeight="DemiBold" Text="ID" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0"/>
                 <TextBox IsReadOnly="True" x:Name="IDTextBox" Validation.ErrorTemplate="{StaticResource errorTemplate}" Grid.Column="1">
                     <TextBox.Text>
                         <Binding Path="ID" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged"/>
                     </TextBox.Text>
                 </TextBox>
+                <!--Gender-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Gender" VerticalAlignment="Center" Grid.Column="3"/>
                 <ComboBox x:Name="GenderComboBox" SelectedItem="{Binding Path=Gender, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0" Grid.Column="4"/>
+                <!--Date of Birth-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="DOB" VerticalAlignment="Center" Grid.Column="5"/>
                 <DatePicker x:Name="DOBPicker" SelectedDate="{Binding Path=BirthDay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="6"/>
             </Grid>
+            <!--First Name, Last Name, Email-->
             <Grid Margin="0 0 0 50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -43,18 +47,21 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                <!--First Name-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="First Name" VerticalAlignment="Center" Grid.Column="0"/>
                 <TextBox x:Name="FirstNameTextBox" Validation.ErrorTemplate="{StaticResource errorTemplate}" Margin="0 0 10 0" Grid.Column="1">
                     <TextBox.Text>
                         <Binding Path="FirstName" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged"/>
                     </TextBox.Text>
                 </TextBox>
+                <!--Last Name-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Last Name" VerticalAlignment="Center" Grid.Column="2"/>
                 <TextBox x:Name="LastNameTextBox" Validation.ErrorTemplate="{StaticResource errorTemplate}" Margin="0 0 10 0" Grid.Column="3">
                     <TextBox.Text>
                         <Binding Path="LastName" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged"/>
                     </TextBox.Text>
                 </TextBox>
+                <!--Email-->
                 <TextBlock FontWeight="DemiBold" Margin="0 0 2 0" Text="Email" VerticalAlignment="Center" Grid.Column="4"/>
                 <TextBox x:Name="EmailTextBox" Validation.ErrorTemplate="{StaticResource errorTemplate}" Grid.Column="5">
                     <TextBox.Text>
@@ -69,14 +76,16 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Margin="0 0 10 0" Grid.Column="0">
-                    <TextBlock Text="Adress" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
+                <!--Address-->
+                <StackPanel Margin="0 0" Grid.Column="0">
+                    <TextBlock Text="Address" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
                     <StackPanel>
                         <Grid Margin="0 0 0 3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
+                            <!--Number-->
                             <TextBlock Text="Number" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="0" Grid.Column="0"/>
                             <xctk:IntegerUpDown x:Name="NumberIntUpDown" Value="{Binding Path=Address.Number}" Minimum="1" Grid.Row="0" Grid.Column="1"/>
                         </Grid>
@@ -85,6 +94,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
+                            <!--Street Name-->
                             <TextBlock Text="Street" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="1" Grid.Column="0"/>
                             <TextBox x:Name="StreetTextBox" Validation.ErrorTemplate="{StaticResource errorTemplate}" Grid.Column="1">
                                 <TextBox.Text>
@@ -97,6 +107,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
+                            <!--City-->
                             <TextBlock Text="City" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="3" Grid.Column="0"/>
                             <TextBox x:Name="CityTextBox" Validation.ErrorTemplate="{StaticResource errorTemplate}" Grid.Column="1">
                                 <TextBox.Text>
@@ -106,6 +117,7 @@
                         </Grid>
                     </StackPanel>
                 </StackPanel>
+                <!--Vehicle Stack Panel-->
                 <StackPanel Margin="0 0 10 0" Grid.Column="1">
                     <TextBlock Text="Vehicle" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
                     <Grid Margin="0 0 0 3">
@@ -113,6 +125,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
+                        <!--Gear Box-->
                         <TextBlock Text="Gear Box" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
                         <ComboBox x:Name="GearBoxComboBox" SelectedItem="{Binding Path=GearBox}" Grid.Column="1"/>
                     </Grid>
@@ -121,10 +134,12 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
+                        <!--Vehicle Type-->
                         <TextBlock Text="Vehicle Type" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
                         <ComboBox x:Name="VehicleTypeComboBox" SelectedItem="{Binding Path=VehicleType}" Grid.Column="1"/>
                     </Grid>
                 </StackPanel>
+                <!--Driving School Stack Panel-->
                 <StackPanel Margin="0 0 0 0" Grid.Column="2">
                     <TextBlock Text="Driving School" FontWeight="Bold" FontSize="16" Margin="0 0 0 5" HorizontalAlignment="Center"/>
                     <Grid Margin="0 0 0 3">
@@ -132,6 +147,7 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
+                        <!--Driving School-->
                         <TextBlock Text="School Name" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
                         <TextBox x:Name="DrivingSchoolNameTextBox" Validation.ErrorTemplate="{StaticResource errorTemplate}" Grid.Column="1">
                             <TextBox.Text>
@@ -144,6 +160,7 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
+                        <!--Instructor Name-->
                         <TextBlock Text="Instructor Name" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
                         <TextBox x:Name="DrivingInstructorNameTextBox" Validation.ErrorTemplate="{StaticResource errorTemplate}" Grid.Column="1">
                             <TextBox.Text>
@@ -151,23 +168,28 @@
                             </TextBox.Text>
                         </TextBox>
                     </Grid>
+                    <!--Number of Lessons Grid-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
+                        <!--Number of Lessons box-->
                         <TextBlock Text="Lessons" FontWeight="DemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Column="0"/>
                         <xctk:IntegerUpDown Minimum="0" Value="{Binding Path=NumDrivingLessons}" x:Name="NumberOfLessonsIntUpDown"  Grid.Column="1"/>
 
                     </Grid>
                 </StackPanel>
             </Grid>
+            <!--Buttons-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                <!--Update Button-->
                 <Button x:Name="SubmitButton" Click="UpdateTrainee_Button" Content="Update Trainee" Grid.Column="0" Margin="20" Padding="5" Style="{StaticResource btnBlue}"/>
+                <!--Cancel Button-->
                 <Button x:Name="CancelButton" Click="Cancel_Button" Content="Cancel" Grid.Column="1" Margin="20" Padding="5" Style="{StaticResource btnGray}"/>
             </Grid>
         </StackPanel>

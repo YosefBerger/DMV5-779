@@ -265,11 +265,5 @@
   <ItemGroup>
     <Resource Include="Pics\HighwayFlage.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pics\Emblem_of_Israel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pics\Emblem_of_Israel_128.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

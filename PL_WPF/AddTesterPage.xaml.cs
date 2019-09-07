@@ -39,9 +39,16 @@ namespace PL_WPF
         #endregion
 
         #region Buttons
-       
+       /// <summary>
+       /// Attempt to add a tester, and succeed only if there is valid input.
+       /// If there is not valid input, send an error message
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            // if the tester is valid, add the tester, and go to the HomePage.
+            // otherwise send an error message
             if (ValidTester())
             {
                 BL.addTester(Tester);
@@ -53,9 +60,14 @@ namespace PL_WPF
                 MessageBox.Show("Something went wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        /// <summary>
+        /// cancel and close the page, losing all progress on the page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            // ask the user if they for sure want to cancel, and if yes, go to the home page
             MessageBoxResult result = MessageBox.Show("Are you sure you would like to cancel?", "Confirm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
@@ -69,7 +81,7 @@ namespace PL_WPF
         /// <summary>
         ///  helper functions inorder to check for valid testers
         /// </summary>
-        /// <returns></returns>
+        /// <returns >bool</returns>
         private bool ValidTester()
         {
             String ErrorMessage = "";

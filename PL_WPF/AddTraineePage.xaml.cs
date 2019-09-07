@@ -23,16 +23,17 @@ namespace PL_WPF
     /// </summary>
     public partial class AddTraineePage: Page
     {
-        
+        //data members
         private Trainee Trainee;
         private IBL BL;
+
         #region Ctor
         public AddTraineePage()
         {
             Trainee = new Trainee();
             BL = FactoryBL.getInstance(); // give an instance of IBL
 
-            InitializeComponent(); // run constructor for all elements in the window, wout this a run time error occurs
+            InitializeComponent(); // run constructor for all elements in the window, without this a run time error occurs
 
             this.DataContext = this.Trainee; // bind Trainee to the data context, wthout this data context would be null and we wouldnt be able to bind at all
 
@@ -65,7 +66,7 @@ namespace PL_WPF
                 MessageBox.Show("Not all of the inputs were correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            //go to HomePage Page
+            //go to HomePage
             HomePage HomePage = new HomePage();
             this.NavigationService.Navigate(HomePage);
         }

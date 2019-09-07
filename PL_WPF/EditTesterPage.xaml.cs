@@ -23,22 +23,25 @@ namespace PL_WPF
     /// </summary>
     public partial class EditTesterPage : Page
     {
+        // data members
         Tester Tester;
         IBL BL;
         #region Constructors
         public EditTesterPage()
         {
             Tester = new Tester();
-            BL = FactoryBL.getInstance();
-            InitializeComponent();
+            BL = FactoryBL.getInstance(); // give an instance of IBL
+            InitializeComponent(); // run constructor for all elements in the window
 
-            this.DataContext = this.Tester;
+            this.DataContext = this.Tester; // bind Tester to the data context
+            //combo box options
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(BE.Gender));
             this.VehicleTypeComboBox.ItemsSource = Enum.GetValues(typeof(BE.VehicleType));
         }
         public EditTesterPage(String ID)
         {
             BL = FactoryBL.getInstance();
+            // get all testers with the passed in ID
             Tester = BL.getAllTesters(new Func<Tester, bool>(t => t.ID == ID)).FirstOrDefault();
             InitializeComponent();
 
@@ -49,8 +52,14 @@ namespace PL_WPF
         #endregion
 
         #region Buttons
+        /// <summary>
+        /// Attemp to submit the edited tester
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            // if the tester is valid then update him and go to the home page, otherwise show error message
             if (ValidTester())
             {
                 BL.updateTester(Tester);
@@ -62,9 +71,14 @@ namespace PL_WPF
                 MessageBox.Show("Something went wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        /// <summary>
+        /// cancel and lose all progress on the page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            // give the user an option to not cancel. If he still wants to cancel then go to the home pagve
             MessageBoxResult result = MessageBox.Show("Are you sure you would like to cancel?", "Confirm Cancelation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
@@ -132,6 +146,7 @@ namespace PL_WPF
                 flag = false;
                 ErrorMessage += "\nEmail Wrong";
             }
+            // output the error message to the user, informing him of all of the errors that occured
             Console.WriteLine(ErrorMessage);
             return flag;
         }

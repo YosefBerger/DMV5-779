@@ -10,13 +10,11 @@
     <Window.Background>
         <SolidColorBrush Color="White"/>
     </Window.Background>
-    <!--Border Definition-->
+
     <Border Margin="15">
-        <!--Backround Image-->
         <Border.Background>
             <ImageBrush ImageSource="MisradHaRishu_4x_Light.png" Stretch="Uniform"/>
         </Border.Background>
-        <!--Stack Panel containing elements of the window-->
         <StackPanel>
             <Grid>
                 <Grid.RowDefinitions>
@@ -26,7 +24,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Select Tester" Grid.Row="0" Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
-                <!--Levenshtein SearchBox-->
+                <!--Levenshtein TextBox-->
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -34,10 +32,8 @@
                         <ColumnDefinition Width="3*" />
                     </Grid.ColumnDefinitions>
                     <TextBox Grid.Column="0" Name="LevenshteinSearh" TextChanged="LevenshteinSearh_TextChanged" Margin="10 15" Width="200"/>
-                    <!--Image for SearchBox-->
                     <fa:ImageAwesome Grid.Column="1" x:Name="SearchIcon" Icon="Search" Height="12pt" Width="12pt" />
                 </Grid>
-                <!--DataGrid of Testers with ID, First Name, Last Name, and option to select-->
                 <DataGrid Name="Testers" Grid.Row="2" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
                     <DataGrid.AlternatingRowBackground>
                         <SolidColorBrush Color="White" Opacity=".2" />
@@ -49,7 +45,6 @@
                         <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" />
                         <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
                         <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
-                        <!--Select Button-->
                         <DataGridTemplateColumn Header="Select">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -68,12 +63,18 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-               <!--Spinning Loadin symbol for when Testers are Loading-->
+                <!--<ProgressBar x:Name="gettingTesterProgressBar" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0" Minimum="0" Maximum="105" >
+                    <ProgressBar.Background>
+                        <SolidColorBrush Color="LightBlue" Opacity=".2" />
+                    </ProgressBar.Background>
+                    <ProgressBar.Foreground>
+                        <SolidColorBrush Color="Blue" />
+                    </ProgressBar.Foreground>
+                </ProgressBar>-->
                 <fa:ImageAwesome Grid.Row="0" x:Name="Spinner" Icon="CircleOutlineNotch" Spin="True" Height="48" Width="48" />
                 <TextBlock x:Name="loadingText" Text="Loading..." Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" />
             </Grid>
-            <!--Cancel Button-->
-            <Button x:Name="CancelLoadingButton" Content="Cancel" Click="CancelLoadingButton_Click" VerticalAlignment="Bottom" Margin="100 20 100 5" Style="{StaticResource btnGray}" />
+            <Button x:Name="CancelLoadingButton" Content="Cancel" Click="CancelLoadingButton_Click" VerticalAlignment="Bottom" Margin="100 20 100 5" />
         </StackPanel>
     </Border>
 </Window>
