@@ -34,8 +34,6 @@
                 <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
             </Grid>
 
-            <Button Name="BackButton" Grid.Row="1" Content="Back" Click="BackButton_Click" Margin="3" VerticalAlignment="Top" HorizontalAlignment="Left" />
-
             <DataGrid Name="Trainees" Grid.Row="2" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
                 <DataGrid.AlternatingRowBackground>
                     <SolidColorBrush Color="White" Opacity=".2" />

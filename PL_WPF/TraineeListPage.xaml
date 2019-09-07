@@ -26,7 +26,6 @@
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="3*" />
                     </Grid.ColumnDefinitions>
-                    <
                     <TextBox Grid.Column="0" Name="LevenshteinSearh" TextChanged="LevenshteinSearh_TextChanged" Margin="10 15" Width="200"/>
                     <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
                 </Grid>
