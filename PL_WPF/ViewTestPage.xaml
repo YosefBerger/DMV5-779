@@ -53,7 +53,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock FontWeight="DemiBold" HorizontalAlignment="Right" Text="Date of Test" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0" />
-                        <TextBlock x:Name="TestDate" HorizontalAlignment="Left" Grid.Column="1" />
+                        <TextBlock x:Name="TestDate" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
                     <!--Test Time-->
                     <Grid>
@@ -62,7 +62,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock FontWeight="DemiBold" HorizontalAlignment="Right" Text="Hour of Test" VerticalAlignment="Center" Margin="0 3 2 0" Grid.Column="0" />
-                        <TextBlock x:Name="TestHour" HorizontalAlignment="Left" Grid.Column="1" />
+                        <TextBlock x:Name="TestHour" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
                     <!--Start Address number-->
                     <TextBlock Text="Start Address" Margin="0 20 0 10" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
@@ -73,7 +73,7 @@
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock FontWeight="DemiBold" Text="Number" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0"/>
-                        <TextBlock x:Name="AddressNumber" Text="{Binding Path=StartAddress.Number}" HorizontalAlignment="Left" Grid.Column="1" />
+                        <TextBlock x:Name="AddressNumber" VerticalAlignment="Center" Text="{Binding Path=StartAddress.Number}" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
                     <!--Start Street-->
                     <Grid Margin="0 0 0 3">
@@ -82,7 +82,7 @@
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock FontWeight="DemiBold" Text="Street" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0"/>
-                        <TextBlock x:Name="AddressStreet" Text="{Binding Path=StartAddress.Street}" HorizontalAlignment="Left" Grid.Column="1" />
+                        <TextBlock x:Name="AddressStreet" VerticalAlignment="Center" Text="{Binding Path=StartAddress.Street}" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
                     <!--Start City-->
                     <Grid>
@@ -91,7 +91,7 @@
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock FontWeight="DemiBold" Text="City" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 2 0" Grid.Column="0"/>
-                        <TextBlock x:Name="AddressCity" Text="{Binding Path=StartAddress.City}" HorizontalAlignment="Left" Grid.Column="1" />
+                        <TextBlock x:Name="AddressCity" VerticalAlignment="Center" Text="{Binding Path=StartAddress.City}" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
                 </StackPanel>
                 <!--Stack Panel for Criteria to pass the test with check boxes-->

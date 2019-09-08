@@ -11,8 +11,6 @@
         <FlowDocumentScrollViewer Margin="50">
             <FlowDocument>
                 <Paragraph>
-                    <Image Source="C:\Users\Yosef\Desktop\DMV5-779\PL_WPF\Images\Logo\DMV_PIC.jpg"
-                           Width="90" Height="90" Margin="0 0 30 0"/>
                     <Run FontSize="40" FontWeight="Bold">
                         This Project is By:
                     </Run>
@@ -30,7 +28,7 @@
                     </ListItem>
                     <ListItem>
                         <Paragraph>
-                            Yosef Schoen
+                            Yosef Schoen 506429330
                         </Paragraph>
                     </ListItem>
                     <ListItem>

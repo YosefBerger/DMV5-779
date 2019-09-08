@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_WPF"
         mc:Ignorable="d"
-        Title="Pages" Icon="/Limud.ico" Height="500" Width="800">
+        Title="Misrad HaRishui" Icon="/Limud.ico" Height="500" Width="800">
 
     <Grid>
         <!--background image-->

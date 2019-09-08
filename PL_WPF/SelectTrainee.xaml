@@ -32,8 +32,8 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0" Name="LevenshteinSearh" TextChanged="LevenshteinSearh_TextChanged" Margin="10 15" Width="200"/>
                 <fa:ImageAwesome Grid.Column="1" Icon="Search" Height="12pt" Width="12pt" />
-                <TextBlock Text="Select Trainee" Grid.Column="2" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
             </Grid>
+            <TextBlock Text="Select Trainee" Grid.Column="2" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
 
             <!--List of Trainees to select from-->
             <DataGrid Name="Trainees" Grid.Row="2" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">

@@ -85,8 +85,8 @@ namespace PL_WPF
 
             testers = (List<Tester>)e.Result;
             Testers.ItemsSource = testers;
-            SearchIcon.Visibility = Visibility.Hidden;
-            LevenshteinSearh.Visibility = Visibility.Hidden;
+            SearchIcon.Visibility = Visibility.Visible;
+            LevenshteinSearh.Visibility = Visibility.Visible;
             Testers.Visibility = Visibility.Visible;
         }
 
